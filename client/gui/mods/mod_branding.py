@@ -16,6 +16,7 @@ import datetime
 import time
 import json
 from VehicleAppearance import VehicleAppearance
+from VehicleStickers import VehicleStickers
 from gui.mods.modsListApi import g_modsListApi
 from gui.app_loader.loader import g_appLoader
 from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ViewTypes, ScopeTemplates
@@ -23,7 +24,7 @@ from gui.Scaleform.framework.entities.abstract.AbstractWindowView import Abstrac
 from gui.shared import g_eventBus
 from gui.shared.events import LobbySimpleEvent
 from gui.shared.utils.HangarSpace import g_hangarSpace
-
+from gui import SystemMessages 
 
 class branding():
 	
@@ -41,8 +42,10 @@ class branding():
 
 		g_modsListApi.addMod(
 			id = "mod_branding",
-			name = 'Брендированные танки', 
-			description = 'Подмена камуфляжей и надписей для команд', 
+			#name = 'Брендированные танки', 
+			name = 'Branded tanks', 
+			#description = 'Подмена камуфляжей и надписей для команд', 
+			description = 'Spoofing camouflage and inscriptions for teams', 
 			icon = modIcon, 
 			enabled = True, 
 			login = True, 
@@ -50,20 +53,32 @@ class branding():
 			callback = lambda : g_appLoader.getDefLobbyApp().loadView('brandingUI')
 		)
 		
-		baseFunc = VehicleAppearance.start
-		VehicleAppearance.start = lambda baseClass, vehicle, prereqs = None: self.__hooked_VehicleAppearanceStart(baseClass, baseFunc, vehicle, prereqs)
+		# Change camo and another staff on all tanks in battle
+		baseFuncVehicleAppearanceStart = VehicleAppearance.start
+		VehicleAppearance.start = lambda baseClass, vehicle, prereqs = None: self.__hooked_VehicleAppearanceStart(baseClass, baseFuncVehicleAppearanceStart, vehicle, prereqs)
 		
-		from VehicleStickers import VehicleStickers
+		# delete clan emblems
 		VehicleStickers.setClanID = lambda *args: None
 		
+		# premature alpha = 1 on stickers
+		def fakeInit(baseClass, baseFunc, vehicleDesc, insigniaRank = 0):
+			baseFunc(baseClass, vehicleDesc, insigniaRank)
+			baseClass._VehicleStickers__defaultAlpha = 1.0
+		baseFuncVehicleStickersInit = VehicleStickers.__init__
+		VehicleStickers.__init__ = lambda baseClass, vehicleDesc, insigniaRank = 0: fakeInit(baseClass, baseFuncVehicleStickersInit, vehicleDesc, insigniaRank)
+		
+		# init gui
 		g_entitiesFactories.addSettings(ViewSettings('brandingUI', brandingUI, '../../scripts/client/gui/mods/mod_branding/brandingUI.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 
 	def restoreHangarVehicle(self):
 		if self.__oldCustomization is None:
 			return
 		else:
-			vDesc = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vDesc
-			vState = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vState
+			try:
+				vDesc = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vDesc
+				vState = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vState	
+			except:
+				return
 			vDesc.playerInscriptions = self.__oldCustomization[0]
 			vDesc.playerEmblems = self.__oldCustomization[1]
 			vDesc.camouflages = self.__oldCustomization[2]
@@ -165,6 +180,8 @@ class branding():
 					(self.settingParser(old, camo, 1, 2), 0, 0), 
 					(self.settingParser(old, camo, 2, 2), 0, 0)
 				)
+				
+				baseClass._VehicleAppearance__emblemsAlpha = 0.0
 			except:
 				pass
 				
@@ -191,7 +208,16 @@ class branding():
 			return old[idx][0]
 		else: 
 			return adv
-
+	
+	def pushSystemMessage(self):
+		name_1 = self.findPresetByID(self.config['current'][0])
+		name_1 = name_1['name'] if name_1 is not None else "Unknown"
+		
+		name_2 = self.findPresetByID(self.config['current'][1])
+		name_2 = name_2['name'] if name_2 is not None else "Unknown"
+		
+		SystemMessages.pushMessage('Team #1 style: "' + name_1 + '" <br>Team #2 style: "' + name_2 + '"', type=SystemMessages.SM_TYPE.Warning)
+	
 class brandingUI(AbstractWindowView):
 	
 	def _populate(self):
@@ -215,7 +241,10 @@ class brandingUI(AbstractWindowView):
 			return False
 	
 	def py_onSettings(self, settings):
+		
 		g_branding.config['current'] = [int(settings[0]), int(settings[1])]
+		g_branding.pushSystemMessage()
+		
 		with codecs.open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+', 'utf-8-sig') as fh:
 			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
 		g_branding.restoreHangarVehicle()

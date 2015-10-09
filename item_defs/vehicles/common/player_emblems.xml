@@ -1421,66 +1421,73 @@
         <notInShop> true </notInShop>
         <emblems>
 		
+		
+		
+		
+		
 			<emblem>
                 <id> 5200 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/wargaming.dds</texName>
-                <userString>Logotype Wargaming (mirrored)</userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/kazna.dds</texName>
+                <userString>Logotype kazna (mirrored)</userString>
                 <mirror> true </mirror>
             </emblem>
             <emblem>
                 <id> 5201 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/wargaming.dds</texName>
-                <userString>Logotype Wargaming </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/kazna.dds</texName>
+                <userString>Logotype kazna </userString>
             </emblem>
             
+			
+			
+			
 			<emblem>
                 <id> 5202 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/hellraisers.dds</texName>
-                <userString> Logotype HellRaisers (mirrored) </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/tornadorox.dds</texName>
+                <userString> Logotype tornadorox (mirrored) </userString>
                 <mirror> true </mirror>
             </emblem>
             <emblem>
                 <id> 5203 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/hellraisers.dds</texName>
-                <userString> Logotype HellRaisers </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/tornadorox.dds</texName>
+                <userString> Logotype tornadorox </userString>
             </emblem>
             
+			
+			
+			
+			
 			<emblem>
                 <id> 5204 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/arcade.dds</texName>
-                <userString> Logotype Arcade (mirrored) </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/nss.dds</texName>
+                <userString> Logotype nss (mirrored) </userString>
                 <mirror> true </mirror>
             </emblem>
             <emblem>
                 <id> 5205 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/arcade.dds</texName>
-                <userString> Logotype Arcade </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/nss.dds</texName>
+                <userString> Logotype nss </userString>
             </emblem>
             
+			
+			
+			
 			<emblem>
                 <id> 5206 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/natusvincere.dds</texName>
-                <userString> Logotype Natus Vincere (mirrored) </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/wombat.dds</texName>
+                <userString> Logotype wombat (mirrored) </userString>
                 <mirror> true </mirror>
             </emblem>
             <emblem>
                 <id> 5207 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/natusvincere.dds</texName>
-                <userString> Logotype Natus Vincere </userString>
+                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/wombat.dds</texName>
+                <userString> Logotype wombat </userString>
             </emblem>
 			
-			<emblem>
-                <id> 5208 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/weeplay.dds</texName>
-                <userString> Logotype WeePlay (mirrored) </userString>
-                <mirror> true </mirror>
-            </emblem>
-            <emblem>
-                <id> 5209 </id>
-                <texName>scripts/client/gui/mods/mod_branding/resources/logotypes/weeplay.dds</texName>
-                <userString> Logotype WeePlay </userString>
-            </emblem>
-        
+			
+			
+			
+
+			
 		</emblems>
     </branding>
 	

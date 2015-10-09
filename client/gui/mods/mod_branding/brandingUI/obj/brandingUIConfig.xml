@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'05.10.2015'</value>
+      <value>'09.10.2015'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -41,7 +41,9 @@
       <path-element>D:\games\wot\res_mods\0.9.10\scripts\client\gui\mods\mod_branding\brandingUI\libraries\wg.swc</path-element>
     </external-library-path>
   </compiler>
-  <file-specs />
+  <file-specs>
+    <path-element>D:\games\wot\res_mods\0.9.10\scripts\client\gui\mods\mod_branding\brandingUI\brandingUI.as</path-element>
+  </file-specs>
   <default-background-color>#FF8000</default-background-color>
   <default-frame-rate>50</default-frame-rate>
   <default-size>

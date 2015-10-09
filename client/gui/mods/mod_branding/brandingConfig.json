@@ -2,128 +2,141 @@
     "advert": [
         {
             "id": 5300,
-            "name": "Game2day"
+            "name": "kazna1_idemo"
         },
         {
             "id": 5301,
-            "name": "Twitch"
+            "name": "tornadorox1_tornado_energy_g2a"
         },
         {
             "id": 5302,
-            "name": "G2A"
+            "name": "tornadorox2_kaspersky_roccat"
         },
         {
             "id": 5303,
-            "name": "HyperX"
+            "name": "nss1_logitech_weplay"
         },
         {
             "id": 5304,
-            "name": "SteelSeries"
+            "name": "nss2_inno3d"
+        },
+        {
+            "id": 5305,
+            "name": "wombat1_forsale"
         }
     ],
     "camouflages": [
         {
             "id": 5100,
-            "name": "Wargaming"
+            "name": "KAZNA"
         },
         {
             "id": 5101,
-            "name": "HellRaisers"
+            "name": "TORNADOROX"
         },
         {
             "id": 5102,
-            "name": "Arcade"
+            "name": "NSS"
         },
         {
             "id": 5103,
-            "name": "NatusVincere"
+            "name": "WOMBAT"
         },
         {
             "id": 5104,
-            "name": "WeePlay"
+            "name": "WHITETEAM"
+        },
+        {
+            "id": 5105,
+            "name": "BLACKTEAM"
         }
     ],
     "current": [
-        4,
-        4
+        0,
+        1
     ],
     "logotypes": [
         {
             "id": 5200,
             "mirrored_id": 5201,
-            "name": "Wargaming"
+            "name": "KAZNA"
         },
         {
             "id": 5202,
             "mirrored_id": 5203,
-            "name": "HellRaisers"
+            "name": "TORNADOROX"
         },
         {
             "id": 5204,
             "mirrored_id": 5205,
-            "name": "Arcade"
+            "name": "NSS"
         },
         {
             "id": 5206,
             "mirrored_id": 5207,
-            "name": "NatusVincere"
-        },
-        {
-            "id": 5208,
-            "mirrored_id": 5209,
-            "name": "WeePlay"
+            "name": "WOMBAT"
         }
     ],
     "presets": [
         {
             "advert": [
-                -1,
-                -1
+                5300,
+                5300
             ],
             "camouflage": 5100,
             "id": 0,
             "logotype": 5200,
-            "name": "Wargaming"
+            "name": "Kazna"
         },
         {
             "advert": [
                 5301,
-                -1
+                5302
             ],
             "camouflage": 5101,
             "id": 1,
             "logotype": 5202,
-            "name": "HellRaisers"
+            "name": "TornadoRox"
         },
         {
             "advert": [
-                5300,
-                5300
+                5303,
+                5304
             ],
             "camouflage": 5102,
             "id": 2,
             "logotype": 5204,
-            "name": "Arcade"
+            "name": "NSS"
         },
         {
             "advert": [
-                5302,
-                5304
+                5305,
+                5305
             ],
             "camouflage": 5103,
             "id": 3,
             "logotype": 5206,
-            "name": "NatusVincere"
+            "name": "Wombat"
         },
         {
             "advert": [
-                5301,
+                -1,
                 -1
             ],
             "camouflage": 5104,
             "id": 4,
-            "logotype": 5208,
-            "name": "WeePlay"
+            "logotype": -1,
+            "name": "WhiteTeam"
+        },
+        {
+            "advert": [
+                -1,
+                -1
+            ],
+            "camouflage": 5105,
+            "id": 5,
+            "logotype": -1,
+            "name": "BlackTeam"
         },
         {
             "advert": [
@@ -131,9 +144,9 @@
                 -1
             ],
             "camouflage": -1,
-            "id": 5,
+            "id": 6,
             "logotype": -1,
-            "name": "Чистые танки"
+            "name": "Clean tanks"
         },
         {
             "advert": [
@@ -141,9 +154,9 @@
                 0
             ],
             "camouflage": 0,
-            "id": 6,
+            "id": 7,
             "logotype": 0,
-            "name": "Выбор игроков"
+            "name": "User choice"
         }
     ]
 }
