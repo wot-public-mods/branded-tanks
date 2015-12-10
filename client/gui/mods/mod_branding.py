@@ -55,7 +55,9 @@ class branding():
 		
 		# Change camo and another staff on all tanks in battle
 		baseFuncVehicleAppearanceStart = VehicleAppearance.start
+		
 		VehicleAppearance.start = lambda baseClass, vehicle, prereqs = None: self.__hooked_VehicleAppearanceStart(baseClass, baseFuncVehicleAppearanceStart, vehicle, prereqs)
+		
 		
 		# delete clan emblems
 		VehicleStickers.setClanID = lambda *args: None
@@ -94,13 +96,14 @@ class branding():
 			vDesc = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vDesc
 			vState = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vState	
 		except:
-			return
-			
+			pass
+		
 		preset = self.findPresetByID(id)
 		
 		if preset is not None:
 			
 			try:
+				
 				
 				if self.__oldCustomization is None:
 					self.__oldCustomization = [vDesc.playerInscriptions, vDesc.playerEmblems, vDesc.camouflages]
@@ -108,23 +111,52 @@ class branding():
 				if self.__prevCameraLocation is None:
 					self.__prevCameraLocation = g_hangarSpace.space.getCameraLocation()
 				
+				
+				need_advert_fix = ['germany:G103_RU_251', 'germany:PzVI', 'usa:A18_M41', 'france:AMX_12t', 'usa:M41_Bulldog']
+				need_logo_fix = ['usa:A35_Pershing', 'usa:A35_Pershing', 'germany:RhB_Waffentrager']
+				need_logo_fix_2 = ['france:AMX_13F3AM', 'uk:GB77_FV304', 'usa:M44']
+				
 				old = vDesc.playerInscriptions
 				adv = preset['advert']
-				vDesc.playerInscriptions = (
-					(self.settingParser(old, adv[0], 0, 0), 0, 0, 1), 
-					(self.settingParser(old, adv[1], 1, 0), 0, 0, 1), 
-					(self.settingParser(old, adv[0], 2, 0), 0, 0, 0), 
-					(self.settingParser(old, adv[1], 3, 0), 0, 0, 0)
-				)
+				if vDesc.name in need_advert_fix:
+					vDesc.playerInscriptions = (
+						(self.settingParser(old, adv[0], 0, 0), 0, 0, 1), 
+						(self.settingParser(old, adv[0], 1, 0), 0, 0, 1), 
+						(self.settingParser(old, adv[1], 2, 0), 0, 0, 0), 
+						(self.settingParser(old, adv[1], 3, 0), 0, 0, 0)
+					)
+				else:
+					vDesc.playerInscriptions = (
+						(self.settingParser(old, adv[0], 0, 0), 0, 0, 1), 
+						(self.settingParser(old, adv[1], 1, 0), 0, 0, 1), 
+						(self.settingParser(old, adv[0], 2, 0), 0, 0, 0), 
+						(self.settingParser(old, adv[1], 3, 0), 0, 0, 0)
+					)
 				
 				old = vDesc.playerEmblems
 				logo = [preset['logotype'], self.findMirroredLogo(preset['logotype'])]
-				vDesc.playerEmblems = (
-					(self.settingParser(old, logo[0], 0, 1), 0, 0), 
-					(self.settingParser(old, logo[1], 1, 1), 0, 0), 
-					(self.settingParser(old, logo[0], 2, 1), 0, 0), 
-					(self.settingParser(old, logo[1], 3, 1), 0, 0)
-				)
+				
+				if vDesc.name in need_logo_fix:
+					vDesc.playerEmblems = (
+						(self.settingParser(old, logo[0], 0, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 1, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 2, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 3, 1), 0, 0)
+					)	
+				elif vDesc.name in need_logo_fix_2:
+					vDesc.playerEmblems = (
+						(self.settingParser(old, logo[1], 0, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 1, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 2, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 3, 1), 0, 0)
+					)	
+				else:
+					vDesc.playerEmblems = (
+						(self.settingParser(old, logo[0], 0, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 1, 1), 0, 0), 
+						(self.settingParser(old, logo[0], 2, 1), 0, 0), 
+						(self.settingParser(old, logo[1], 3, 1), 0, 0)
+					)
 				
 				old = vDesc.camouflages
 				camo = preset['camouflage']
@@ -134,58 +166,93 @@ class branding():
 					(self.settingParser(old, camo, 2, 2), 0, 0)
 				)
 				
+				vDesc._VehicleAppearance__emblemsAlpha = 1.0
+				
 				g_hangarSpace.space.recreateVehicle(vDesc, vState)
 				g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, True))
 				g_hangarSpace.space.locateCameraToPreview()
-			
+				
+				
 			except:
 				pass
 				
 	def __hooked_VehicleAppearanceStart(self, baseClass, baseFunc, vehicle, prereqs):
-
+		
 		team = int(vehicle.publicInfo['team'])
 		
 		if team not in [1, 2]:
 			return baseFunc(baseClass, vehicle, prereqs)
 	
 		preset = self.findPresetByID(self.config['current'][team - 1])
+
 		if preset is not None:
 			try:
+				
 				if self.__oldCustomization is not None:
 					self.__oldCustomization = None
 				
+				need_advert_fix = ['germany:G103_RU_251', 'germany:PzVI', 'usa:A18_M41', 'france:AMX_12t', 'usa:M41_Bulldog']
+				need_logo_fix = ['usa:A35_Pershing', 'usa:A35_Pershing', 'germany:RhB_Waffentrager']
+				need_logo_fix_2 = ['france:AMX_13F3AM', 'uk:GB77_FV304', 'usa:M44']
+				
+				
 				old = baseClass._VehicleAppearance__typeDesc.playerInscriptions
 				adv = preset['advert']
-			
-				baseClass._VehicleAppearance__typeDesc.playerInscriptions = (
-					(self.settingParser(old, adv[0], 0, 0), 0, 0, 1), 
-					(self.settingParser(old, adv[1], 1, 0), 0, 0, 1), 
-					(self.settingParser(old, adv[0], 2, 0), 0, 0, 0), 
-					(self.settingParser(old, adv[1], 3, 0), 0, 0, 0)
-				)
+				if baseClass._VehicleAppearance__typeDesc.name in need_advert_fix:
+					baseClass._VehicleAppearance__typeDesc.playerInscriptions = (
+						(self.settingParser(old, adv[0], 0, 0),13068864000, 0, 0), 
+						(self.settingParser(old, adv[0], 1, 0), 1306886400, 0, 0), 
+						(self.settingParser(old, adv[1], 2, 0), 1306886400, 0, 1), 
+						(self.settingParser(old, adv[1], 3, 0), 1306886400, 0, 1)
+					)
+				else:
+					baseClass._VehicleAppearance__typeDesc.playerInscriptions = (
+						(self.settingParser(old, adv[0], 0, 0), 1306886400, 0, 0), 
+						(self.settingParser(old, adv[1], 1, 0), 1306886400, 0, 0), 
+						(self.settingParser(old, adv[0], 2, 0), 1306886400, 0, 1), 
+						(self.settingParser(old, adv[1], 3, 0), 1306886400, 0, 1)
+					)
 				
 				old = baseClass._VehicleAppearance__typeDesc.playerEmblems
 				logo = [preset['logotype'], self.findMirroredLogo(preset['logotype'])]
-				baseClass._VehicleAppearance__typeDesc.playerEmblems = (
-					(self.settingParser(old, logo[0], 0, 1), 0, 0), 
-					(self.settingParser(old, logo[1], 1, 1), 0, 0), 
-					(self.settingParser(old, logo[0], 2, 1), 0, 0), 
-					(self.settingParser(old, logo[1], 3, 1), 0, 0)
-				)
-			
+				
+				if baseClass._VehicleAppearance__typeDesc.name in need_logo_fix:
+					baseClass._VehicleAppearance__typeDesc.playerEmblems = (
+						(self.settingParser(old, logo[0], 0, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 1, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 2, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 3, 1), 1306886400, 0)
+					)	
+				elif baseClass._VehicleAppearance__typeDesc.name in need_logo_fix_2:
+					baseClass._VehicleAppearance__typeDesc.playerEmblems = (
+						(self.settingParser(old, logo[1], 0, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 1, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 2, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 3, 1), 1306886400, 0)
+					)	
+				else:
+					baseClass._VehicleAppearance__typeDesc.playerEmblems = (
+						(self.settingParser(old, logo[0], 0, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 1, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[0], 2, 1), 1306886400, 0), 
+						(self.settingParser(old, logo[1], 3, 1), 1306886400, 0)
+					)
+				
 				old = baseClass._VehicleAppearance__typeDesc.camouflages
 				camo = preset['camouflage']
 				baseClass._VehicleAppearance__typeDesc.camouflages = (
-					(self.settingParser(old, camo, 0, 2), 0, 0), 
-					(self.settingParser(old, camo, 1, 2), 0, 0), 
-					(self.settingParser(old, camo, 2, 2), 0, 0)
+					(self.settingParser(old, camo, 0, 2), 1306886400, 0), 
+					(self.settingParser(old, camo, 1, 2), 1306886400, 0), 
+					(self.settingParser(old, camo, 2, 2), 1306886400, 0)
 				)
 				
-				baseClass._VehicleAppearance__emblemsAlpha = 0.0
+				
+				baseClass._VehicleAppearance__typeDesc._VehicleAppearance__emblemsAlpha = 1.0
 			except:
 				pass
 				
 		return baseFunc(baseClass, vehicle, prereqs)
+	
 	
 	def findMirroredLogo(self, id):
 		for logotype in self.config['logotypes']:
@@ -253,5 +320,50 @@ class brandingUI(AbstractWindowView):
 		g_branding.showPresetInHangar(int(id))
 
 g_branding = branding()
+
+from gui.customization_2_0.elements.available import Emblem, Inscription, Camouflage, Item
+from gui.shared import g_itemsCache
+from CurrentVehicle import g_currentVehicle
+
+def Camouflage__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced):
+	if rawData["groupName"] == "branding": allowedVehicles = frozenset(["ussr:MS-1_bot"])
+	return oldCamouflage__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced)
+oldCamouflage__init__ = Camouflage.__init__
+Camouflage.__init__ = Camouflage__init__
+
+def CamouflageGetPrice(self, duration):
+	try: return int(round(self._price[duration][0] * g_itemsCache.items.shop.getVehCamouflagePriceFactor(g_currentVehicle.item.descriptor.type.compactDescr) * g_itemsCache.items.shop.getCamouflagesPriceFactors(g_currentVehicle.item.descriptor.type.customizationNationID)[self.getID()]))
+	except: return 0
+Camouflage.getPrice = CamouflageGetPrice
+
+def Emblem__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced):
+	if rawData[0] == "branding": allowedVehicles = frozenset(["ussr:MS-1_bot"])
+	return oldEmblem__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced)
+oldEmblem__init__ = Emblem.__init__
+Emblem.__init__ = Emblem__init__
+
+def EmblemGetPrice(self, duration):
+	try: return int(round(self._price[duration][0] * g_currentVehicle.item.level * g_itemsCache.items.shop.getEmblemsGroupPriceFactors()[self.getGroup()]))
+	except: return 0
+Emblem.getPrice = EmblemGetPrice
+
+def Inscription__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced):
+	if rawData[0] == "branding": allowedVehicles = frozenset(["ussr:MS-1_bot"])
+	return oldInscription__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced)
+oldInscription__init__ = Inscription.__init__
+Inscription.__init__ = Inscription__init__
+
+def InscriptionGetPrice(self, duration):
+	try: return int(round(self._price[duration][0] * g_currentVehicle.item.level * g_itemsCache.items.shop.getInscriptionsGroupPriceFactors(g_currentVehicle.item.descriptor.type.customizationNationID)[self.getGroup()]))
+	except: return 0
+Inscription.getPrice = InscriptionGetPrice
+
+
+
+
+
+
+
+
 
 print "[NOTE] package loaded: mod_branding"
