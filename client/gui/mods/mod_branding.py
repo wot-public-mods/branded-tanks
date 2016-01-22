@@ -325,9 +325,9 @@ from gui.customization_2_0.elements.available import Emblem, Inscription, Camouf
 from gui.shared import g_itemsCache
 from CurrentVehicle import g_currentVehicle
 
-def Camouflage__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced):
+def Camouflage__init__(self, itemID, rawData, qualifier, isInDossier, isInQuests, isInShop, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced, numberOfItems, numberOfDays):
 	if rawData["groupName"] == "branding": allowedVehicles = frozenset(["ussr:MS-1_bot"])
-	return oldCamouflage__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced)
+	return oldCamouflage__init__(self, itemID, rawData, qualifier, isInDossier, isInQuests, isInShop, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced, numberOfItems, numberOfDays)
 oldCamouflage__init__ = Camouflage.__init__
 Camouflage.__init__ = Camouflage__init__
 
@@ -336,9 +336,9 @@ def CamouflageGetPrice(self, duration):
 	except: return 0
 Camouflage.getPrice = CamouflageGetPrice
 
-def Emblem__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced):
+def Emblem__init__(self, itemID, rawData, qualifier, isInDossier, isInQuests, isInShop, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced, numberOfItems, numberOfDays):
 	if rawData[0] == "branding": allowedVehicles = frozenset(["ussr:MS-1_bot"])
-	return oldEmblem__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced)
+	return oldEmblem__init__(self, itemID, rawData, qualifier, isInDossier, isInQuests, isInShop, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced, numberOfItems, numberOfDays)
 oldEmblem__init__ = Emblem.__init__
 Emblem.__init__ = Emblem__init__
 
@@ -347,9 +347,9 @@ def EmblemGetPrice(self, duration):
 	except: return 0
 Emblem.getPrice = EmblemGetPrice
 
-def Inscription__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced):
+def Inscription__init__(self, itemID, rawData, qualifier, isInDossier, isInQuests, isInShop, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced, numberOfItems, numberOfDays):
 	if rawData[0] == "branding": allowedVehicles = frozenset(["ussr:MS-1_bot"])
-	return oldInscription__init__(self, itemID, rawData, qualifier, isInDossier, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced)
+	return oldInscription__init__(self, itemID, rawData, qualifier, isInDossier, isInQuests, isInShop, allowedVehicles, notAllowedVehicles, allowedNations, igrReplaced, numberOfItems, numberOfDays)
 oldInscription__init__ = Inscription.__init__
 Inscription.__init__ = Inscription__init__
 
