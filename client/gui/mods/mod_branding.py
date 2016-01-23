@@ -112,13 +112,9 @@ class branding():
 					self.__prevCameraLocation = g_hangarSpace.space.getCameraLocation()
 				
 				
-				need_advert_fix = ['germany:G103_RU_251', 'germany:PzVI', 'usa:A18_M41', 'france:AMX_12t', 'usa:M41_Bulldog']
-				need_logo_fix = ['usa:A35_Pershing', 'usa:A35_Pershing', 'germany:RhB_Waffentrager']
-				need_logo_fix_2 = ['france:AMX_13F3AM', 'uk:GB77_FV304', 'usa:M44']
-				
 				old = vDesc.playerInscriptions
 				adv = preset['advert']
-				if vDesc.name in need_advert_fix:
+				if vDesc.name in self.config["advert_fix"]:
 					vDesc.playerInscriptions = (
 						(self.settingParser(old, adv[0], 0, 0), 0, 0, 1), 
 						(self.settingParser(old, adv[0], 1, 0), 0, 0, 1), 
@@ -136,14 +132,14 @@ class branding():
 				old = vDesc.playerEmblems
 				logo = [preset['logotype'], self.findMirroredLogo(preset['logotype'])]
 				
-				if vDesc.name in need_logo_fix:
+				if vDesc.name in self.config["logo_fix_1"]:
 					vDesc.playerEmblems = (
 						(self.settingParser(old, logo[0], 0, 1), 0, 0), 
 						(self.settingParser(old, logo[1], 1, 1), 0, 0), 
 						(self.settingParser(old, logo[1], 2, 1), 0, 0), 
 						(self.settingParser(old, logo[1], 3, 1), 0, 0)
 					)	
-				elif vDesc.name in need_logo_fix_2:
+				elif vDesc.name in self.config["logo_fix_2"]:
 					vDesc.playerEmblems = (
 						(self.settingParser(old, logo[1], 0, 1), 0, 0), 
 						(self.settingParser(old, logo[1], 1, 1), 0, 0), 
@@ -191,14 +187,9 @@ class branding():
 				if self.__oldCustomization is not None:
 					self.__oldCustomization = None
 				
-				need_advert_fix = ['germany:G103_RU_251', 'germany:PzVI', 'usa:A18_M41', 'france:AMX_12t', 'usa:M41_Bulldog']
-				need_logo_fix = ['usa:A35_Pershing', 'usa:A35_Pershing', 'germany:RhB_Waffentrager']
-				need_logo_fix_2 = ['france:AMX_13F3AM', 'uk:GB77_FV304', 'usa:M44']
-				
-				
 				old = baseClass._VehicleAppearance__typeDesc.playerInscriptions
 				adv = preset['advert']
-				if baseClass._VehicleAppearance__typeDesc.name in need_advert_fix:
+				if baseClass._VehicleAppearance__typeDesc.name in self.config["advert_fix"]:
 					baseClass._VehicleAppearance__typeDesc.playerInscriptions = (
 						(self.settingParser(old, adv[0], 0, 0),13068864000, 0, 0), 
 						(self.settingParser(old, adv[0], 1, 0), 1306886400, 0, 0), 
@@ -216,14 +207,14 @@ class branding():
 				old = baseClass._VehicleAppearance__typeDesc.playerEmblems
 				logo = [preset['logotype'], self.findMirroredLogo(preset['logotype'])]
 				
-				if baseClass._VehicleAppearance__typeDesc.name in need_logo_fix:
+				if baseClass._VehicleAppearance__typeDesc.name in self.config["logo_fix_1"]:
 					baseClass._VehicleAppearance__typeDesc.playerEmblems = (
 						(self.settingParser(old, logo[0], 0, 1), 1306886400, 0), 
 						(self.settingParser(old, logo[1], 1, 1), 1306886400, 0), 
 						(self.settingParser(old, logo[1], 2, 1), 1306886400, 0), 
 						(self.settingParser(old, logo[1], 3, 1), 1306886400, 0)
 					)	
-				elif baseClass._VehicleAppearance__typeDesc.name in need_logo_fix_2:
+				elif baseClass._VehicleAppearance__typeDesc.name in self.config["logo_fix_2"]:
 					baseClass._VehicleAppearance__typeDesc.playerEmblems = (
 						(self.settingParser(old, logo[1], 0, 1), 1306886400, 0), 
 						(self.settingParser(old, logo[1], 1, 1), 1306886400, 0), 
