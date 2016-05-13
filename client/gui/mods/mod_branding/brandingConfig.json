@@ -1,9 +1,6 @@
 ﻿{
+    "UIType": 2,
     "advert": [
-        {
-            "id": 5300,
-            "name": "kazna1_idemo"
-        },
         {
             "id": 5301,
             "name": "tornadorox1_tornado_energy_g2a"
@@ -14,98 +11,139 @@
         },
         {
             "id": 5303,
-            "name": "rusty_roster_inscription_01"
+            "name": "kazna1_idemo"
         },
         {
             "id": 5304,
-            "name": "rusty_roster_inscription_02"
-        },
-        {
-            "id": 5305,
             "name": "wombat1_forsale"
         },
         {
+            "id": 5305,
+            "name": "hr_twitch"
+        },
+        {
             "id": 5306,
-            "name": "game2day"
+            "name": "navi_g2a"
         },
         {
             "id": 5307,
-            "name": "twitch"
+            "name": "navi_hyperx"
         },
         {
             "id": 5308,
-            "name": "g2a"
+            "name": "nss1_logitech_weplay"
         },
         {
             "id": 5309,
-            "name": "hyperx"
+            "name": "nss2_inno3d"
         },
         {
             "id": 5310,
-            "name": "tesoro"
+            "name": "yato_advert_1"
+        },
+        {
+            "id": 5311,
+            "name": "yato_advert_1"
         }
+    ],
+    "advert_fix": [
+        "germany:G103_RU_251",
+        "usa:A18_M41",
+        "france:AMX_12t",
+        "usa:M41_Bulldog",
+        "germany:E-100",
+        "germany:E50_Ausf_M",
+        "germany:E-50",
+        "germany:G16_PzVIB_Tiger_II",
+        "france:Bat_Chatillon25t",
+        "france:F72_AMX_30",
+        "france:F71_AMX_30_prototype",
+        "france:Lorraine40t",
+        "france:F73_M4A1_Revalorise",
+        "france:F10_AMX_50B",
+        "france:F09_AMX_50_120",
+        "france:Bat_Chatillon155_58",
+        "uk:GB24_Centurion_Mk3",
+        "uk:GB23_Centurion",
+        "uk:GB11_Caernarvon"
     ],
     "camouflages": [
         {
             "id": 5100,
-            "name": "KAZNA"
+            "name": "EL_Gaming"
         },
         {
             "id": 5101,
-            "name": "TORNADOROX"
+            "name": "Gold_Bass"
         },
         {
             "id": 5102,
-            "name": "STRONK_SIEMA"
+            "name": "KAZNA"
         },
         {
             "id": 5103,
-            "name": "WOMBAT"
+            "name": "TORNADOROX"
         },
         {
             "id": 5104,
-            "name": "WHITETEAM"
+            "name": "WOMBAT"
         },
         {
             "id": 5105,
-            "name": "BLACKTEAM"
+            "name": "NSS"
         },
         {
             "id": 5106,
-            "name": "DING"
+            "name": "HR"
         },
         {
             "id": 5107,
-            "name": "knackebrod"
+            "name": "NAVI"
         },
         {
             "id": 5108,
-            "name": "OUT_OF_RANGE"
+            "name": "YATO"
         },
         {
             "id": 5109,
-            "name": "penta_sports"
+            "name": "SIMP"
         },
         {
             "id": 5110,
-            "name": "rusty_roster"
+            "name": "ECLIPSE"
         },
         {
             "id": 5111,
-            "name": "Synergy"
-        },
-        {
-            "id": 5112,
-            "name": "UTOPIA"
-        },
-        {
-            "id": 5113,
-            "name": "Oops"
+            "name": "RED_CANIDS"
         }
     ],
     "current": [
-        6,
-        3
+        3,
+        -1
+    ],
+    "logo_fix_1": [
+        "usa:A35_Pershing",
+        "germany:RhB_Waffentrager",
+        "germany:E-100",
+        "ussr:T-44",
+        "usa:A84_M48A1",
+        "usa:A89_T54E1",
+        "usa:A63_M46_Patton",
+        "usa:T57_58",
+        "usa:A69_T110E5",
+        "france:Bat_Chatillon25t",
+        "france:F10_AMX_50B"
+    ],
+    "logo_fix_2": [
+        "france:AMX_13F3AM",
+        "uk:GB77_FV304",
+        "usa:A88_M53_55",
+        "ussr:R53_Object_704",
+        "ussr:Object_261",
+        "france:Lorraine155_51",
+        "uk:GB32_Tortoise",
+        "uk:GB30_FV3805",
+        "usa:A87_M44"
     ],
     "logotypes": [
         {
@@ -121,7 +159,7 @@
         {
             "id": 5204,
             "mirrored_id": 5205,
-            "name": "STRONK_SIEMA"
+            "name": "el_gaming"
         },
         {
             "id": 5206,
@@ -131,134 +169,143 @@
         {
             "id": 5208,
             "mirrored_id": 5209,
-            "name": "DING"
+            "name": "gold_bass"
         },
         {
             "id": 5210,
             "mirrored_id": 5211,
-            "name": "knackebrod"
+            "name": "hr"
         },
         {
             "id": 5212,
             "mirrored_id": 5213,
-            "name": "OUT_OF_RANGE"
+            "name": "navi"
         },
         {
             "id": 5214,
             "mirrored_id": 5215,
-            "name": "penta_sports"
+            "name": "nss"
         },
         {
             "id": 5216,
             "mirrored_id": 5217,
-            "name": "rusty_roster"
+            "name": "yato"
         },
         {
             "id": 5218,
             "mirrored_id": 5219,
-            "name": "Synergy"
+            "name": "simp"
         },
         {
             "id": 5220,
             "mirrored_id": 5221,
-            "name": "UTOPIA"
+            "name": "eclipse"
         },
         {
             "id": 5222,
             "mirrored_id": 5223,
-            "name": "Oops"
+            "name": "red_canids"
         }
     ],
+    "onlyOnMyTank": true,
     "presets": [
         {
             "advert": [
-                5300,
-                5300
+                -1,
+                -1
             ],
-            "camouflage": 5100,
+            "camouflage": 5110,
             "id": 0,
-            "logotype": 5200,
-            "name": "Kazna"
-        },
-        {
-            "advert": [
-                5301,
-                5302
-            ],
-            "camouflage": 5101,
-            "id": 1,
-            "logotype": 5202,
-            "name": "TornadoRox"
+            "logotype": 5220,
+            "name": "eClipse",
+            "preview": {
+                "enable": true,
+                "image": "preview/eclipse.png"
+            }
         },
         {
             "advert": [
                 -1,
                 -1
             ],
-            "camouflage": 5102,
-            "id": 2,
+            "camouflage": 5100,
+            "id": 1,
             "logotype": 5204,
-            "name": "STRONK SIEMA"
+            "name": "EL Gaming",
+            "preview": {
+                "enable": true,
+                "image": "preview/EL_Gaming.png"
+            }
+        },
+        {
+            "advert": [
+                -1,
+                -1
+            ],
+            "camouflage": 5101,
+            "id": 2,
+            "logotype": 5208,
+            "name": "Gold Bass",
+            "preview": {
+                "enable": true,
+                "image": "preview/Gold_Bass.png"
+            }
         },
         {
             "advert": [
                 5305,
                 5305
             ],
-            "camouflage": 5103,
-            "id": 3,
-            "logotype": 5206,
-            "name": "Wombat"
-        },
-        {
-            "advert": [
-                -1,
-                -1
-            ],
             "camouflage": 5106,
-            "id": 4,
-            "logotype": 5208,
-            "name": "DiNG"
-        },
-        {
-            "advert": [
-                -1,
-                -1
-            ],
-            "camouflage": 5107,
-            "id": 5,
+            "id": 3,
             "logotype": 5210,
-            "name": "KNÄCKEBRÖD"
-        },
-        {
-            "advert": [
-                -1,
-                -1
-            ],
-            "camouflage": 5108,
-            "id": 6,
-            "logotype": 5212,
-            "name": "OUT OF RANGE"
-        },
-        {
-            "advert": [
-                -1,
-                -1
-            ],
-            "camouflage": 5109,
-            "id": 7,
-            "logotype": 5214,
-            "name": "PENTA SPORTS"
+            "name": "HellRaisers",
+            "preview": {
+                "enable": true,
+                "image": "preview/hr.png"
+            }
         },
         {
             "advert": [
                 5303,
-                5304
+                5303
             ],
-            "camouflage": 5110,
-            "id": 8,
-            "logotype": 5216,
-            "name": "RUSTY ROSTER"
+            "camouflage": 5102,
+            "id": 4,
+            "logotype": 5200,
+            "name": "KaznaKru",
+            "preview": {
+                "enable": true,
+                "image": "preview/kazna.png"
+            }
+        },
+        {
+            "advert": [
+                5306,
+                5307
+            ],
+            "camouflage": 5107,
+            "id": 5,
+            "logotype": 5212,
+            "name": "Natus Vincere",
+            "preview": {
+                "enable": true,
+                "image": "preview/navi.png"
+            }
+        },
+        {
+            "advert": [
+                5308,
+                5309
+            ],
+            "camouflage": 5105,
+            "id": 6,
+            "logotype": 5214,
+            "name": "Not So Serious",
+            "preview": {
+                "enable": true,
+                "image": "preview/nss.png"
+            }
         },
         {
             "advert": [
@@ -266,49 +313,69 @@
                 -1
             ],
             "camouflage": 5111,
-            "id": 9,
-            "logotype": 5218,
-            "name": "Synergy"
-        },
-        {
-            "advert": [
-                -1,
-                -1
-            ],
-            "camouflage": 5112,
-            "id": 10,
-            "logotype": 5220,
-            "name": "UTOPIA"
-        },
-        {
-            "advert": [
-                -1,
-                -1
-            ],
-            "camouflage": 5113,
-            "id": 11,
+            "id": 7,
             "logotype": 5222,
-            "name": "Oops - The Tough Giraffes"
+            "name": "Red Canids",
+            "preview": {
+                "enable": true,
+                "image": "preview/red_canids.png"
+            }
         },
         {
             "advert": [
                 -1,
                 -1
+            ],
+            "camouflage": 5109,
+            "id": 8,
+            "logotype": 5218,
+            "name": "SIMP",
+            "preview": {
+                "enable": true,
+                "image": "preview/simp.png"
+            }
+        },
+        {
+            "advert": [
+                5301,
+                5302
+            ],
+            "camouflage": 5103,
+            "id": 9,
+            "logotype": 5202,
+            "name": "Tornado.RoX",
+            "preview": {
+                "enable": true,
+                "image": "preview/tornadorox.png"
+            }
+        },
+        {
+            "advert": [
+                5304,
+                5304
             ],
             "camouflage": 5104,
-            "id": 12,
-            "logotype": -1,
-            "name": "WhiteTeam"
+            "id": 10,
+            "logotype": 5206,
+            "name": "Wombats on Tanks",
+            "preview": {
+                "enable": true,
+                "image": "preview/wombat.png"
+            }
         },
         {
             "advert": [
-                -1,
-                -1
+                5310,
+                5311
             ],
-            "camouflage": 5105,
-            "id": 13,
-            "logotype": -1,
-            "name": "BlackTeam"
+            "camouflage": 5108,
+            "id": 11,
+            "logotype": 5216,
+            "name": "YATO",
+            "preview": {
+                "enable": true,
+                "image": "preview/yato.png"
+            }
         },
         {
             "advert": [
@@ -316,9 +383,12 @@
                 -1
             ],
             "camouflage": -1,
-            "id": 14,
+            "id": 12,
             "logotype": -1,
-            "name": "Clean tanks"
+            "name": "Clean tanks",
+            "preview": {
+                "enable": false
+            }
         },
         {
             "advert": [
@@ -326,12 +396,12 @@
                 0
             ],
             "camouflage": 0,
-            "id": 15,
+            "id": 13,
             "logotype": 0,
-            "name": "User choice"
+            "name": "User choice",
+            "preview": {
+                "enable": false
+            }
         }
-    ],
-	"advert_fix": ["germany:G103_RU_251", "germany:PzVI", "usa:A18_M41", "france:AMX_12t", "usa:M41_Bulldog"],
-	"logo_fix_1": ["usa:A35_Pershing", "usa:A35_Pershing", "germany:RhB_Waffentrager"],
-	"logo_fix_2": ["france:AMX_13F3AM", "uk:GB77_FV304", "usa:M44"]
+    ]
 }
