@@ -1,16 +1,10 @@
 ﻿
+# WOT_UTILS ==> GUI_MODS MODS PATH VERSION OVERRIDE OVERRIDE_STATIC
+exec 'eJytUsFu2zAMvfsreLMcGO69ww7dWmwG1iWI0/ZQDIEsyY5WWXIpeln/flJSJ14TDBswnki+R/GJZIOuA+eLntMGdNc7JNBeagTugSdNhJfK37Y4oq5XtlKCtLORU+85H3T74NDIkbVt162iBTo5CLpX6F\
+/pTZI0DqEGbaFmaVFcxM6++NmZNHtMFzFIvxU/uBmUZ9llAq+mG+CsLrivCLVtJ8hoHN7DkfAOalT8KUmkakCy5xy2OahJGQZ6kMiJkO2gA0IBMbyrJYcZz2E2e7qEZ4b5GB2ZflKfh7ogkl56xTALQwTrCHoM80\
+J6AWW8OkSMsmyvTP2zMh8ALTpFGyfZH2X+T52CNYMVE5ExadmMY+t33bbRO7OVyOvYhltpFJ7BR4vPj7T4hd/fPSlDRQNa6JI3CZskwnDv4WG+Wt+tyi/VseXt/LoKA0wv0uK705Y9hjmlXqDuyafBFUYrS9HrnA\
+xXeOy6uFp9DpX8kLi/WVbl/GvI0dAbxTreM20ph4Zlhe+NpnDbaTZZwae7cv33AtpBn9MxD32X5fXN2zMQTGanrHW1ulqVH0/Jar9VA6F/nYPIQe4Oo/kFHXkf/w=='.decode('base64').decode('zlib')
 
-
-# WOT_INFO ==> GUI_MODS MODS PATH VERSION
-exec 'eJyNjk1vAiEQhu/7K+YGJAT7cdP00KZfHnSNa/VgjGGB3U7Lwgaw7c8vGzX22NszzPPOSxN8Bz6KXqZ3wK73IQFGjQFkBFk0w3\
-pp4qwN563vjauMSujd4NRH5wHbjQ9Wn63vdt+atAheH1RamxBPelNouIOGMhF7i4kSTljR+AAK0EFNiRCj4S9R/HSWsC1ZDAPZiS9pDy\
-ZSNi4AG5BUCRmrFNC1bAwm37w8TKAORn4WysoYYVOu9tP5c5mDs/KxyiYZEfHh0dGt4UCiCtinSDIqi8algTqvcymbwOJ+9ZojZgLrp2\
-U1Led5oOgS1durHeNwxOsL3lzwdsfyhZe36f7/xe0B//YX2liQHGoOioPmkIPNL83ZhzY='.decode('base64').decode('zlib')
-
-
-
-import codecs
-import datetime
 import time
 import json
 from VehicleAppearance import VehicleAppearance
@@ -26,23 +20,17 @@ from gui.shared.utils.HangarSpace import g_hangarSpace
 from gui import SystemMessages 
 from gui.customization.elements import Element
 
-
-
-class branding():
+class brandingController():
 	
 	def __init__(self):
-		
-		self.onlyOnMyTank = False
-		self.isPlayerLogic = False
 		
 		self.__oldCustomization = None
 		self.__prevCameraLocation = None
 		
-		with codecs.open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'r', 'utf-8-sig') as f:
-			data = f.read()
-			self.config = json.loads(data)
+		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'r') as f:
+			self.config = json.loads(f.read())
 		
-		with open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'brandingIcon.png']), 'rb') as fh:
+		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingIcon.png']), 'rb') as fh:
 			modIcon = fh.read().encode("base64").replace('\n', '')
 
 		g_modsListApi.addMod(
@@ -58,42 +46,32 @@ class branding():
 			callback = self.loadUI
 		)
 		
-		# Change camo and another staff on all tanks in battle
-		baseFunc_start = CompoundAppearance.start
-		CompoundAppearance.start = lambda baseClass, vehicle, prereqs = None: self.__hooked_start(baseClass, baseFunc_start, vehicle, prereqs)
+		WOT_UTILS.OVERRIDE(CompoundAppearance, "start")(self.__hooked_start)
 		
-		# delete clan emblems
+		@WOT_UTILS.OVERRIDE(VehicleStickers, "__init__")
+		def hooked_init(baseMethod, baseObject, vehicleDesc, insigniaRank = 0):
+			baseMethod(baseObject, vehicleDesc, insigniaRank)
+			baseObject._VehicleStickers__defaultAlpha = 1.0
+		
 		VehicleStickers.setClanID = lambda *args: None
 		
-		# premature alpha = 1 on stickers
-		def fakeInit(baseClass, baseFunc, vehicleDesc, insigniaRank = 0):
-			baseFunc(baseClass, vehicleDesc, insigniaRank)
-			baseClass._VehicleStickers__defaultAlpha = 1.0
-		baseFuncVehicleStickersInit = VehicleStickers.__init__
-		VehicleStickers.__init__ = lambda baseClass, vehicleDesc, insigniaRank = 0: fakeInit(baseClass, baseFuncVehicleStickersInit, vehicleDesc, insigniaRank)
+		@WOT_UTILS.OVERRIDE(Element, "__init__")
+		def hooked_init(baseMethod, baseObject, params):
+			if params['itemID'] >= 5000: params["allowedVehicles"] = ["ussr:MS-1_bot"]
+			baseMethod(baseObject, params)
 		
-		# fix ingame customization prices
-		def newElementInit(obj, params):
-			if params['itemID'] >= 5000:
-				params["allowedVehicles"] = ["ussr:MS-1_bot"]
-			return oldElementInit(obj, params)
-		oldElementInit = Element.__init__
-		Element.__init__ = newElementInit
-		def newGetPrice(obj, duration):
-			try: return int(round(obj._getPrice(duration) * obj._getVehiclePriceFactor() * obj._getPriceFactor()))
+		@WOT_UTILS.OVERRIDE(Element, "getPrice")
+		def hooked_getPrice(baseMethod, baseObject, duration):
+			try: return int(round(baseObject._getPrice(duration) * baseObject._getVehiclePriceFactor() * baseObject._getPriceFactor()))
 			except: return 0
-		Element.getPrice = newGetPrice
-
-
-
-
-		# init gui
+		
 		g_entitiesFactories.addSettings(ViewSettings('brandingOperator', brandingOperator, '../../scripts/client/gui/mods/mod_branding/brandingOperator.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 		g_entitiesFactories.addSettings(ViewSettings('brandingPlayer', brandingPlayer, '../../scripts/client/gui/mods/mod_branding/brandingPlayer.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 	
 	def loadUI(self): 
 		if self.config['UIType'] == 1:
 			g_appLoader.getDefLobbyApp().loadView('brandingOperator')
+			g_branding.config['onlyOnMyTank'] = False
 		elif self.config['UIType'] == 2:
 			g_appLoader.getDefLobbyApp().loadView('brandingPlayer')
 		
@@ -203,7 +181,7 @@ class branding():
 			except:
 				pass
 				
-	def __hooked_start(self, baseClass, baseFunc, vehicle, prereqs):
+	def __hooked_start(self, baseMethod, baseObject, vehicle, prereqs):
 		
 		def customizeVehicle(preset, apperence,  clear = False):
 			
@@ -267,9 +245,9 @@ class branding():
 				preset = self.findPresetByID(self.config['current'][0])
 				if preset is not None:
 					if vehicle.isPlayerVehicle:
-						customizeVehicle(preset, baseClass)
+						customizeVehicle(preset, baseObject)
 					else:
-						customizeVehicle(preset, baseClass, True)
+						customizeVehicle(preset, baseObject, True)
 			else:
 				import BigWorld
 				isPlayerTeam = BigWorld.player().team == int(vehicle.publicInfo['team'])
@@ -278,16 +256,16 @@ class branding():
 				else:
 					preset = self.findPresetByID(self.config['current'][1])
 				if preset is not None:
-					customizeVehicle(preset, baseClass)
+					customizeVehicle(preset, baseObject)
 		else:
 			team = int(vehicle.publicInfo['team'])
 			if team not in [1, 2]:
-				return baseFunc(baseClass, vehicle, prereqs)
+				return baseMethod(baseObject, vehicle, prereqs)
 			preset = self.findPresetByID(self.config['current'][team - 1])
 			if preset is not None:
-				customizeVehicle(preset, baseClass)
+				customizeVehicle(preset, baseObject)
 				
-		return baseFunc(baseClass, vehicle, prereqs)
+		return baseMethod(baseObject, vehicle, prereqs)
 	
 	def findMirroredLogo(self, id):
 		for logotype in self.config['logotypes']:
@@ -339,8 +317,6 @@ class branding():
 			
 			SystemMessages.pushMessage('Branding for your vehicle<br><b><font color="#00FF00">' + name_1 + '</font></b>', type=SystemMessages.SM_TYPE.Warning)
 
-
-
 class brandingOperator(AbstractWindowView):
 	
 	def _populate(self):
@@ -368,14 +344,12 @@ class brandingOperator(AbstractWindowView):
 		g_branding.config['current'] = [int(settings[0]), int(settings[1])]
 		g_branding.pushSystemMessageOperator()
 		
-		with codecs.open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+', 'utf-8-sig') as fh:
+		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
 			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
 		g_branding.restoreHangarVehicle()
 		
 	def py_onShowPreset(self, id):
 		g_branding.showPresetInHangar(int(id))
-
-
 
 class brandingPlayer(AbstractWindowView):
 	
@@ -383,7 +357,7 @@ class brandingPlayer(AbstractWindowView):
 		super(brandingPlayer, self)._populate()
 		
 		def get_image(path):
-			with open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'resources', path]), 'rb') as fh:
+			with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'resources', path]), 'rb') as fh:
 				return fh.read().encode("base64").replace('\n', '')
 			return None
 		
@@ -396,7 +370,7 @@ class brandingPlayer(AbstractWindowView):
 						"name": preset["name"],
 						"icon": get_image(preset["preview"]["image"])
 					})	
-			self.flashObject.as_syncData(presets, g_branding.onlyOnMyTank)
+			self.flashObject.as_syncData(presets, g_branding.config['onlyOnMyTank'])
 		
 	def onWindowClose(self):
 		g_branding.restoreHangarVehicle()
@@ -407,7 +381,7 @@ class brandingPlayer(AbstractWindowView):
 		g_branding.config['onlyOnMyTank'] = bool(settings[2])
 		g_branding.pushSystemMessagePlayer()
 		
-		with codecs.open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+', 'utf-8-sig') as fh:
+		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
 			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
 		
 		g_branding.restoreHangarVehicle()
@@ -427,7 +401,7 @@ class brandingPlayer(AbstractWindowView):
 		g_branding.config['onlyOnMyTank'] = bool(settings[2])
 		g_branding.pushSystemMessage()
 		
-		with codecs.open('/'.join([WOT_INFO.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+', 'utf-8-sig') as fh:
+		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
 			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
 		
 		g_branding.restoreHangarVehicle()
@@ -435,12 +409,6 @@ class brandingPlayer(AbstractWindowView):
 	def debugLogS(self, *args):
 		print '[DEBUG] brandingPlayer ' + ' '.join([str(arg) for arg in args])
 
-
-
-g_branding = branding()
-
-
+g_branding = brandingController()
 
 print "[NOTE] package loaded: mod_branding"
-
-
