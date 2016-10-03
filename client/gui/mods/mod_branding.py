@@ -5,9 +5,9 @@ exec 'eJytUsFu2zAMvfsreLMcGO69ww7dWmwG1iWI0/ZQDIEsyY5WWXIpeln/flJSJ14TDBswnki+R/
 J6AWW8OkSMsmyvTP2zMh8ALTpFGyfZH2X+T52CNYMVE5ExadmMY+t33bbRO7OVyOvYhltpFJ7BR4vPj7T4hd/fPSlDRQNa6JI3CZskwnDv4WG+Wt+tyi/VseXt/LoKA0wv0uK705Y9hjmlXqDuyafBFUYrS9HrnA\
 xXeOy6uFp9DpX8kLi/WVbl/GvI0dAbxTreM20ph4Zlhe+NpnDbaTZZwae7cv33AtpBn9MxD32X5fXN2zMQTGanrHW1ulqVH0/Jar9VA6F/nYPIQe4Oo/kFHXkf/w=='.decode('base64').decode('zlib')
 
+import BigWorld
 import time
 import json
-from VehicleAppearance import VehicleAppearance
 from vehicle_systems.CompoundAppearance import CompoundAppearance
 from VehicleStickers import VehicleStickers
 from gui.mods.modsListApi import g_modsListApi
@@ -39,7 +39,7 @@ class brandingController():
 			name = 'Branded tanks', 
 			#description = 'Подмена камуфляжей и надписей для команд', 
 			description = 'Spoofing camouflage and inscriptions for teams', 
-			icon = modIcon, 
+			icon = "scripts/client/gui/mods/mod_branding/brandingIcon.png", 
 			enabled = True, 
 			login = True, 
 			lobby = True, 
@@ -181,7 +181,7 @@ class brandingController():
 			except:
 				pass
 				
-	def __hooked_start(self, baseMethod, baseObject, vehicle, prereqs):
+	def __hooked_start(self, baseMethod, baseObject, prereqs):
 		
 		def customizeVehicle(preset, apperence,  clear = False):
 			
@@ -244,13 +244,13 @@ class brandingController():
 			if self.config['onlyOnMyTank']:
 				preset = self.findPresetByID(self.config['current'][0])
 				if preset is not None:
-					if vehicle.isPlayerVehicle:
+					if baseObject.id == BigWorld.player().playerVehicleID:
 						customizeVehicle(preset, baseObject)
 					else:
 						customizeVehicle(preset, baseObject, True)
 			else:
-				import BigWorld
-				isPlayerTeam = BigWorld.player().team == int(vehicle.publicInfo['team'])
+				vehicleInfo = BigWorld.player().arena.vehicles.get(baseObject.id)
+				isPlayerTeam = BigWorld.player().team == int(vehicleInfo['team'])
 				if isPlayerTeam:
 					preset = self.findPresetByID(self.config['current'][0])
 				else:
@@ -258,14 +258,14 @@ class brandingController():
 				if preset is not None:
 					customizeVehicle(preset, baseObject)
 		else:
-			team = int(vehicle.publicInfo['team'])
-			if team not in [1, 2]:
-				return baseMethod(baseObject, vehicle, prereqs)
-			preset = self.findPresetByID(self.config['current'][team - 1])
+			vehicleInfo = BigWorld.player().arena.vehicles.get(baseObject.id)
+			if vehicleInfo['team'] not in [1, 2]:
+				return baseMethod(baseObject, prereqs)
+			preset = self.findPresetByID(self.config['current'][vehicleInfo['team'] - 1])
 			if preset is not None:
 				customizeVehicle(preset, baseObject)
 				
-		return baseMethod(baseObject, vehicle, prereqs)
+		return baseMethod(baseObject, prereqs)
 	
 	def findMirroredLogo(self, id):
 		for logotype in self.config['logotypes']:
@@ -364,12 +364,12 @@ class brandingPlayer(AbstractWindowView):
 		if self._isDAAPIInited():
 			presets = []
 			for preset in g_branding.config['presets']:
-				if preset["preview"]["enable"]:
-					presets.append({
-						"id": preset["id"],
-						"name": preset["name"],
-						"icon": get_image(preset["preview"]["image"])
-					})	
+				presets.append({
+					"id": preset["id"],
+					"name": preset["name"],
+					"icon": get_image(preset["preview"]["image"]) if preset["preview"]["enable"] else ""
+				})	
+			print presets, g_branding.config['onlyOnMyTank']
 			self.flashObject.as_syncData(presets, g_branding.config['onlyOnMyTank'])
 		
 	def onWindowClose(self):
