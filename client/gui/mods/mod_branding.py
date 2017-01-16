@@ -65,8 +65,8 @@ class brandingController():
 			try: return int(round(baseObject._getPrice(duration) * baseObject._getVehiclePriceFactor() * baseObject._getPriceFactor()))
 			except: return 0
 		
-		g_entitiesFactories.addSettings(ViewSettings('brandingOperator', brandingOperator, '../../scripts/client/gui/mods/mod_branding/brandingOperator.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
-		g_entitiesFactories.addSettings(ViewSettings('brandingPlayer', brandingPlayer, '../../scripts/client/gui/mods/mod_branding/brandingPlayer.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
+		g_entitiesFactories.addSettings(ViewSettings('brandingOperator', brandingOperator, 'brandingOperator.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
+		g_entitiesFactories.addSettings(ViewSettings('brandingPlayer', brandingPlayer, 'brandingPlayer.swf', ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 	
 	def loadUI(self): 
 		if self.config['UIType'] == 1:
@@ -259,6 +259,7 @@ class brandingController():
 					customizeVehicle(preset, baseObject)
 		else:
 			vehicleInfo = BigWorld.player().arena.vehicles.get(baseObject.id)
+			
 			if vehicleInfo['team'] not in [1, 2]:
 				return baseMethod(baseObject, prereqs)
 			preset = self.findPresetByID(self.config['current'][vehicleInfo['team'] - 1])
@@ -339,16 +340,16 @@ class brandingOperator(AbstractWindowView):
 		if self._isDAAPIInited():
 			return False
 	
-	def py_onSettings(self, settings):
+	def onSettingsS(self, team1, team2):
 		
-		g_branding.config['current'] = [int(settings[0]), int(settings[1])]
+		g_branding.config['current'] = [int(team1), int(team2)]
 		g_branding.pushSystemMessageOperator()
 		
 		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
 			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
 		g_branding.restoreHangarVehicle()
 		
-	def py_onShowPreset(self, id):
+	def onShowPresetS(self, id):
 		g_branding.showPresetInHangar(int(id))
 
 class brandingPlayer(AbstractWindowView):
@@ -356,10 +357,8 @@ class brandingPlayer(AbstractWindowView):
 	def _populate(self):
 		super(brandingPlayer, self)._populate()
 		
-		def get_image(path):
-			with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'resources', path]), 'rb') as fh:
-				return fh.read().encode("base64").replace('\n', '')
-			return None
+		def get_image_path(path):
+			return '/'.join(['scripts', 'client', 'gui', 'mods', 'mod_branding', 'resources', path])
 		
 		if self._isDAAPIInited():
 			presets = []
@@ -367,18 +366,17 @@ class brandingPlayer(AbstractWindowView):
 				presets.append({
 					"id": preset["id"],
 					"name": preset["name"],
-					"icon": get_image(preset["preview"]["image"]) if preset["preview"]["enable"] else ""
-				})	
-			print presets, g_branding.config['onlyOnMyTank']
+					"icon": get_image_path(preset["preview"]["image"]) if preset["preview"]["enable"] else None
+				})
 			self.flashObject.as_syncData(presets, g_branding.config['onlyOnMyTank'])
 		
 	def onWindowClose(self):
 		g_branding.restoreHangarVehicle()
 		self.destroy()
 		
-	def py_onFinish(self, settings):
-		g_branding.config['current'] = [int(settings[0]), int(settings[1])]
-		g_branding.config['onlyOnMyTank'] = bool(settings[2])
+	def finishSetupS(self, team1, team2, onlyOnMyTank):
+		g_branding.config['current'] = [team1, team2]
+		g_branding.config['onlyOnMyTank'] = onlyOnMyTank
 		g_branding.pushSystemMessagePlayer()
 		
 		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
@@ -395,20 +393,6 @@ class brandingPlayer(AbstractWindowView):
 		if self._isDAAPIInited():
 			return False
 	
-	def py_onSettings(self, settings):
-		
-		g_branding.config['current'] = [int(settings[0]), int(settings[1])]
-		g_branding.config['onlyOnMyTank'] = bool(settings[2])
-		g_branding.pushSystemMessage()
-		
-		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
-			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
-		
-		g_branding.restoreHangarVehicle()
-		
-	def debugLogS(self, *args):
-		print '[DEBUG] brandingPlayer ' + ' '.join([str(arg) for arg in args])
-
 g_branding = brandingController()
 
 print "[NOTE] package loaded: mod_branding"
