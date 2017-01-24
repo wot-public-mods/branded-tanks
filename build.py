@@ -28,31 +28,41 @@ def copytree(source, destination, ignore=None):
 		else:
 			copytree(sourcePath, destinationPath, ignore)
 
-# use this bcs zipfile by default dont create folders info in result zip
+# use this because zipfile by default dont create folders info in result zip
 def zipFolder(source, destination, mode='w', compression=zipfile.ZIP_STORED):
-	now = tuple(datetime.datetime.now().timetuple())[:6]
-	zip = zipfile.ZipFile(destination, mode, compression)
-	for dirname, _, files in os.walk(source):
-		zi = zipfile.ZipInfo(dirname, now)
+	
+	def dirInfo(dirPath):
+		zi = zipfile.ZipInfo(dirPath, now)
 		zi.filename = zi.filename.replace(source, "")
-		if len(zi.filename):
+		if zi.filename:
 			if not zi.filename.endswith('/'): 
 				zi.filename += '/'
 			if zi.filename.startswith('/'): 
 				zi.filename = zi.filename[1:]
 			zi.compress_type = compression
-			zip.writestr(zi, '')
-		for filename in files:
-			path = os.path.join(dirname, filename)
-			st = os.stat(path)
-			zi = zipfile.ZipInfo(path, now)
-			zi.external_attr = 2176188416L
-			zi.filename = zi.filename.replace(source, "")
-			if zi.filename.startswith('/'): 
-				zi.filename = zi.filename[1:]
-			zi.compress_type = compression
-			zip.writestr(zi, open(path, 'rb').read())
-	zip.close()
+			return zi
+	
+	def fileInfo(filePath):
+		st = os.stat(filePath)
+		zi = zipfile.ZipInfo(filePath, now)
+		zi.external_attr = 2176188416L
+		zi.filename = zi.filename.replace(source, "")
+		if zi.filename.startswith('/'): 
+			zi.filename = zi.filename[1:]
+		zi.compress_type = compression
+		return zi
+	
+	with zipfile.ZipFile(destination, mode, compression) as zip:
+		now = tuple(datetime.datetime.now().timetuple())[:6]
+		for dirPath, _, files in os.walk(source):
+			info = dirInfo(dirPath)
+			if info:
+				zip.writestr(info, '')
+			for fileName in files:
+				filePath = os.path.join(dirPath, fileName)
+				info = fileInfo(filePath)
+				zip.writestr(info, open(filePath, 'rb').read())
+
 
 
 # clean up
