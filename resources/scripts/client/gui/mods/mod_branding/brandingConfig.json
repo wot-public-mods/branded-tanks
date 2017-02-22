@@ -1,6 +1,5 @@
 {
     "UIType": 2,
-    "onlyOnMyTank": false,
     "advert": [
         {
             "id": 5300,
@@ -109,10 +108,6 @@
             "id": 5111,
             "name": "TheWildBunch"
         }
-    ],
-    "current": [
-        9,
-        3
     ],
     "logo_fix_1": [
         "usa:A35_Pershing",

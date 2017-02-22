@@ -8,10 +8,11 @@
 	
 	import scaleform.clik.constants.InvalidationType;
 	import net.wg.gui.components.controls.SoundListItemRenderer;
+	import net.wg.gui.components.controls.Image;
 	
 	public class BrandingItemRenderer extends SoundListItemRenderer {
 		
-		public var teamIconMC: MovieClip = null;
+		public var teamIconMC:Image = null;
 		public var teamNameTF: TextField = null;
 		public var itemID:Number = -1;
 		
@@ -61,13 +62,10 @@
 			itemID = data.id;
 			teamNameTF.text = data.name;
 			
+			teamIconMC.visible = false;
 			if (data.icon) {
-				var loader:Loader = new Loader();
-				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, function (event:Event){
-					teamIconMC.addChild(loader);
-					teamIconMC.height = teamIconMC.width = 50;
-				});
-				loader.load(new URLRequest("../../" + data.icon));
+				teamIconMC.source = "../../" + data.icon;
+				teamIconMC.visible = true;
 			}
 		}
 	}

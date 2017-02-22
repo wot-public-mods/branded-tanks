@@ -6,10 +6,8 @@ import shutil
 import zipfile
 
 ANIMATE_PATH = 'C:\\Program Files\\Adobe\\Adobe Animate CC 2015\\Animate.exe'
-MODIFICATION_VERSION = '1.0.0'
-GAME_VERSION = '0.9.17.0.2'
-BUILD_RESMODS = True
-BUILD_PACKAGE = True
+MODIFICATION_VERSION = '1.0.1'
+GAME_VERSION = '0.9.17.1'
 
 # use this bcs shutil.copytree sometimes throw error on folders create
 def copytree(source, destination, ignore=None):
@@ -88,11 +86,8 @@ for dirname, _, files in os.walk('python'):
 			compileall.compile_file(os.path.join(dirname, filename))
 
 # copy all staff
-copytree('resources', 'temp/standart/res_mods/{version}'.format(version = GAME_VERSION))
 copytree('resources', 'temp/wgpackage/res')
-copytree('as3/bin/', 'temp/standart/res_mods/{version}/gui/flash'.format(version = GAME_VERSION))
 copytree('as3/bin/', 'temp/wgpackage/res/gui/flash')
-copytree('python', 'temp/standart/res_mods/{version}/scripts/client/gui/mods'.format(version = GAME_VERSION), ignore=shutil.ignore_patterns('*.py'))
 copytree('python', 'temp/wgpackage/res/scripts/client/gui/mods', ignore=shutil.ignore_patterns('*.py'))
 	
 
@@ -109,20 +104,16 @@ META = """<root>
 	<description>{modDescription}</description>
 </root>"""
 
-if BUILD_PACKAGE:
-	with open('temp/wgpackage/meta.xml', 'wb') as fh:
-		fh.write(
-			META.format(
-				modID = "modsListApi",
-				modName = "Modifications list",
-				modDescription = "Modifications list: comfortable run, setup and alert",
-				version = MODIFICATION_VERSION
-			)
+with open('temp/wgpackage/meta.xml', 'wb') as fh:
+	fh.write(
+		META.format(
+			modID = "branding",
+			modName = "Branded tanks",
+			modDescription = "Spoofing camouflage and inscriptions for teams",
+			version = MODIFICATION_VERSION
 		)
-	zipFolder('temp/wgpackage', 'build/modsListApi.wotmod')
-	
-if BUILD_RESMODS:
-	zipFolder('temp/standart', 'build/modsListApi.zip', compression=zipfile.ZIP_DEFLATED)
+	)
+zipFolder('temp/wgpackage', 'build/branding.wotmod')
 
 # clean up
 shutil.rmtree('temp')

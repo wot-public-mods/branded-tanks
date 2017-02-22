@@ -1,16 +1,49 @@
 ﻿
-# WOT_UTILS ==> GUI_MODS MODS PATH VERSION OVERRIDE OVERRIDE_STATIC
-exec 'eJytUsFu2zAMvfsreLMcGO69ww7dWmwG1iWI0/ZQDIEsyY5WWXIpeln/flJSJ14TDBswnki+R/GJZIOuA+eLntMGdNc7JNBeagTugSdNhJfK37Y4oq5XtlKCtLORU+85H3T74NDIkbVt162iBTo5CLpX6F\
-/pTZI0DqEGbaFmaVFcxM6++NmZNHtMFzFIvxU/uBmUZ9llAq+mG+CsLrivCLVtJ8hoHN7DkfAOalT8KUmkakCy5xy2OahJGQZ6kMiJkO2gA0IBMbyrJYcZz2E2e7qEZ4b5GB2ZflKfh7ogkl56xTALQwTrCHoM80\
-J6AWW8OkSMsmyvTP2zMh8ALTpFGyfZH2X+T52CNYMVE5ExadmMY+t33bbRO7OVyOvYhltpFJ7BR4vPj7T4hd/fPSlDRQNa6JI3CZskwnDv4WG+Wt+tyi/VseXt/LoKA0wv0uK705Y9hjmlXqDuyafBFUYrS9HrnA\
-xXeOy6uFp9DpX8kLi/WVbl/GvI0dAbxTreM20ph4Zlhe+NpnDbaTZZwae7cv33AtpBn9MxD32X5fXN2zMQTGanrHW1ulqVH0/Jar9VA6F/nYPIQe4Oo/kFHXkf/w=='.decode('base64').decode('zlib')
+
+# using for convert unicode key/value to utf-8
+def byteify(input):
+	import types
+	if isinstance(input, types.DictType): return { byteify(key): byteify(value) for key, value in input.iteritems() }
+	elif isinstance(input, types.ListType): return [ byteify(element) for element in input ]
+	elif isinstance(input, types.UnicodeType): return input.encode('utf-8')
+	else: return input
+
+# using for override any staff
+def overrider(target, holder, name):
+	import types
+	original = getattr(holder, name)
+	overrided = lambda *a, **kw: target(original, *a, **kw)
+	if not isinstance(holder, types.ModuleType) and isinstance(original, types.FunctionType):
+		setattr(holder, name, staticmethod(overrided))
+	elif isinstance(original, property):
+		setattr(holder, name, property(overrided))
+	else:
+		setattr(holder, name, overrided)
+def decorator(function):
+	def wrapper(*a, **kw):
+		def decorate(handler):
+			function(handler, *a, **kw)
+		return decorate
+	return wrapper
+override = decorator(overrider)
+
+# useing for read files from VFS
+def readVFS(path):
+	from ResMgr import openSection, isFile
+	file = openSection(path)
+	if file is not None and isFile(path):
+		return str(file.asBinary)
+	return None
+
+
 
 import BigWorld
 import time
+import os
 import json
 from vehicle_systems.CompoundAppearance import CompoundAppearance
 from VehicleStickers import VehicleStickers
-from gui.mods.modsListApi import g_modsListApi
+from gui.modsListApi import g_modsListApi
 from gui.app_loader.loader import g_appLoader
 from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ViewTypes, ScopeTemplates
 from gui.Scaleform.framework.entities.abstract.AbstractWindowView import AbstractWindowView
@@ -27,13 +60,27 @@ class brandingController():
 		self.__oldCustomization = None
 		self.__prevCameraLocation = None
 		
-		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'r') as f:
-			self.config = json.loads(f.read())
+		self.config = byteify(json.loads(readVFS('scripts/client/gui/mods/mod_branding/brandingConfig.json')))
 		
-		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingIcon.png']), 'rb') as fh:
-			modIcon = fh.read().encode("base64").replace('\n', '')
-
-		g_modsListApi.addMod(
+		self.cache = {
+			'current': [0, 1],
+			'onlyOnMyTank': False
+		}
+		
+		self.cacheFilePatch = os.path.join(os.path.dirname(unicode(BigWorld.wg_getPreferencesFilePath(), 'utf-8', errors='ignore')), 'branding.json')
+		
+		if os.path.isfile(self.cacheFilePatch):
+			with open(self.cacheFilePatch, 'rb') as fh:
+				self.cache = byteify(json.loads(fh.read()))
+		
+		if not self.findPresetByID(self.cache['current'][0]) or not self.findPresetByID(self.cache['current'][0]):
+			self.cache['current'] = [0, 1]
+			with open(self.cacheFilePatch, 'wb') as fh:
+				fh.write(json.dumps(self.cache, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
+			
+			
+		
+		g_modsListApi.addModification(
 			id = "mod_branding",
 			#name = 'Брендированные танки', 
 			name = 'Branded tanks', 
@@ -46,21 +93,21 @@ class brandingController():
 			callback = self.loadUI
 		)
 		
-		WOT_UTILS.OVERRIDE(CompoundAppearance, "start")(self.__hooked_start)
+		override(CompoundAppearance, "start")(self.__hooked_start)
 		
-		@WOT_UTILS.OVERRIDE(VehicleStickers, "__init__")
+		@override(VehicleStickers, "__init__")
 		def hooked_init(baseMethod, baseObject, vehicleDesc, insigniaRank = 0):
 			baseMethod(baseObject, vehicleDesc, insigniaRank)
 			baseObject._VehicleStickers__defaultAlpha = 1.0
 		
 		VehicleStickers.setClanID = lambda *args: None
 		
-		@WOT_UTILS.OVERRIDE(Element, "__init__")
+		@override(Element, "__init__")
 		def hooked_init(baseMethod, baseObject, params):
 			if params['itemID'] >= 5000: params["allowedVehicles"] = ["ussr:MS-1_bot"]
 			baseMethod(baseObject, params)
 		
-		@WOT_UTILS.OVERRIDE(Element, "getPrice")
+		@override(Element, "getPrice")
 		def hooked_getPrice(baseMethod, baseObject, duration):
 			try: return int(round(baseObject._getPrice(duration) * baseObject._getVehiclePriceFactor() * baseObject._getPriceFactor()))
 			except: return 0
@@ -71,7 +118,7 @@ class brandingController():
 	def loadUI(self): 
 		if self.config['UIType'] == 1:
 			g_appLoader.getDefLobbyApp().loadView('brandingOperator')
-			g_branding.config['onlyOnMyTank'] = False
+			g_branding.cache['onlyOnMyTank'] = False
 		elif self.config['UIType'] == 2:
 			g_appLoader.getDefLobbyApp().loadView('brandingPlayer')
 		
@@ -241,8 +288,8 @@ class brandingController():
 			apperence._CompoundAppearance__typeDesc._VehicleAppearance__emblemsAlpha = 1.0
 		
 		if self.config['UIType'] == 2:
-			if self.config['onlyOnMyTank']:
-				preset = self.findPresetByID(self.config['current'][0])
+			if self.cache['onlyOnMyTank']:
+				preset = self.findPresetByID(self.cache['current'][0])
 				if preset is not None:
 					if baseObject.id == BigWorld.player().playerVehicleID:
 						customizeVehicle(preset, baseObject)
@@ -252,9 +299,9 @@ class brandingController():
 				vehicleInfo = BigWorld.player().arena.vehicles.get(baseObject.id)
 				isPlayerTeam = BigWorld.player().team == int(vehicleInfo['team'])
 				if isPlayerTeam:
-					preset = self.findPresetByID(self.config['current'][0])
+					preset = self.findPresetByID(self.cache['current'][0])
 				else:
-					preset = self.findPresetByID(self.config['current'][1])
+					preset = self.findPresetByID(self.cache['current'][1])
 				if preset is not None:
 					customizeVehicle(preset, baseObject)
 		else:
@@ -262,7 +309,7 @@ class brandingController():
 			
 			if vehicleInfo['team'] not in [1, 2]:
 				return baseMethod(baseObject, prereqs)
-			preset = self.findPresetByID(self.config['current'][vehicleInfo['team'] - 1])
+			preset = self.findPresetByID(self.cache['current'][vehicleInfo['team'] - 1])
 			if preset is not None:
 				customizeVehicle(preset, baseObject)
 				
@@ -291,29 +338,29 @@ class brandingController():
 			return adv
 	
 	def pushSystemMessageOperator(self):
-		name_1 = self.findPresetByID(self.config['current'][0])
+		name_1 = self.findPresetByID(self.cache['current'][0])
 		name_1 = name_1['name'] if name_1 is not None else "Unknown"
 		
-		name_2 = self.findPresetByID(self.config['current'][1])
+		name_2 = self.findPresetByID(self.cache['current'][1])
 		name_2 = name_2['name'] if name_2 is not None else "Unknown"
 		
 		SystemMessages.pushMessage('Team #1 style: "' + name_1 + '" <br>Team #2 style: "' + name_2 + '"', type=SystemMessages.SM_TYPE.Warning)
 	
 	def pushSystemMessagePlayer(self):
 		
-		if self.config['current'][1] != -1:
+		if self.cache['current'][1] != -1:
 			
-			name_1 = self.findPresetByID(self.config['current'][0])
+			name_1 = self.findPresetByID(self.cache['current'][0])
 			name_1 = name_1['name'] if name_1 is not None else "Unknown"
 			
-			name_2 = self.findPresetByID(self.config['current'][1])
+			name_2 = self.findPresetByID(self.cache['current'][1])
 			name_2 = name_2['name'] if name_2 is not None else "Unknown"
 			
 			SystemMessages.pushMessage('Branding for both teams<br><b><font color="#00FF00">' + name_1 + '</font> vs <font color="#FF0000">' + name_2 + '</font></b>', type=SystemMessages.SM_TYPE.Warning)
 			
 		else:
 		
-			name_1 = self.findPresetByID(self.config['current'][0])
+			name_1 = self.findPresetByID(self.cache['current'][0])
 			name_1 = name_1['name'] if name_1 is not None else "Unknown"
 			
 			SystemMessages.pushMessage('Branding for your vehicle<br><b><font color="#00FF00">' + name_1 + '</font></b>', type=SystemMessages.SM_TYPE.Warning)
@@ -326,7 +373,7 @@ class brandingOperator(AbstractWindowView):
 			presets = []
 			for preset in g_branding.config['presets']:
 				presets.append(preset['name'])	
-			settings = [g_branding.config['current'], presets]
+			settings = [g_branding.cache['current'], presets]
 			self.flashObject.as_syncData(settings)
 		
 	def onWindowClose(self):
@@ -342,11 +389,14 @@ class brandingOperator(AbstractWindowView):
 	
 	def onSettingsS(self, team1, team2):
 		
-		g_branding.config['current'] = [int(team1), int(team2)]
+		g_branding.cache['current'] = [int(team1), int(team2)]
+		g_branding.cache['onlyOnMyTank'] = False
 		g_branding.pushSystemMessageOperator()
 		
-		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
-			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
+		
+		with open(g_branding.cacheFilePatch, 'wb') as fh:
+			fh.write(json.dumps(g_branding.cache, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
+		
 		g_branding.restoreHangarVehicle()
 		
 	def onShowPresetS(self, id):
@@ -368,19 +418,19 @@ class brandingPlayer(AbstractWindowView):
 					"name": preset["name"],
 					"icon": get_image_path(preset["preview"]["image"]) if preset["preview"]["enable"] else None
 				})
-			self.flashObject.as_syncData(presets, g_branding.config['onlyOnMyTank'])
+			self.flashObject.as_syncData(presets, g_branding.cache['onlyOnMyTank'])
 		
 	def onWindowClose(self):
 		g_branding.restoreHangarVehicle()
 		self.destroy()
 		
 	def finishSetupS(self, team1, team2, onlyOnMyTank):
-		g_branding.config['current'] = [team1, team2]
-		g_branding.config['onlyOnMyTank'] = onlyOnMyTank
+		g_branding.cache['current'] = [int(team1), int(team2)]
+		g_branding.cache['onlyOnMyTank'] = onlyOnMyTank
 		g_branding.pushSystemMessagePlayer()
 		
-		with open('/'.join([WOT_UTILS.GUI_MODS, 'mod_branding', 'brandingConfig.json']), 'w+') as fh:
-			fh.write(json.dumps(g_branding.config, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
+		with open(g_branding.cacheFilePatch, 'wb') as fh:
+			fh.write(json.dumps(g_branding.cache, ensure_ascii=False, indent=4, separators=(',', ': '), sort_keys=True))
 		
 		g_branding.restoreHangarVehicle()
 		
@@ -394,5 +444,3 @@ class brandingPlayer(AbstractWindowView):
 			return False
 	
 g_branding = brandingController()
-
-print "[NOTE] package loaded: mod_branding"
