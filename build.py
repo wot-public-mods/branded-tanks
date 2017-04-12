@@ -5,12 +5,28 @@ import os
 import shutil
 import zipfile
 
+# software data
 ANIMATE_PATH = 'C:\\Program Files\\Adobe\\Adobe Animate CC 2015\\Animate.exe'
-MODIFICATION_VERSION = '1.0.1'
-GAME_VERSION = '0.9.17.1'
 
-# use this bcs shutil.copytree sometimes throw error on folders create
+# game data
+COPY_INTO_GAME = True
+GAME_VERSION = '0.9.18'
+GAME_FOLDER = 'X:/wot_ct' #'X:/wot'
+
+# modification data
+MODIFICATION_AUTHOR = 'net.wargaming'
+MODIFICATION_DESCRIPTION = 'Spoofing camouflage and inscriptions for teams'
+MODIFICATION_IDENTIFICATOR = 'branding'
+MODIFICATION_NAME = 'Branded tanks'
+MODIFICATION_VERSION = '2.1'
+
+# result package name
+PACKAGE_NAME = '{author}.{name}_{version}.wotmod'.format( author = MODIFICATION_AUTHOR, \
+				name = MODIFICATION_IDENTIFICATOR, version = MODIFICATION_VERSION )
+
 def copytree(source, destination, ignore=None):
+	"""implementation of shutil.copytree 
+	original sometimes throw error on folders create"""
 	for item in os.listdir(source):
 		sourcePath = os.path.join(source, item)
 		destinationPath = os.path.join(destination, item)
@@ -26,32 +42,26 @@ def copytree(source, destination, ignore=None):
 		else:
 			copytree(sourcePath, destinationPath, ignore)
 
-# use this because zipfile by default dont create folders info in result zip
 def zipFolder(source, destination, mode='w', compression=zipfile.ZIP_STORED):
-	
+	"""ZipFile by default dont create folders info in result zip"""
 	def dirInfo(dirPath):
 		zi = zipfile.ZipInfo(dirPath, now)
-		zi.filename = zi.filename.replace(source, "")
+		zi.filename = zi.filename[seek_offset:]
 		if zi.filename:
 			if not zi.filename.endswith('/'): 
 				zi.filename += '/'
-			if zi.filename.startswith('/'): 
-				zi.filename = zi.filename[1:]
 			zi.compress_type = compression
 			return zi
-	
 	def fileInfo(filePath):
 		st = os.stat(filePath)
 		zi = zipfile.ZipInfo(filePath, now)
-		zi.external_attr = 2176188416L
-		zi.filename = zi.filename.replace(source, "")
-		if zi.filename.startswith('/'): 
-			zi.filename = zi.filename[1:]
+		zi.external_attr = 33206 << 16 # -rw-rw-rw-
+		zi.filename = zi.filename[seek_offset:]
 		zi.compress_type = compression
 		return zi
-	
 	with zipfile.ZipFile(destination, mode, compression) as zip:
 		now = tuple(datetime.datetime.now().timetuple())[:6]
+		seek_offset = len(source) + 1
 		for dirPath, _, files in os.walk(source):
 			info = dirInfo(dirPath)
 			if info:
@@ -61,65 +71,73 @@ def zipFolder(source, destination, mode='w', compression=zipfile.ZIP_STORED):
 				info = fileInfo(filePath)
 				zip.writestr(info, open(filePath, 'rb').read())
 
-
-
-# clean up
+# prepere folders
 if os.path.isdir('temp'):
 	shutil.rmtree('temp')
-os.mkdir('temp') 
+os.makedirs('temp') 
 if os.path.isdir('build'):
 	shutil.rmtree('build')
-os.mkdir('build') 
+os.makedirs('build')
+if not os.path.isdir('resources'):
+	os.makedirs('resources')
+if not os.path.isdir('as3/bin'):
+	os.makedirs('as3/bin')
+
 
 # build flash
-with open('temp/build.jsfl', 'wb') as fh:
+with open('build.jsfl', 'wb') as fh:
 	for fileName in os.listdir('as3'):
 		if fileName.endswith('fla'):
 			fh.write('fl.publishDocument("file:///{path}/as3/{fileName}", "Default");\r\n'.format(path = os.getcwd().replace('\\', '/').replace(':', '|'), fileName = fileName))
 	fh.write('fl.quit(false);')
-os.system('"{animate}" -e temp/build.jsfl'.format(animate = ANIMATE_PATH))
+os.system('"{animate}" -e build.jsfl -AlwaysRunJSFL'.format(animate = ANIMATE_PATH))
 
 # build python
-for dirname, _, files in os.walk('python'):
-	for filename in files:
-		if filename.endswith(".py"):
-			compileall.compile_file(os.path.join(dirname, filename))
+for dirName, _, files in os.walk('python'):
+	for fileName in files:
+		if fileName.endswith(".py"):
+			filePath = os.path.join(dirName, fileName)
+			compileall.compile_file(filePath)
 
 # copy all staff
-copytree('resources', 'temp/wgpackage/res')
-copytree('as3/bin/', 'temp/wgpackage/res/gui/flash')
-copytree('python', 'temp/wgpackage/res/scripts/client/gui/mods', ignore=shutil.ignore_patterns('*.py'))
-	
+copytree('as3/bin/', 'temp/res/gui/flash')
+copytree('python', 'temp/res/scripts/client', ignore=shutil.ignore_patterns('*.py'))
+copytree('resources', 'temp/res')
 
-# build binaries
-
+# build META
 META = """<root>
+	
 	<!-- Techical MOD ID -->
-	<id>{modID}</id>
+	<id>{id}</id>
+	
 	<!-- Package version -->
 	<version>{version}</version>
+	
 	<!-- Human readable name -->
-	<name>{modName}</name>
+	<name>{name}</name>
+	
 	<!-- Human readable description -->
-	<description>{modDescription}</description>
+	<description>{description}</description>
 </root>"""
+with open('temp/meta.xml', 'wb') as fh:
+	fh.write( META.format( id = '%s.%s' % (MODIFICATION_AUTHOR, MODIFICATION_IDENTIFICATOR), name = MODIFICATION_NAME, \
+			description = MODIFICATION_DESCRIPTION, version = MODIFICATION_VERSION ) )
 
-with open('temp/wgpackage/meta.xml', 'wb') as fh:
-	fh.write(
-		META.format(
-			modID = "branding",
-			modName = "Branded tanks",
-			modDescription = "Spoofing camouflage and inscriptions for teams",
-			version = MODIFICATION_VERSION
-		)
-	)
-zipFolder('temp/wgpackage', 'build/branding.wotmod')
+# create package
+zipFolder('temp', 'build/%s' % PACKAGE_NAME)
 
-# clean up
+# copy package into game
+if COPY_INTO_GAME:
+	shutil.copy2('build/%s' % PACKAGE_NAME, '{wot}/mods/{version}/'.format(wot = GAME_FOLDER, version =GAME_VERSION))
+
+# clean up build files
 shutil.rmtree('temp')
-for dirname, _, files in os.walk('.'):
+os.remove('build.jsfl')
+for dirname, _, files in os.walk('python'):
 	for filename in files:
-		if filename.endswith('.swf') or filename.endswith('.pyc'):
-			path = os.path.join(dirname, filename)
-			os.remove(path)
-			
+		if filename.endswith('.pyc'):
+			os.remove(os.path.join(dirname, filename))
+for dirname, _, files in os.walk('as3'):
+	for filename in files:
+		if filename.endswith('.swf'):
+			os.remove(os.path.join(dirname, filename))

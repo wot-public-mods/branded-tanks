@@ -1,0 +1,13 @@
+modsListApi.name: Branded tanks
+modsListApi.description: Spoofing camouflage and inscriptions for teams
+ui.operator.windowTitle: Branded tanks
+ui.operator.messageTeams: Team 1 style <b>{name1}</b><br>Team 2 style <b>{name2}</b>
+ui.player.windowTitle: Branded tanks
+ui.player.headerTextAlly: Chose your team
+ui.player.headerTextEnemy: Chose enemys team
+ui.player.onlyMyTank.label: Process only my vehicle
+ui.player.onlyMyTank.toolTip: {HEADER}Visible only on my tank{/HEADER}{BODY}If selected, branding will accepted only for your vehicle<br>All others vehicles will be cleared to default state{/BODY}
+ui.player.messageTeams: Branding for both teams<br><b><font color="#00FF00">{name1}</font> vs <font color="#FF0000">{name2}</font></b>
+ui.player.messageOwnTank: Branding for your vehicle<br><b><font color="#00FF00">{name}</font></b>
+ui.teams.cleanTanks: Clean tanks
+ui.teams.userChoise: User choice
