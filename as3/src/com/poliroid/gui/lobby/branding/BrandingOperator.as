@@ -26,7 +26,7 @@
 		
 		public function BrandingOperator() {
 			super();
-			canDrag = false;
+			//canDrag = false;
 			canResize = false;
 			width = 300;
 			height = 80;
