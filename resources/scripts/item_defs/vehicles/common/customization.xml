@@ -1,4 +1,4 @@
-<root>
+<customization.xml>
 	<xmlns:ussr>ussr</xmlns:ussr>
 	<xmlns:germany>germany</xmlns:germany>
 	<xmlns:usa>usa</xmlns:usa>
@@ -152,7 +152,6 @@
 		
 		
 		
-		
 		<brand_cammo>
 			<userString> Brand Cammo </userString>
 			<notInShop> true </notInShop>
@@ -283,7 +282,6 @@
 		</brand_cammo>
 		
 	</camouflageGroups>
-	
 	
 	<camouflages>
 		
@@ -451,7 +449,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -636,7 +634,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -820,7 +818,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -1003,7 +1001,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.82	1.82	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.5	3.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.08	3.08	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.08	3.08	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.08	3.08	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	4.2	4.2	0	0	</germany:G110_Typ_205>
 						
@@ -1186,7 +1184,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -1369,7 +1367,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.82	1.82	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.5	3.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.08	3.08	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.08	3.08	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.08	3.08	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	4.2	4.2	0	0	</germany:G110_Typ_205>
 						
@@ -1552,7 +1550,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.95	1.95	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.75	3.75	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.3	3.3	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.3	3.3	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.3	3.3	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	4.5	4.5	0	0	</germany:G110_Typ_205>
 						
@@ -1735,7 +1733,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.69	1.69	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.25	3.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.86	2.86	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.86	2.86	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.86	2.86	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.9	3.9	0	0	</germany:G110_Typ_205>
 						
@@ -1916,7 +1914,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -2097,7 +2095,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -2278,7 +2276,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -2459,7 +2457,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -2640,7 +2638,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -2821,7 +2819,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -3002,7 +3000,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -3183,7 +3181,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -3365,7 +3363,7 @@
                 	<sweden:S18_EMIL_1951_E1>	2.21	2.21	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	4.25	4.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.74	3.74	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.74	3.74	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.74	3.74	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	5.1	5.1	0	0	</germany:G110_Typ_205>
 						
@@ -3546,7 +3544,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.69	1.69	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.25	3.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.86	2.86	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.86	2.86	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.86	2.86	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.9	3.9	0	0	</germany:G110_Typ_205>
 						
@@ -3726,7 +3724,7 @@
                 	<sweden:S18_EMIL_1951_E1>	2.21	2.21	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	4.25	4.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.74	3.74	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.74	3.74	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.74	3.74	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	5.1	5.1	0	0	</germany:G110_Typ_205>
 						
@@ -3908,7 +3906,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.56	1.56	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3	3	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.64	2.64	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.64	2.64	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.64	2.64	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.6	3.6	0	0	</germany:G110_Typ_205>
 						
@@ -4091,7 +4089,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.95	1.95	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.75	3.75	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.3	3.3	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.3	3.3	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.3	3.3	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	4.5	4.5	0	0	</germany:G110_Typ_205>
 						
@@ -4111,9 +4109,9 @@
 		</BRAND_CAMMO_Rival>
 
 
-		<BRAND_CAMMO_Apex>
+		<BRAND_CAMMO_Elevate>
 			
-			<texture> mods/net.wargaming.branding/camouflages/Apex.dds </texture>
+			<texture> mods/net.wargaming.branding/camouflages/Elevate.dds </texture>
 			<priceFactor> 0.000000000 </priceFactor>
 			<invisibilityFactor> 1.0 </invisibilityFactor>
 			<description>  </description>
@@ -4121,11 +4119,11 @@
 			<kind> summer </kind>
 			<group> brand_cammo </group>
 			<colors>
-				<c0> 164 165 167 200 </c0>
-				<c1> 255 105 40 200 </c1>
-				<c2> 7 34 63 200 </c2>
+				<c0> 164 165 167 0 </c0>
+				<c1> 0 0 0 200 </c1>
+				<c2> 216 26 27 200 </c2>
 				<c3> 0 0 0 0 </c3>
-			</colors>
+				</colors>
 			 <tiling>
                 	<china:Ch01_Type59>	3	3	0	0	</china:Ch01_Type59>
                 	<china:Ch03_WZ-111>	3.75	3.75	0	0	</china:Ch03_WZ-111>
@@ -4272,7 +4270,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.95	1.95	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.75	3.75	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.3	3.3	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.3	3.3	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.3	3.3	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	4.5	4.5	0	0	</germany:G110_Typ_205>
 						
@@ -4289,7 +4287,7 @@
 </tiling>
 
 			<notInShop> true </notInShop>
-		</BRAND_CAMMO_Apex>
+		</BRAND_CAMMO_Elevate>
 
 
 
@@ -4456,7 +4454,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -4639,7 +4637,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -4823,7 +4821,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.04	1.04	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2	2	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	1.76	1.76	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	1.76	1.76	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	1.76	1.76	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	2.4	2.4	0	0	</germany:G110_Typ_205>
 						
@@ -5004,7 +5002,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.3	1.3	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	2.5	2.5	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.2	2.2	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.2	2.2	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.2	2.2	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3	3	0	0	</germany:G110_Typ_205>
 						
@@ -5186,7 +5184,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.69	1.69	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.25	3.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.86	2.86	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.86	2.86	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.86	2.86	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.9	3.9	0	0	</germany:G110_Typ_205>
 						
@@ -5369,7 +5367,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.69	1.69	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.25	3.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.86	2.86	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.86	2.86	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.86	2.86	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.9	3.9	0	0	</germany:G110_Typ_205>
 						
@@ -5551,7 +5549,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.56	1.56	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3	3	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.64	2.64	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.64	2.64	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.64	2.64	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.6	3.6	0	0	</germany:G110_Typ_205>
 						
@@ -5733,7 +5731,7 @@
                 	<sweden:S18_EMIL_1951_E1>	2.21	2.21	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	4.25	4.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	3.74	3.74	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	3.74	3.74	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	3.74	3.74	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	5.1	5.1	0	0	</germany:G110_Typ_205>
 						
@@ -5915,7 +5913,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.69	1.69	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.25	3.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.86	2.86	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.86	2.86	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.86	2.86	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.9	3.9	0	0	</germany:G110_Typ_205>
 						
@@ -6098,7 +6096,7 @@
                 	<sweden:S18_EMIL_1951_E1>	1.69	1.69	0	0	</sweden:S18_EMIL_1951_E1>
                 	<sweden:S21_UDES_03>	3.25	3.25	0	0	</sweden:S21_UDES_03>
 						
-                	<germany:G92_VK7201P>	2.86	2.86	0	0	</germany:G92_VK7201P>
+                	<germany:G92_VK7201>	2.86	2.86	0	0	</germany:G92_VK7201>
                 	<germany:G115_Typ_205B>	2.86	2.86	0	0	</germany:G115_Typ_205B>
                 	<germany:G110_Typ_205>	3.9	3.9	0	0	</germany:G110_Typ_205>
 						
@@ -6125,5 +6123,4 @@
 		
 	</camouflages>
 
-	
-</root>
+</customization.xml>

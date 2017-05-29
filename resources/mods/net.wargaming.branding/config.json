@@ -1,5 +1,6 @@
 {
     "UIType": 2,
+    
     "presets": [
         { "advert": [ -1, -1 ],
             "camouflage": 5101,
@@ -215,10 +216,10 @@
             "camouflage": 5121,
             "id": 21,
             "logotype": 5243,
-            "name": "Apex",
+            "name": "Elevate",
             "preview": {
             "enable": true,
-            "image": "preview/Apex.png"
+            "image": "preview/Elevate.png"
             }
         },
         { "advert": [ -1, -1 ],
@@ -271,7 +272,7 @@
             "image": "preview/IMPACT_GAMING.png"
             }
         },
-        { "advert": [ 5309, 5310 ],
+        { "advert": [ 5310, 5310 ],
             "camouflage": 5127,
             "id": 27,
             "logotype": 5255,
@@ -363,7 +364,7 @@
         { "id": 5118, "name": "eClipse" },
         { "id": 5119, "name": "o7" },
         { "id": 5120, "name": "Rival" },
-        { "id": 5121, "name": "Apex" },
+        { "id": 5121, "name": "Elevate" },
         { "id": 5122, "name": "TopTier" },
         { "id": 5123, "name": "Valence" },
         { "id": 5124, "name": "BrainStorm" },
@@ -398,7 +399,7 @@
         { "id": 5237, "mirroredId": 5238, "name": "eClipse" },
         { "id": 5239, "mirroredId": 5240, "name": "o7" },
         { "id": 5241, "mirroredId": 5242, "name": "Rival" },
-        { "id": 5243, "mirroredId": 5244, "name": "Apex" },
+        { "id": 5243, "mirroredId": 5244, "name": "Elevate" },
         { "id": 5245, "mirroredId": 5246, "name": "TopTier" },
         { "id": 5247, "mirroredId": 5248, "name": "Valence" },
         { "id": 5249, "mirroredId": 5250, "name": "BrainStorm" },
@@ -425,8 +426,7 @@
         "france:F10_AMX_50B",
         "china:Ch03_WZ-111",
         "france:F36_AMX_AC_Mle1948",
-        "ussr:R97_Object_140",
-		
+        "ussr:R97_Object_140",		
 		"france:F88_AMX_13_105"
     ],
     "logotypeFix2": [
@@ -475,8 +475,7 @@
         "uk:GB24_Centurion_Mk3",
         "uk:GB23_Centurion",
         "uk:GB12_Conqueror",
-        "uk:GB11_Caernarvon",
-		
+        "uk:GB11_Caernarvon",		
 		"usa:A97_M41_Bulldog"
     ]
 }

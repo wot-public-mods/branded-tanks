@@ -1,4 +1,5 @@
 <player_emblems.xml>
+
 	<auto>
 		<userString>#vehicle_customization:emblem/auto</userString>
 		<notInShop>true</notInShop>
@@ -2705,8 +2706,65 @@
 			</emblem>
 		</emblems>
 	</group32>
-	
-				<branding>
+	<group33>
+		<userString>#vehicle_customization:emblem/special</userString>
+		<priceFactor>
+			0.0
+			
+		</priceFactor>
+		<notInShop>true</notInShop>
+		<emblems>
+			<emblem>
+				<id>3301</id>
+				<texName>gui/maps/vehicles/decals/player_stickers/special/sticker_260.dds</texName>
+				<userString>#vehicle_customization:emblem/group33/special_260</userString>
+				<mirror>false</mirror>
+				<qualifier>main_skill_all_crew</qualifier>
+			</emblem>
+		</emblems>
+	</group33>
+	<group35>
+		<userString>#vehicle_customization:emblem/special</userString>
+		<priceFactor>
+			0.0
+			
+		</priceFactor>
+		<notInShop>true</notInShop>
+		<emblems>
+			<emblem>
+				<id>3501</id>
+				<texName>gui/maps/vehicles/decals/player_stickers/special/sticker_280.dds</texName>
+				<userString>#vehicle_customization:emblem/group35/special_280</userString>
+				<mirror>false</mirror>
+				<qualifier>main_skill_all_crew</qualifier>
+			</emblem>
+			<emblem>
+				<id>3502</id>
+				<texName>gui/maps/vehicles/decals/player_stickers/special/sticker_281.dds</texName>
+				<userString>#vehicle_customization:emblem/group35/special_281</userString>
+				<mirror>false</mirror>
+				<qualifier>main_skill_all_crew</qualifier>
+			</emblem>
+		</emblems>
+	</group35>
+	<group36>
+		<userString>#vehicle_customization:emblem/special</userString>
+		<priceFactor>
+			0.0
+			
+		</priceFactor>
+		<notInShop>true</notInShop>
+		<emblems>
+			<emblem>
+				<id>3601</id>
+				<texName>gui/maps/vehicles/decals/player_stickers/special/sticker_290.dds</texName>
+				<userString>#vehicle_customization:emblem/group36/special_290</userString>
+				<mirror>false</mirror>
+				<qualifier>main_skill_all_crew</qualifier>
+			</emblem>
+		</emblems>
+	</group36>
+	<branding>
         <userString> Brand Cammo - Teams logotypes</userString>
         <priceFactor> 0.0000000 </priceFactor>
         <notInShop> true </notInShop>
@@ -2995,14 +3053,14 @@
 
 			<emblem>
                 <id> 5243 </id>
-                <texName>mods/net.wargaming.branding/logotypes/Apex.dds</texName>
-                <userString>Logotype Apex (mirrored)</userString>
+                <texName>mods/net.wargaming.branding/logotypes/Elevate.dds</texName>
+                <userString>Logotype Elevate (mirrored)</userString>
                 <mirror> true </mirror>
             </emblem>
             <emblem>
                 <id> 5244 </id>
-                <texName>mods/net.wargaming.branding/logotypes/Apex.dds</texName>
-                <userString>Logotype Apex </userString>
+                <texName>mods/net.wargaming.branding/logotypes/Elevate.dds</texName>
+                <userString>Logotype Elevate </userString>
             </emblem>
 
 
@@ -3148,5 +3206,4 @@
 		</emblems>
     </branding>
 
-	
 </player_emblems.xml>

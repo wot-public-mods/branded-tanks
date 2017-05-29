@@ -38,8 +38,12 @@ class ProcessorController(object):
 		camouflage = preset['camouflage']
 		vehicleDescriptor._VehicleAppearance__emblemsAlpha = 1.0
 		saved = g_controllers.vehicle.savedCustomization
-
+		
 		current = vehicleDescriptor.playerInscriptions
+		
+		if not hasattr(vehicleDescriptor, 'backup_inscriptions'):
+			vehicleDescriptor.backup_inscriptions = current
+		
 		if vehicleDescriptor.name in g_dataHolder.config["advertFix"]:
 			vehicleDescriptor.playerInscriptions = (
 				(getFashionValue(current, saved, advert[0], 0, 0, isClean), 13068864000, 0, 0), 
@@ -55,8 +59,11 @@ class ProcessorController(object):
 				(getFashionValue(current, saved, advert[1], 3, 0, isClean), 13068864000, 0, 1)
 			)
 		
-	
 		current = vehicleDescriptor.playerEmblems
+		
+		if not hasattr(vehicleDescriptor, 'backup_emblems'):
+			vehicleDescriptor.backup_emblems = current
+		
 		if vehicleDescriptor.name in g_dataHolder.config["logotypeFix1"]:
 			vehicleDescriptor.playerEmblems = (
 				(getFashionValue(current, saved, logotype[0], 0, 1, isClean), 13068864000, 0),
@@ -79,13 +86,18 @@ class ProcessorController(object):
 				(getFashionValue(current, saved, logotype[1], 3, 1, isClean), 13068864000, 0)
 			)
 	
+		
 		current = vehicleDescriptor.camouflages
+		
+		if not hasattr(vehicleDescriptor, 'backup_camouflages'):
+			vehicleDescriptor.backup_camouflages = current
+		
 		vehicleDescriptor.camouflages = (
 			(getFashionValue(current, saved, camouflage, 0, 2, isClean), 13068864000, 0), 
 			(getFashionValue(current, saved, camouflage, 1, 2, isClean), 13068864000, 0), 
 			(getFashionValue(current, saved, camouflage, 2, 2, isClean), 13068864000, 0)
 		)
-		
+	
 	def appendSettings(self, ctx):
 		g_dataHolder.cache['currentSetup'] = [int(ctx['teamFirst']), int(ctx['teamSecond'])]
 		g_dataHolder.cache['onlyOnMyTank'] = ctx['onlyOnMyTank']
