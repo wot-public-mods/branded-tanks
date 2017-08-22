@@ -5,6 +5,8 @@ import os
 import BigWorld
 from gui import SystemMessages
 from gui.app_loader.loader import g_appLoader
+from gui.Scaleform.framework.managers.loaders import ViewLoadParams
+
 from gui.branding.branding_constants import BRANDING_OPERATOR_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI, UI_TYPE
 from gui.branding.data import g_dataHolder
 from gui.branding.events import g_eventsManager
@@ -109,9 +111,9 @@ class ProcessorController(object):
 	def __showUI(self):
 		if g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR:
 			g_dataHolder.cache['onlyOnMyTank'] = False
-			g_appLoader.getDefLobbyApp().loadView(BRANDING_OPERATOR_WINDOW_UI)
+			g_appLoader.getDefLobbyApp().loadView(ViewLoadParams(BRANDING_OPERATOR_WINDOW_UI, BRANDING_OPERATOR_WINDOW_UI), {})
 		elif g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
-			g_appLoader.getDefLobbyApp().loadView(BRANDING_PLAYER_WINDOW_UI)
+			g_appLoader.getDefLobbyApp().loadView(ViewLoadParams(BRANDING_PLAYER_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI), {})
 	
 	def __findMirroredLogo(self, id):
 		for logotype in g_dataHolder.config['logotypes']:

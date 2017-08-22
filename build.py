@@ -10,15 +10,15 @@ ANIMATE_PATH = 'C:\\Program Files\\Adobe\\Adobe Animate CC 2015\\Animate.exe'
 
 # game data
 COPY_INTO_GAME = True
-GAME_VERSION = '0.9.19.0'
-GAME_FOLDER = 'X:/wot_ct' #'X:/wot'
+GAME_VERSION = '0.9.20.0'
+GAME_FOLDER = 'E:/wot_ct' #'X:/wot'
 
 # modification data
 MODIFICATION_AUTHOR = 'net.wargaming'
 MODIFICATION_DESCRIPTION = 'Spoofing camouflage and inscriptions for teams'
 MODIFICATION_IDENTIFICATOR = 'branding'
 MODIFICATION_NAME = 'Branded tanks'
-MODIFICATION_VERSION = '2.3'
+MODIFICATION_VERSION = '2.6'
 
 # result package name
 PACKAGE_NAME = '{author}.{name}_{version}.wotmod'.format( author = MODIFICATION_AUTHOR, \
