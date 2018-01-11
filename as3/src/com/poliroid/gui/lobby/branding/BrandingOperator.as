@@ -59,7 +59,12 @@
 		
 		private function onSubmitBtnClick(e:MouseEvent): void {
 			
-			onSettingsS(team1Dropdown.selectedIndex, team2Dropdown.selectedIndex, false);
+			onSettingsS(
+				team1Dropdown.dataProvider[team1Dropdown.selectedIndex].id, 
+				team2Dropdown.dataProvider[team2Dropdown.selectedIndex].id, 
+				false
+			);
+			
 			guiAvailability(false);
 			setTimeout(guiAvailability, 300, true);
 		}
@@ -87,9 +92,9 @@
 			var presetID:Number;
 			
 			if (e.target == showTeam1Button) 
-				presetID = team1Dropdown.selectedIndex;
+				presetID = team1Dropdown.dataProvider[team1Dropdown.selectedIndex].id;
 			else
-				presetID = team2Dropdown.selectedIndex
+				presetID = team2Dropdown.dataProvider[team2Dropdown.selectedIndex].id;
 			
 			showPresetS(presetID);
 		}

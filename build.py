@@ -4,21 +4,22 @@ import datetime
 import os
 import shutil
 import zipfile
+import sys
 
 # software data
 ANIMATE_PATH = 'C:\\Program Files\\Adobe\\Adobe Animate CC 2015\\Animate.exe'
 
 # game data
 COPY_INTO_GAME = True
-GAME_VERSION = '0.9.20.0'
-GAME_FOLDER = 'E:/wot_ct' #'X:/wot'
+GAME_VERSION = '0.9.21.0.2'
+GAME_FOLDER = 'E:/wot' #'X:/wot'
 
 # modification data
 MODIFICATION_AUTHOR = 'net.wargaming'
 MODIFICATION_DESCRIPTION = 'Spoofing camouflage and inscriptions for teams'
 MODIFICATION_IDENTIFICATOR = 'branding'
 MODIFICATION_NAME = 'Branded tanks'
-MODIFICATION_VERSION = '2.6'
+MODIFICATION_VERSION = '3.0'
 
 # result package name
 PACKAGE_NAME = '{author}.{name}_{version}.wotmod'.format( author = MODIFICATION_AUTHOR, \
@@ -86,15 +87,18 @@ if not os.path.isdir('as3/bin'):
 	os.makedirs('as3/bin')
 
 
-# build flash
-with open('build.jsfl', 'wb') as fh:
-	projectFolder = os.getcwd().replace('\\', '/').replace(':', '|')
-	fileItem = 'fl.publishDocument("file:///{project}/as3/{fileName}", "Default");\r\n'
-	for fileName in os.listdir('as3'):
-		if fileName.endswith('fla'):
-			fh.write(fileItem.format(project = projectFolder, fileName = fileName))
-	fh.write('fl.quit(false);')
-os.system('"{animate}" -e build.jsfl -AlwaysRunJSFL'.format(animate = ANIMATE_PATH))
+BUILD_FLASH = 'noflash' not in sys.argv
+
+if BUILD_FLASH:
+	# build flash
+	with open('build.jsfl', 'wb') as fh:
+		projectFolder = os.getcwd().replace('\\', '/').replace(':', '|')
+		fileItem = 'fl.publishDocument("file:///{project}/as3/{fileName}", "Default");\r\n'
+		for fileName in os.listdir('as3'):
+			if fileName.endswith('fla'):
+				fh.write(fileItem.format(project = projectFolder, fileName = fileName))
+		fh.write('fl.quit(false);')
+	os.system('"{animate}" -e build.jsfl -AlwaysRunJSFL'.format(animate = ANIMATE_PATH))
 
 # build python
 for dirName, _, files in os.walk('python'):
@@ -136,12 +140,10 @@ if COPY_INTO_GAME:
 
 # clean up build files
 shutil.rmtree('temp')
-os.remove('build.jsfl')
 for dirname, _, files in os.walk('python'):
 	for filename in files:
 		if filename.endswith('.pyc'):
 			os.remove(os.path.join(dirname, filename))
-for dirname, _, files in os.walk('as3'):
-	for filename in files:
-		if filename.endswith('.swf'):
-			os.remove(os.path.join(dirname, filename))
+if BUILD_FLASH:
+	os.remove('build.jsfl')
+	

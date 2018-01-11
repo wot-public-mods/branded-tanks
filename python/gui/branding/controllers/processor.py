@@ -5,7 +5,12 @@ import os
 import BigWorld
 from gui import SystemMessages
 from gui.app_loader.loader import g_appLoader
+from gui.ClientHangarSpace import _VehicleAppearance, OutfitComponent
 from gui.Scaleform.framework.managers.loaders import ViewLoadParams
+from gui.shared.gui_items.customization.outfit import Outfit
+from gui.shared.gui_items.customization.c11n_items import Camouflage, Emblem, Decal
+from items.components.c11n_constants import ApplyArea
+from items.customizations import CustomizationOutfit, CamouflageComponent, DecalComponent
 
 from gui.branding.branding_constants import BRANDING_OPERATOR_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI, UI_TYPE
 from gui.branding.data import g_dataHolder
@@ -34,72 +39,42 @@ class ProcessorController(object):
 				return preset
 		return None
 	
-	def processVehicleDescriptor(self, preset, vehicleDescriptor, isClean = False):
-		advert = preset['advert']
-		logotype = [preset['logotype'], self.__findMirroredLogo(preset['logotype'])]
-		camouflage = preset['camouflage']
-		vehicleDescriptor._VehicleAppearance__emblemsAlpha = 1.0
-		saved = g_controllers.vehicle.savedCustomization
+	def getOutfit(self, outfitData):
 		
-		current = vehicleDescriptor.playerInscriptions
-		
-		if not hasattr(vehicleDescriptor, 'backup_inscriptions'):
-			vehicleDescriptor.backup_inscriptions = current
-		
-		if vehicleDescriptor.name in g_dataHolder.config["advertFix"]:
-			vehicleDescriptor.playerInscriptions = (
-				(getFashionValue(current, saved, advert[0], 0, 0, isClean), 13068864000, 0, 0), 
-				(getFashionValue(current, saved, advert[0], 1, 0, isClean), 13068864000, 0, 0), 
-				(getFashionValue(current, saved, advert[1], 2, 0, isClean), 13068864000, 0, 1),  
-				(getFashionValue(current, saved, advert[1], 3, 0, isClean), 13068864000, 0, 1)
-			)
-		else:
-			vehicleDescriptor.playerInscriptions = (
-				(getFashionValue(current, saved, advert[0], 0, 0, isClean), 13068864000, 0, 0),
-				(getFashionValue(current, saved, advert[1], 1, 0, isClean), 13068864000, 0, 0),
-				(getFashionValue(current, saved, advert[0], 2, 0, isClean), 13068864000, 0, 1),
-				(getFashionValue(current, saved, advert[1], 3, 0, isClean), 13068864000, 0, 1)
-			)
-		
-		current = vehicleDescriptor.playerEmblems
-		
-		if not hasattr(vehicleDescriptor, 'backup_emblems'):
-			vehicleDescriptor.backup_emblems = current
-		
-		if vehicleDescriptor.name in g_dataHolder.config["logotypeFix1"]:
-			vehicleDescriptor.playerEmblems = (
-				(getFashionValue(current, saved, logotype[0], 0, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 1, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 2, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 3, 1, isClean), 13068864000, 0)
-			)	
-		elif vehicleDescriptor.name in g_dataHolder.config["logotypeFix2"]:
-			vehicleDescriptor.playerEmblems = (
-				(getFashionValue(current, saved, logotype[1], 0, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 1, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 2, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 3, 1, isClean), 13068864000, 0)
-			)
-		else:
-			vehicleDescriptor.playerEmblems = (
-				(getFashionValue(current, saved, logotype[0], 0, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 1, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[0], 2, 1, isClean), 13068864000, 0),
-				(getFashionValue(current, saved, logotype[1], 3, 1, isClean), 13068864000, 0)
-			)
+		camouflages = []
+		decals = []
+
+		cammoCompID = outfitData['camouflage']
+		logoCompID = outfitData['logotype']
+		advertCompID1, advertCompID2 = outfitData['advert']
 	
+		if cammoCompID != 0:
+			camouflages.append(CamouflageComponent(id = cammoCompID, appliedTo = ApplyArea.HULL))
+			camouflages.append(CamouflageComponent(id = cammoCompID, appliedTo = ApplyArea.TURRET))
+			camouflages.append(CamouflageComponent(id = cammoCompID, appliedTo = ApplyArea.GUN))
 		
-		current = vehicleDescriptor.camouflages
+		if logoCompID != 0:
+			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.HULL))
+			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.HULL_1))
+			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.TURRET))
+			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.TURRET_1))
+			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.GUN))
+			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.GUN_1))
 		
-		if not hasattr(vehicleDescriptor, 'backup_camouflages'):
-			vehicleDescriptor.backup_camouflages = current
+		if advertCompID1 != 0:
+			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_2))
+			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.TURRET_2))
+			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.GUN_2))
 		
-		vehicleDescriptor.camouflages = (
-			(getFashionValue(current, saved, camouflage, 0, 2, isClean), 13068864000, 0), 
-			(getFashionValue(current, saved, camouflage, 1, 2, isClean), 13068864000, 0), 
-			(getFashionValue(current, saved, camouflage, 2, 2, isClean), 13068864000, 0)
-		)
-	
+		if advertCompID2 != 0:
+			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.HULL_3))
+			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.TURRET_3))
+			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.GUN_3))
+		
+		customizationOutfit = CustomizationOutfit(camouflages=camouflages, decals=decals)
+		outfit = Outfit(customizationOutfit.makeCompDescr())
+		return outfit
+
 	def appendSettings(self, ctx):
 		g_dataHolder.cache['currentSetup'] = [int(ctx['teamFirst']), int(ctx['teamSecond'])]
 		g_dataHolder.cache['onlyOnMyTank'] = ctx['onlyOnMyTank']
@@ -114,12 +89,6 @@ class ProcessorController(object):
 			g_appLoader.getDefLobbyApp().loadView(ViewLoadParams(BRANDING_OPERATOR_WINDOW_UI, BRANDING_OPERATOR_WINDOW_UI), {})
 		elif g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
 			g_appLoader.getDefLobbyApp().loadView(ViewLoadParams(BRANDING_PLAYER_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI), {})
-	
-	def __findMirroredLogo(self, id):
-		for logotype in g_dataHolder.config['logotypes']:
-			if logotype['id'] == id:
-				return logotype['mirroredId']
-		return -1 if id == -1 else 0
 	
 	def __pushSystemMessageOperator(self):
 		
