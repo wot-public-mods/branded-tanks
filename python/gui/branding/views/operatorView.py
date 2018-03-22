@@ -54,11 +54,24 @@ class BrandingOperatorView(BrandingOperatorViewMeta):
 	
 	def __generateOperatorCtx(self):
 		"""result represented by BrandingOperatorSettingsVO"""
-		presets = []
-		for preset in g_dataHolder.config['presets']:
-			presets.append(self.__generatePresetSettingsVO(preset))
+		
+		teamFirstIdx, teamSecondIdx = 0, 0
+		
 		teamFirst, teamSecond = g_dataHolder.cache['currentSetup']
-		return { 'presets': presets, 'teamFirst': teamFirst, 'teamSecond': teamSecond }
+		
+		presets = []
+		
+		for idx, preset in enumerate(g_dataHolder.config['presets']):
+			
+			presets.append(self.__generatePresetSettingsVO(preset))
+			
+			if preset['id'] == teamFirst:
+				teamFirstIdx = idx
+			
+			if preset['id'] == teamSecond:
+				teamSecondIdx = idx
+			
+		return { 'presets': presets, 'teamFirst': teamFirstIdx, 'teamSecond': teamSecondIdx }
 
 	def __generatePresetSettingsVO(self, preset):
 		name = preset['name']

@@ -5,7 +5,6 @@ import os
 import BigWorld
 from gui import SystemMessages
 from gui.app_loader.loader import g_appLoader
-from gui.ClientHangarSpace import _VehicleAppearance, OutfitComponent
 from gui.Scaleform.framework.managers.loaders import ViewLoadParams
 from gui.shared.gui_items.customization.outfit import Outfit
 from gui.shared.gui_items.customization.c11n_items import Camouflage, Emblem, Decal

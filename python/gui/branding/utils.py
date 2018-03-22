@@ -68,8 +68,9 @@ def getFashionValue(current, saved, custom, index, type, isClean=False):
 def getHangarVehicle():
 	from gui.shared.utils.HangarSpace import g_hangarSpace
 	try:
-		vDesc = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vDesc
-		vState = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__vState	
+		appereance = g_hangarSpace.space._ClientHangarSpace__vAppearance
+		vDesc = appereance._VehicleAppearance__vDesc
+		vState = appereance._VehicleAppearance__vState	
 	except:
 		vDesc, vState = None, None
 	return (vDesc, vState)

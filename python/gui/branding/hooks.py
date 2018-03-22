@@ -9,11 +9,12 @@ from gui.branding.utils import override
 
 __all__ = ( )
 
-@override(CompoundAppearance, '_CompoundAppearance__getVehicleOutfit')
-def start(baseMethod, baseInstance):
+@override(CompoundAppearance, '_CompoundAppearance__applyVehicleOutfit')
+def applyVehicleOutfit(baseMethod, baseInstance):
 	from gui.branding.controllers import g_controllers
-	outfit = baseMethod(baseInstance)
-	return g_controllers.vehicle.processVehicleOutfit(baseInstance, outfit)
+	baseOutfit = baseInstance._CompoundAppearance__outfit
+	baseInstance._CompoundAppearance__outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseOutfit)
+	return baseMethod(baseInstance)
 
 @override(_AppLoader, 'fini')
 def hooked_fini(baseMethod, baseObject):

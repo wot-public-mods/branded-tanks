@@ -25,7 +25,7 @@ class VehicleController(object):
 	def restoreVehicle(self):
 		
 		# getting current vehicle outfit
-		outfit = g_hangarSpace.space._ClientHangarSpace__vAppearance._VehicleAppearance__getActiveOutfit()
+		outfit = g_hangarSpace.space.getVehicleEntity().appearance._HangarVehicleAppearance__getActiveOutfit()
 		
 		# updating vehicle customization
 		g_hangarSpace.space.updateVehicleCustomization(outfit)
@@ -34,9 +34,12 @@ class VehicleController(object):
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, False))
 		
 		# camera locating on previos position
-		if self.__savedCameraLocation is not None:
-			g_hangarSpace.space.setCameraLocation(**self.__savedCameraLocation)
-			self.__savedCameraLocation = None
+		if self.__savedCameraLocation:
+			manager = g_hangarSpace.space._ClientHangarSpace__cameraManager
+			if manager:
+				del self.__savedCameraLocation['pivotDist']
+				manager.setCameraLocation(**self.__savedCameraLocation)
+				self.__savedCameraLocation = None
 	
 	def showPresetInHangar(self, presetID):
 		
@@ -86,3 +89,31 @@ class VehicleController(object):
 		
 		return originalOutfit
 	
+	def getVehicleOutfit(self, appereance, originalOutfit):
+		
+		vehicleInfo = BigWorld.player().arena.vehicles.get(appereance.id)
+		
+		if g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
+			if g_dataHolder.cache['onlyOnMyTank']:
+				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][0])
+				if preset is not None:
+					if appereance.id == BigWorld.player().playerVehicleID:
+						return g_controllers.processor.getOutfit(preset)
+					else:
+						return originalOutfit
+			else:
+				isPlayerTeam = BigWorld.player().team == int(vehicleInfo['team'])
+				if isPlayerTeam:
+					preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][0])
+				else:
+					preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][1])
+				if preset is not None:
+					return g_controllers.processor.getOutfit(preset)
+		
+		if g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR:
+			if vehicleInfo['team'] in [1, 2]:
+				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][vehicleInfo['team'] - 1])
+				if preset is not None:
+					return g_controllers.processor.getOutfit(preset)
+		
+		return originalOutfit
