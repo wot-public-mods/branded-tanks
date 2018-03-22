@@ -57,7 +57,8 @@
 			super.onDispose();
 		}
 		
-		private function onSubmitBtnClick(e:MouseEvent): void {
+		private function onSubmitBtnClick(e:MouseEvent): void
+		{
 			
 			onSettingsS(
 				team1Dropdown.dataProvider[team1Dropdown.selectedIndex].id, 

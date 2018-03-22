@@ -97,6 +97,7 @@
 			headerText.text = headerTextEnemyLabel;
 			commandList.dataProvider = new DataProvider(data);
 			commandList.dataProvider.invalidate();
+			commandList.rowCount = data.length;
 		}
 		
 		private function handleCheackBoxClick(event:Event) : void 
