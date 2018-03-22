@@ -1,1 +1,4 @@
 *.wotmod
+*.vscode
+*.swf
+*.pyc
