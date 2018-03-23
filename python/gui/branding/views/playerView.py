@@ -28,6 +28,7 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 		self.as_setLocalizationS(self.__generateLocalizationCtx())
 		
 		# settings
+		print self.__generatePlayerCtx()
 		self.as_setSettingsS(self.__generatePlayerCtx())
 	
 	def onWindowClose(self):
@@ -55,12 +56,12 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 	def __generatePlayerCtx(self):
 		"""result represented by BrandingPlayerSettingsVO"""
 		presets = []
-		for preset in g_dataHolder.config['presets']:
-			presets.append( self.__generatePresetSettingsVO(preset) )
+		for idx, preset in enumerate(g_dataHolder.config['presets']):
+			presets.append( self.__generatePresetSettingsVO(idx, preset) )
 		onlyOnMyTank = g_dataHolder.cache['onlyOnMyTank']
 		return { 'presets': presets, 'onlyOnMyTank': onlyOnMyTank }
 	
-	def __generatePresetSettingsVO(self, preset):
+	def __generatePresetSettingsVO(self, idx, preset):
 		name = preset['name']
 		icon = getIconPatch(preset)
-		return { 'id': preset['id'], 'name': name, 'icon': icon }
+		return { 'id': idx, 'presetID': preset['id'], 'name': name, 'icon': icon }

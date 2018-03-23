@@ -6,6 +6,8 @@
 	{
 		public var id:Number = 0;
 		
+		public var presetID:Number = 0;
+		
 		public var name:String = "";
 		
 		public var icon:String = "";

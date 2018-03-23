@@ -73,11 +73,11 @@
 				{
 					if (allyTeamID == -1)
 					{
-						allyTeamID = item.id;
+						allyTeamID = item.presetID;
 					}	
 					else
 					{
-						enemyTeamID = item.id;
+						enemyTeamID = item.presetID;
 					}
 				} 
 				else 

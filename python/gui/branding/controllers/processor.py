@@ -38,21 +38,28 @@ class ProcessorController(object):
 				return preset
 		return None
 	
-	def getOutfit(self, outfitData):
+	def getOutfit(self, originalOutfit, preset):
 		
 		camouflages = []
 		decals = []
 
-		cammoCompID = outfitData['camouflage']
-		logoCompID = outfitData['logotype']
-		advertCompID1, advertCompID2 = outfitData['advert']
-	
-		if cammoCompID != 0:
+		cammoCompID = preset['camouflage']
+		logoCompID = preset['logotype']
+		advertCompID1, advertCompID2 = preset['advert']
+
+		if cammoCompID == 0 and logoCompID == 0 and advertCompID1 == 0 and advertCompID2 == 0:
+			return originalOutfit
+
+		if cammoCompID == -1:
+			pass
+		elif cammoCompID != 0:
 			camouflages.append(CamouflageComponent(id = cammoCompID, appliedTo = ApplyArea.HULL))
 			camouflages.append(CamouflageComponent(id = cammoCompID, appliedTo = ApplyArea.TURRET))
 			camouflages.append(CamouflageComponent(id = cammoCompID, appliedTo = ApplyArea.GUN))
 		
-		if logoCompID != 0:
+		if logoCompID == -1:
+			pass
+		elif logoCompID != 0:
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.HULL))
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.HULL_1))
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.TURRET))
@@ -60,12 +67,16 @@ class ProcessorController(object):
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.GUN))
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.GUN_1))
 		
-		if advertCompID1 != 0:
+		if advertCompID1 == -1:
+			pass
+		elif advertCompID1 != 0:
 			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_2))
 			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.TURRET_2))
 			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.GUN_2))
 		
-		if advertCompID2 != 0:
+		if advertCompID2 == -1:
+			pass
+		elif advertCompID2 != 0:
 			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.HULL_3))
 			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.TURRET_3))
 			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.GUN_3))

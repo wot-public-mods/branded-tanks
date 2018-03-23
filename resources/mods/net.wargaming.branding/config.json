@@ -1,8 +1,10 @@
 {
     "UIType": 2,
     "presets": [
-        { "id": 1,   "name": "Team Blue",    "camouflage": 5100,   "logotype": 5200,   "advert": [ 5300, 5300 ],   "preview": { "enable": true, "image": "preview/team_blue.png" } },
-        { "id": 2,   "name": "Team Red",     "camouflage": 5101,   "logotype": 5201,   "advert": [ 0, 0 ],         "preview": { "enable": true, "image": "preview/team_red.png" } }
+        { "id": 1,   "name": "Team Blue",                "camouflage": 5100,   "logotype": 5200,   "advert": [ 5300, 5300 ],   "preview": { "enable": true, "image": "preview/team_blue.png" } },
+        { "id": 2,   "name": "Team Red",                 "camouflage": 5101,   "logotype": 5201,   "advert": [ 0, 0 ],         "preview": { "enable": true, "image": "preview/team_red.png" } },
+        { "id": 98,  "name": "l10n:ui.teams.cleanTanks", "camouflage": -1,     "logotype": -1,     "advert": [ -1, -1 ],       "preview": { "enable": false } },
+        { "id": 99,  "name": "l10n:ui.teams.userChoise", "camouflage": 0,      "logotype": 0,      "advert": [ 0, 0 ],         "preview": { "enable": false } }
     ],
     "camouflages": [
         { "id": 5100, "name": "Team Blue" },
