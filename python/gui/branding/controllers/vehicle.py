@@ -48,8 +48,10 @@ class VehicleController(object):
 			return
 
 		# getting needed vehicle outfit
-		originalOutfit = g_hangarSpace.space.getVehicleEntity().appearance._HangarVehicleAppearance__getActiveOutfit()
-		outfit = g_controllers.processor.getOutfit(originalOutfit, preset)
+		appearance = g_hangarSpace.space.getVehicleEntity().appearance
+		vDesc = appearance._HangarVehicleAppearance__vDesc
+		originalOutfit = appearance._HangarVehicleAppearance__getActiveOutfit()
+		outfit = g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 		
 		# updating vehicle customization
 		g_hangarSpace.space.updateVehicleCustomization(outfit)
@@ -63,6 +65,7 @@ class VehicleController(object):
 	
 	def getVehicleOutfit(self, appereance, originalOutfit):
 		
+		vDesc = appereance._CompoundAppearance__typeDesc
 		vehicleInfo = BigWorld.player().arena.vehicles.get(appereance.id)
 		
 		if g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
@@ -70,7 +73,7 @@ class VehicleController(object):
 				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][0])
 				if preset is not None:
 					if appereance.id == BigWorld.player().playerVehicleID:
-						return g_controllers.processor.getOutfit(originalOutfit, preset)
+						return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 					else:
 						return originalOutfit
 			else:
@@ -80,12 +83,12 @@ class VehicleController(object):
 				else:
 					preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][1])
 				if preset is not None:
-					return g_controllers.processor.getOutfit(originalOutfit, preset)
+					return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 		
 		if g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR:
 			if vehicleInfo['team'] in [1, 2]:
 				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][vehicleInfo['team'] - 1])
 				if preset is not None:
-					return g_controllers.processor.getOutfit(originalOutfit, preset)
+					return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 		
 		return originalOutfit

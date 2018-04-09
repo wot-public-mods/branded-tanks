@@ -2793,6 +2793,42 @@
 		</decal>
 	</itemGroup>
 	<itemGroup>
+		<name> Anniversary NA and EU </name>
+		<userString> #vehicle_customization:emblem/special </userString>
+		<priceGroup> legacy notInShop </priceGroup>
+		<type> EMBLEM </type>
+		<historical> false </historical>
+		<vehicleFilter/>
+		<decal>
+			<id> 544 </id>
+			<texture> gui/maps/vehicles/decals/player_stickers/special/sticker_369.dds </texture>
+			<userString> #vehicle_customization:emblem/special/sticker_369 </userString>
+			<mirror> false </mirror>
+		</decal>
+	</itemGroup>
+	<itemGroup>
+		<name> Global Map Emblem </name>
+		<userString> #vehicle_customization:emblem/special </userString>
+		<priceGroup> legacy notInShop </priceGroup>
+		<type> EMBLEM </type>
+		<historical> false </historical>
+		<vehicleFilter>
+			<include>
+				<tags> premium </tags>
+				<levels> 8 </levels>
+			</include>
+			<include>
+				<levels> 10 </levels>
+			</include>
+		</vehicleFilter>
+		<decal>
+			<id> 545 </id>
+			<texture> gui/maps/vehicles/decals/player_stickers/special/sticker_370.dds </texture>
+			<userString> #vehicle_customization:emblem/special/sticker_370 </userString>
+			<mirror> false </mirror>
+		</decal>
+	</itemGroup>
+	<itemGroup>
 		<name> italy </name>
 		<userString> #vehicle_customization:emblem/battle </userString>
 		<priceGroup> legacy emblems </priceGroup>
@@ -2864,6 +2900,30 @@
 			<texture> gui/maps/vehicles/decals/player_stickers/battle/sticker_88.dds </texture>
 			<userString> #vehicle_customization:emblem/battle/sticker_88 </userString>
 			<mirror> true </mirror>
+		</decal>
+	</itemGroup>
+	<itemGroup>
+		<name> italy marathon </name>
+		<userString> #vehicle_customization:emblem/special </userString>
+		<priceGroup> legacy notInShop </priceGroup>
+		<type> EMBLEM </type>
+		<historical> true </historical>
+		<vehicleFilter>
+			<include>
+				<tags> premium </tags>
+				<levels> 8 </levels>
+				<nations> italy </nations>
+			</include>
+			<include>
+				<levels> 10 </levels>
+				<nations> italy </nations>
+			</include>
+		</vehicleFilter>
+		<decal>
+			<id> 543 </id>
+			<texture> gui/maps/vehicles/decals/player_stickers/special/sticker_368.dds </texture>
+			<userString> #vehicle_customization:emblem/special/sticker_368 </userString>
+			<mirror> false </mirror>
 		</decal>
 	</itemGroup>
 	<itemGroup>
@@ -5826,16 +5886,6 @@
 			<userString> #vehicle_customization:inscription/usa/inscription_09 </userString>
 		</decal>
 		<decal>
-			<id> 14772 </id>
-			<texture> gui/maps/vehicles/decals/inscriptions/usa/inscription_1010.dds </texture>
-			<userString> #vehicle_customization:inscription/usa/inscription_10 </userString>
-		</decal>
-		<decal>
-			<id> 14773 </id>
-			<texture> gui/maps/vehicles/decals/inscriptions/usa/inscription_1011.dds </texture>
-			<userString> #vehicle_customization:inscription/usa/inscription_11 </userString>
-		</decal>
-		<decal>
 			<id> 14774 </id>
 			<texture> gui/maps/vehicles/decals/inscriptions/usa/inscription_1012.dds </texture>
 			<userString> #vehicle_customization:inscription/usa/inscription_12 </userString>
@@ -5844,16 +5894,6 @@
 			<id> 14775 </id>
 			<texture> gui/maps/vehicles/decals/inscriptions/usa/inscription_1013.dds </texture>
 			<userString> #vehicle_customization:inscription/usa/inscription_13 </userString>
-		</decal>
-		<decal>
-			<id> 14776 </id>
-			<texture> gui/maps/vehicles/decals/inscriptions/usa/inscription_1014.dds </texture>
-			<userString> #vehicle_customization:inscription/usa/inscription_14 </userString>
-		</decal>
-		<decal>
-			<id> 14777 </id>
-			<texture> gui/maps/vehicles/decals/inscriptions/usa/inscription_1015.dds </texture>
-			<userString> #vehicle_customization:inscription/usa/inscription_15 </userString>
 		</decal>
 		<decal>
 			<id> 14778 </id>
@@ -6289,7 +6329,6 @@
 			<userString> #vehicle_customization:inscription/italy/inscription_21 </userString>
 		</decal>
 	</itemGroup>
-	
 	<itemGroup>
 		<name> branding_emblems </name>
 		<userString> branding logotypes </userString>
@@ -6299,19 +6338,16 @@
 			<include/>
 		</vehicleFilter>
 		<decal>
-			<!-- descr put here -->
-			<id>5200</id>
-			<texture>mods/net.wargaming.branding/logotypes/team_blue.dds</texture>
-			<userString></userString>
+			<id> 5200 </id>
+			<texture> mods/net.wargaming.branding/logotypes/team_blue.dds </texture>
+			<userString/>
 		</decal>
 		<decal>
-			<!-- descr put here -->
-			<id>5201</id>
-			<texture>mods/net.wargaming.branding/logotypes/team_red.dds</texture>
-			<userString></userString>
+			<id> 5201 </id>
+			<texture> mods/net.wargaming.branding/logotypes/team_red.dds </texture>
+			<userString/>
 		</decal>
-    </itemGroup>
-	
+	</itemGroup>
 	<itemGroup>
 		<name> branding_inscriptions </name>
 		<userString> branding advert </userString>
@@ -6321,10 +6357,14 @@
 			<include/>
 		</vehicleFilter>
 		<decal>
-			<!-- descr put here -->
-			<id>5300</id>
-			<texture>mods/net.wargaming.branding/adverts/team_blue.dds</texture>
-			<userString></userString>
+			<id> 5300 </id>
+			<texture> mods/net.wargaming.branding/adverts/team_blue.dds </texture>
+			<userString/>
 		</decal>
-    </itemGroup>
+		<decal>
+			<id> 5301 </id>
+			<texture> mods/net.wargaming.branding/adverts/team_red.dds </texture>
+			<userString/>
+		</decal>
+	</itemGroup>
 </root>

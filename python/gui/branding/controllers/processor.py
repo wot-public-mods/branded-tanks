@@ -6,6 +6,7 @@ import BigWorld
 from gui import SystemMessages
 from gui.app_loader.loader import g_appLoader
 from gui.Scaleform.framework.managers.loaders import ViewLoadParams
+from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.gui_items.customization.outfit import Outfit
 from gui.shared.gui_items.customization.c11n_items import Camouflage, Emblem, Decal
 from items.components.c11n_constants import ApplyArea
@@ -38,11 +39,18 @@ class ProcessorController(object):
 				return preset
 		return None
 	
-	def getOutfit(self, originalOutfit, preset):
+	def getOutfit(self, originalOutfit, preset, vDesc):
 		
-		camouflages = []
-		decals = []
-
+		camouflages, decals = [], []
+		hullSlotsNum, turretSlotsNum = 0, 0
+		
+		for emblemSlot in vDesc.hull.emblemSlots:
+			if emblemSlot.type == 'inscription':
+				hullSlotsNum += 1
+		for emblemSlot in vDesc.turret.emblemSlots:
+			if emblemSlot.type == 'inscription':
+				turretSlotsNum += 1
+		
 		cammoCompID = preset['camouflage']
 		logoCompID = preset['logotype']
 		advertCompID1, advertCompID2 = preset['advert']
@@ -67,24 +75,44 @@ class ProcessorController(object):
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.GUN))
 			decals.append(DecalComponent(id = logoCompID, appliedTo = ApplyArea.GUN_1))
 		
+		storedSoloSlot = False
+
 		if advertCompID1 == -1:
 			pass
 		elif advertCompID1 != 0:
-			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_2))
-			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.TURRET_2))
-			decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.GUN_2))
+			if hullSlotsNum == 1 and turretSlotsNum == 1:
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_2))
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_3))
+			elif hullSlotsNum == 2:
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_2))
+			elif turretSlotsNum == 2:
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.TURRET_2))
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.GUN_2))
+			elif hullSlotsNum + turretSlotsNum == 1:
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_2))
+				decals.append(DecalComponent(id = advertCompID1, appliedTo = ApplyArea.HULL_3))
+				storedSoloSlot = True
 		
 		if advertCompID2 == -1:
 			pass
 		elif advertCompID2 != 0:
-			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.HULL_3))
-			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.TURRET_3))
-			decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.GUN_3))
+			if hullSlotsNum == 1 and turretSlotsNum == 1:
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.TURRET_2))
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.GUN_2))
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.TURRET_3))
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.GUN_3))
+			elif hullSlotsNum == 2:
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.HULL_3))
+			elif turretSlotsNum == 2:
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.TURRET_3))
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.GUN_3))
+			elif hullSlotsNum + turretSlotsNum == 1 and not storedSoloSlot:
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.HULL_2))
+				decals.append(DecalComponent(id = advertCompID2, appliedTo = ApplyArea.HULL_3))
 		
 		customizationOutfit = CustomizationOutfit(camouflages=camouflages, decals=decals)
-		outfit = Outfit(customizationOutfit.makeCompDescr())
-		return outfit
-
+		return Outfit(customizationOutfit.makeCompDescr())
+	
 	def appendSettings(self, ctx):
 		g_dataHolder.cache['currentSetup'] = [int(ctx['teamFirst']), int(ctx['teamSecond'])]
 		g_dataHolder.cache['onlyOnMyTank'] = ctx['onlyOnMyTank']
