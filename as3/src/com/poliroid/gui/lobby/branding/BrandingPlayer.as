@@ -97,6 +97,7 @@
 			backgroundMC.gotoAndStop('enemy');
 			headerText.text = headerTextEnemyLabel;
 			commandList.dataProvider = new DataProvider(data);
+			commandList.rowCount = data.length;
 			commandList.dataProvider.invalidate();
 		}
 		

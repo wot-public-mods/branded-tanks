@@ -5,13 +5,13 @@
 	},
 	"game": {
 		"folder": "E:\\wot\\cis",
-		"version": "1.0.0.2"
+		"version": "1.0.1.1"
 	},
 	"info": {
 		"id": "branding",
 		"author": "net.wargaming",
 		"name": "Branded tanks",
 		"description": "Spoofing camouflage and inscriptions for teams",
-		"version": "3.3"
+		"version": "3.4"
 	}
 }

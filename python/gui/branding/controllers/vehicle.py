@@ -25,7 +25,7 @@ class VehicleController(object):
 	def restoreVehicle(self):
 		
 		# getting current vehicle outfit
-		outfit = g_hangarSpace.space.getVehicleEntity().appearance._HangarVehicleAppearance__getActiveOutfit()
+		outfit = g_hangarSpace.space.getVehicleEntity().appearance._getActiveOutfit()
 		
 		# updating vehicle customization
 		g_hangarSpace.space.updateVehicleCustomization(outfit)
@@ -50,7 +50,7 @@ class VehicleController(object):
 		# getting needed vehicle outfit
 		appearance = g_hangarSpace.space.getVehicleEntity().appearance
 		vDesc = appearance._HangarVehicleAppearance__vDesc
-		originalOutfit = appearance._HangarVehicleAppearance__getActiveOutfit()
+		originalOutfit = appearance._getActiveOutfit()
 		outfit = g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 		
 		# updating vehicle customization

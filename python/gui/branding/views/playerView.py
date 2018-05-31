@@ -28,7 +28,6 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 		self.as_setLocalizationS(self.__generateLocalizationCtx())
 		
 		# settings
-		print self.__generatePlayerCtx()
 		self.as_setSettingsS(self.__generatePlayerCtx())
 	
 	def onWindowClose(self):

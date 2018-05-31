@@ -44,7 +44,10 @@
 		{
 			
 			if (data == null) 
+			{
+				visible = false;
 				return;
+			}
 			
 			super.setData(data);
 			model = BrandingPlayerSettingItemVO(data);
@@ -67,6 +70,8 @@
 		{
 			if (!data)
 				return;
+			
+			visible = true;
 			
 			itemID = model.id;
 			teamNameTF.text = model.name;
