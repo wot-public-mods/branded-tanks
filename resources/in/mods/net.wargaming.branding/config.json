@@ -1,5 +1,5 @@
 {
-    "UIType": 2,
+    "UIType": 1,
     "presets": [
         { "id": 1,   "name": "Team Blue",                "camouflage": 5100,   "logotype": 5200,   "advert": [ 5300, 5301 ],   "preview": { "enable": true, "image": "preview/team_blue.png" } },
         { "id": 2,   "name": "Team Red",                 "camouflage": 5101,   "logotype": 5201,   "advert": [ 5301, 5301 ],   "preview": { "enable": true, "image": "preview/team_red.png" } },
