@@ -1,12 +1,14 @@
 
+import collections
 import compileall
 import datetime
-import os
-import shutil
-import zipfile
-import sys
 import json
-import collections 
+import os
+import shlex
+import shutil
+import subprocess
+import sys
+import zipfile
 
 # implementation of shutil.copytree 
 # original sometimes throw error on folders create
@@ -39,7 +41,6 @@ def zipFolder(source, destination, mode='w', compression=zipfile.ZIP_STORED):
 			zi.compress_type = compression
 			return zi
 	def fileInfo(filePath):
-		st = os.stat(filePath)
 		zi = zipfile.ZipInfo(filePath, now)
 		zi.external_attr = 33206 << 16 # -rw-rw-rw-
 		zi.filename = zi.filename[seek_offset:]
@@ -60,6 +61,7 @@ def zipFolder(source, destination, mode='w', compression=zipfile.ZIP_STORED):
 # handle args from command line
 BUILD_FLASH = 'flash' in sys.argv
 COPY_INTO_GAME = 'ingame' in sys.argv
+CREATE_DISTRIBUTE = 'distribute' in sys.argv
 
 # load config
 assert os.path.isfile('./build.json'), 'Config not found'
@@ -98,10 +100,15 @@ os.makedirs('./temp')
 if os.path.isdir('./build'):
 	shutil.rmtree('./build')
 os.makedirs('./build')
+open('./build/.gitkeep', 'a').close()
 if not os.path.isdir('./resources'):
-	os.makedirs('./resources')
+	os.makedirs('./resources/in')
+	os.makedirs('./resources/out')
+	open('./resources/in/.gitkeep', 'a').close()
+	open('./resources/out/.gitkeep', 'a').close()
 if not os.path.isdir('./as3/bin'):
 	os.makedirs('./as3/bin')
+	open('./as3/bin/.gitkeep', 'a').close()
 
 # build flash
 if BUILD_FLASH:
@@ -111,7 +118,7 @@ if BUILD_FLASH:
 			if fileName.endswith('fla'):
 				fh.write('fl.publishDocument("file:///{path}/as3/{fileName}", "Default");\r\n'.format(path = flashWorkDir, fileName = fileName))
 		fh.write('fl.quit(false);')
-	os.system('"{animate}" -e build.jsfl -AlwaysRunJSFL'.format(animate = CONFIG.software.animate))
+	subprocess.call(shlex.split('"{animate}" -e build.jsfl -AlwaysRunJSFL'.format(animate = CONFIG.software.animate)))
 
 # build python
 for dirName, _, files in os.walk('python'):
@@ -123,7 +130,7 @@ for dirName, _, files in os.walk('python'):
 # copy all staff
 copytree('./as3/bin/', './temp/res/gui/flash')
 copytree('./python', './temp/res/scripts/client', ignore=shutil.ignore_patterns('*.py'))
-copytree('./resources', './temp/res')
+copytree('./resources/in', './temp/res')
 with open('temp/meta.xml', 'wb') as fh:
 	fh.write(META)
 
@@ -134,6 +141,15 @@ zipFolder('./temp', './build/%s' % PACKAGE_NAME)
 if COPY_INTO_GAME:
 	shutil.copy2('./build/%s' % PACKAGE_NAME, WOT_PACKAGES_DIR)
 
+# create distribution
+
+if CREATE_DISTRIBUTE:
+	os.makedirs('./temp/distribute/mods/%s' % CONFIG.game.version)
+	shutil.copy2('./build/%s' % PACKAGE_NAME, './temp/distribute/mods/%s' % CONFIG.game.version)
+	copytree('./resources/out', './temp/distribute')
+	zipFolder('./temp/distribute', './build/{name}_{version}.zip'.format( name = CONFIG.info.id, \
+				version = CONFIG.info.version ))
+	
 # clean up build files
 shutil.rmtree('temp')
 for dirname, _, files in os.walk('./python'):
