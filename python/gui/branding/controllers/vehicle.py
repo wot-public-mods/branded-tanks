@@ -1,5 +1,6 @@
 
 import BigWorld
+import math
 from gui.branding.branding_constants import UI_TYPE
 from gui.branding.controllers import g_controllers
 from gui.branding.data import g_dataHolder
@@ -7,12 +8,16 @@ from gui.branding.utils import getHangarVehicle
 from gui.shared import g_eventBus
 from gui.shared.events import LobbySimpleEvent
 from gui.shared.gui_items.customization.outfit import Outfit
-from gui.shared.utils.HangarSpace import g_hangarSpace
+from helpers import dependency
+from skeletons.gui.shared.utils import IHangarSpace
+from gui.ClientHangarSpace import hangarCFG
 
 __all__ = ('VehicleController', )
 
 class VehicleController(object):
 	
+	hangarSpace = dependency.descriptor(IHangarSpace)
+
 	def __init__(self):
 		self.__savedCameraLocation = None
 	
@@ -24,19 +29,24 @@ class VehicleController(object):
 	
 	def restoreVehicle(self):
 		
+		if not self.hangarSpace.space:
+			return
+
 		# getting current vehicle outfit
-		outfit = g_hangarSpace.space.getVehicleEntity().appearance._getActiveOutfit()
+		outfit = self.hangarSpace.space.getVehicleEntity().appearance._getActiveOutfit()
 		
 		# updating vehicle customization
-		g_hangarSpace.space.updateVehicleCustomization(outfit)
+		self.hangarSpace.space.updateVehicleCustomization(outfit)
 		
 		# showing current lobby subview 
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, False))
 		
 		# camera locating on previos position
+		
 		if self.__savedCameraLocation:
-			manager = g_hangarSpace.space._ClientHangarSpace__cameraManager
+			manager = self.hangarSpace.space.getCameraManager()
 			if manager:
+				#manager.setPreviewMode(False)
 				del self.__savedCameraLocation['pivotDist']
 				manager.setCameraLocation(**self.__savedCameraLocation)
 				self.__savedCameraLocation = None
@@ -48,20 +58,32 @@ class VehicleController(object):
 			return
 
 		# getting needed vehicle outfit
-		appearance = g_hangarSpace.space.getVehicleEntity().appearance
+		appearance = self.hangarSpace.space.getVehicleEntity().appearance
 		vDesc = appearance._HangarVehicleAppearance__vDesc
 		originalOutfit = appearance._getActiveOutfit()
 		outfit = g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 		
 		# updating vehicle customization
-		g_hangarSpace.space.updateVehicleCustomization(outfit)
+		self.hangarSpace.space.updateVehicleCustomization(outfit)
 		
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, True))
 		
 		if self.__savedCameraLocation is None:
-			self.__savedCameraLocation = g_hangarSpace.space.getCameraLocation()
-
-		g_hangarSpace.space.locateCameraToPreview()
+			self.__savedCameraLocation = self.hangarSpace.space.getCameraLocation()
+		
+		manager = self.hangarSpace.space.getCameraManager()
+		if not manager:
+			return
+		
+		cfg = hangarCFG()
+		manager.setCameraLocation(
+			targetPos=cfg['cam_start_target_pos'], 
+			pivotPos=cfg['cam_pivot_pos'], 
+			yaw=math.radians(cfg['cam_start_angles'][0]), 
+			pitch=math.radians(cfg['cam_start_angles'][1]), 
+			dist=cfg['cam_start_dist'] - 4, 
+			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']]
+		)
 	
 	def getVehicleOutfit(self, appereance, originalOutfit):
 		

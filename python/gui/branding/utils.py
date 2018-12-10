@@ -66,9 +66,11 @@ def getFashionValue(current, saved, custom, index, type, isClean=False):
 		return custom
 
 def getHangarVehicle():
-	from gui.shared.utils.HangarSpace import g_hangarSpace
+	from helpers import dependency
+	from skeletons.gui.shared.utils import IHangarSpace
 	try:
-		appereance = g_hangarSpace.space._ClientHangarSpace__vAppearance
+		hangarSpace = dependency.instance(IHangarSpace)
+		appereance = hangarSpace.space._ClientHangarSpace__vAppearance
 		vDesc = appereance._VehicleAppearance__vDesc
 		vState = appereance._VehicleAppearance__vState	
 	except:
