@@ -5,6 +5,8 @@ LANGUAGE_CODES = ('ru', 'uk', 'be', 'en', 'de', 'et', 'bg', 'da', 'fi', 'fil', '
 
 LANGUAGE_FILE_PATH = 'mods/net.wargaming.branding/text/%s.yml'
 
+XML_FILE_PATH = 'mods/net.wargaming.branding/xml/%ss.xml'
+
 DEFAULT_UI_LANGUAGE = 'ru'
 
 BRANDING_OPERATOR_WINDOW_UI = 'brandingObserver'

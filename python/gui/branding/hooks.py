@@ -5,7 +5,7 @@ from vehicle_systems.CompoundAppearance import CompoundAppearance
 
 from gui.branding.events import g_eventsManager
 from gui.branding.lang import l10n
-from gui.branding.utils import override
+from gui.branding.utils import override, readBrandingItem
 
 __all__ = ( )
 
@@ -31,3 +31,10 @@ g_modsListApi.addModification(
 	lobby = True,
 	callback = g_eventsManager.showUI
 )
+
+# new customization inject
+from items.vehicles import g_cache
+from items.components.c11n_components import CamouflageItem, DecalItem
+cache = g_cache.customization20()
+readBrandingItem(CamouflageItem, 'camouflage', cache, cache.camouflages)
+readBrandingItem(DecalItem, 'decal', cache, cache.decals)

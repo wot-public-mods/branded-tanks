@@ -3,7 +3,7 @@ import ResMgr
 import types
 
 __all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle', \
-		'getIconPatch', )
+		'getIconPatch', 'readBrandingItem', )
 
 def overrider(target, holder, name):
 	"""using for override any staff"""
@@ -81,3 +81,13 @@ def getIconPatch(preset):
 	if preset['preview']['enable']:
 		return '/'.join(['mods', 'net.wargaming.branding', preset['preview']['image']])
 	return None
+
+def readBrandingItem(itemCls, itemName, cache, storage):
+	from gui.branding.branding_constants import XML_FILE_PATH
+	from items.readers.c11n_readers import _readItems
+	itemsFileName = XML_FILE_PATH % itemName
+	dataSection = ResMgr.openSection(itemsFileName)
+	try:
+		_readItems(cache, itemCls, (None, 'branding_%ss.xml' % itemName), dataSection, itemName, storage)
+	finally:
+		ResMgr.purge(itemsFileName)
