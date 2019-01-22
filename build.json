@@ -1,17 +1,17 @@
 {
 	"version": 1,
 	"software": {
-		"animate": "C:\\Program Files\\Adobe\\Adobe Animate CC 2017\\Animate.exe"
+		"animate": "C:\\Program Files\\Adobe\\Adobe Animate CC 2019\\Animate.exe"
 	},
 	"game": {
-		"folder": "E:\\wot\\st8",
-		"version": "1.3.0.0"
+		"folder": "E:\\wot\\ct",
+		"version": "1.4.0.0 Common Test"
 	},
 	"info": {
 		"id": "branding",
 		"author": "net.wargaming",
 		"name": "Branded tanks",
 		"description": "Spoofing camouflage and inscriptions for teams",
-		"version": "3.5"
+		"version": "3.6"
 	}
 }
