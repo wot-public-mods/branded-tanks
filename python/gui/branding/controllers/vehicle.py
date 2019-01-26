@@ -33,10 +33,12 @@ class VehicleController(object):
 			return
 
 		# getting current vehicle outfit
-		outfit = self.hangarSpace.space.getVehicleEntity().appearance._getActiveOutfit()
+		appearance = self.hangarSpace.space.getVehicleEntity().appearance
+		if not appearance:
+			return
 		
 		# updating vehicle customization
-		self.hangarSpace.space.updateVehicleCustomization(outfit)
+		self.hangarSpace.space.updateVehicleCustomization(appearance._getActiveOutfit())
 		
 		# showing current lobby subview 
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, False))
@@ -59,6 +61,9 @@ class VehicleController(object):
 
 		# getting needed vehicle outfit
 		appearance = self.hangarSpace.space.getVehicleEntity().appearance
+		if not appearance:
+			return
+		
 		vDesc = appearance._HangarVehicleAppearance__vDesc
 		originalOutfit = appearance._getActiveOutfit()
 		outfit = g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
