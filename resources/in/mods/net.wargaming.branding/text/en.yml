@@ -1,5 +1,5 @@
-modsListApi.name: Branded tanks
-modsListApi.description: Spoofing camouflage and inscriptions for teams
+modslist.name: Branded tanks
+modslist.description: Spoofing camouflage and inscriptions for teams
 ui.operator.windowTitle: Branded tanks
 ui.operator.messageTeams: Team 1 style <b>{name1}</b><br>Team 2 style <b>{name2}</b>
 ui.player.windowTitle: Branded tanks

@@ -63,8 +63,9 @@
 			
 			var target:BrandingItemRenderer = event.itemRenderer as BrandingItemRenderer;
 			var data:Array = new Array();
+			var commandsCount:Number = commandList.dataProvider.length;
 			
-			for (var i:int = 0; i < commandList.dataProvider.length; i++) 
+			for (var i:int = 0; i < commandsCount; i++) 
 			{
 				
 				var item:BrandingPlayerSettingItemVO = commandList.dataProvider[i];

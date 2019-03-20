@@ -1,34 +1,26 @@
+import math
 
 import BigWorld
-import math
+from gui.ClientHangarSpace import hangarCFG
 from gui.branding.branding_constants import UI_TYPE
 from gui.branding.controllers import g_controllers
 from gui.branding.data import g_dataHolder
-from gui.branding.utils import getHangarVehicle
 from gui.shared import g_eventBus
 from gui.shared.events import LobbySimpleEvent
-from gui.shared.gui_items.customization.outfit import Outfit
 from helpers import dependency
 from skeletons.gui.shared.utils import IHangarSpace
-from gui.ClientHangarSpace import hangarCFG
 
 __all__ = ('VehicleController', )
 
 class VehicleController(object):
-	
+
 	hangarSpace = dependency.descriptor(IHangarSpace)
 
 	def __init__(self):
 		self.__savedCameraLocation = None
-	
-	def init(self):
-		pass
-		
-	def fini(self):
-		self.__savedCameraLocation = None
-	
+
 	def restoreVehicle(self):
-		
+
 		if not self.hangarSpace.space:
 			return
 
@@ -36,25 +28,23 @@ class VehicleController(object):
 		appearance = self.hangarSpace.space.getVehicleEntity().appearance
 		if not appearance:
 			return
-		
+
 		# updating vehicle customization
 		self.hangarSpace.space.updateVehicleCustomization(appearance._getActiveOutfit())
-		
-		# showing current lobby subview 
+
+		# showing current lobby subview
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, False))
-		
+
 		# camera locating on previos position
-		
 		if self.__savedCameraLocation:
 			manager = self.hangarSpace.space.getCameraManager()
 			if manager:
-				#manager.setPreviewMode(False)
 				del self.__savedCameraLocation['pivotDist']
 				manager.setCameraLocation(**self.__savedCameraLocation)
 				self.__savedCameraLocation = None
-	
+
 	def showPresetInHangar(self, presetID):
-		
+
 		preset = g_controllers.processor.findPresetByID(presetID)
 		if not preset:
 			return
@@ -63,46 +53,45 @@ class VehicleController(object):
 		appearance = self.hangarSpace.space.getVehicleEntity().appearance
 		if not appearance:
 			return
-		
+
 		vDesc = appearance._HangarVehicleAppearance__vDesc
 		originalOutfit = appearance._getActiveOutfit()
 		outfit = g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
-		
+
 		# updating vehicle customization
 		self.hangarSpace.space.updateVehicleCustomization(outfit)
-		
+
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, True))
-		
+
 		if self.__savedCameraLocation is None:
 			self.__savedCameraLocation = self.hangarSpace.space.getCameraLocation()
-		
+
 		manager = self.hangarSpace.space.getCameraManager()
 		if not manager:
 			return
-		
+
 		cfg = hangarCFG()
-		manager.setCameraLocation(
-			targetPos=cfg['cam_start_target_pos'], 
-			pivotPos=cfg['cam_pivot_pos'], 
-			yaw=math.radians(cfg['cam_start_angles'][0]), 
-			pitch=math.radians(cfg['cam_start_angles'][1]), 
-			dist=cfg['cam_start_dist'] - 4, 
-			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']]
+		manager.setCameraLocation( \
+			targetPos=cfg['cam_start_target_pos'], \
+			pivotPos=cfg['cam_pivot_pos'], \
+			yaw=math.radians(cfg['cam_start_angles'][0]), \
+			pitch=math.radians(cfg['cam_start_angles'][1]), \
+			dist=cfg['cam_start_dist'] - 4, \
+			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']] \
 		)
-	
-	def getVehicleOutfit(self, appereance, originalOutfit):
-		
+
+	@staticmethod
+	def getVehicleOutfit(appereance, originalOutfit):
 		vDesc = appereance._CompoundAppearance__typeDesc
 		vehicleInfo = BigWorld.player().arena.vehicles.get(appereance.id)
-		
+
 		if g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
 			if g_dataHolder.cache['onlyOnMyTank']:
 				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][0])
 				if preset is not None:
 					if appereance.id == BigWorld.player().playerVehicleID:
 						return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
-					else:
-						return originalOutfit
+					return originalOutfit
 			else:
 				isPlayerTeam = BigWorld.player().team == int(vehicleInfo['team'])
 				if isPlayerTeam:
@@ -111,11 +100,10 @@ class VehicleController(object):
 					preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][1])
 				if preset is not None:
 					return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
-		
-		if g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR:
-			if vehicleInfo['team'] in [1, 2]:
-				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][vehicleInfo['team'] - 1])
-				if preset is not None:
-					return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
-		
+
+		elif g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR and vehicleInfo['team'] in [1, 2]:
+			preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][vehicleInfo['team'] - 1])
+			if preset is not None:
+				return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
+
 		return originalOutfit

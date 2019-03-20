@@ -1,2 +1,1 @@
-
-import gui.branding
+import gui.branding #NOSONAR

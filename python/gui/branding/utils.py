@@ -1,12 +1,13 @@
-
-import ResMgr
 import types
+import ResMgr
 
 __all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle', \
 		'getIconPatch', 'readBrandingItem', )
 
-def overrider(target, holder, name):
+def override(holder, name, target=None):
 	"""using for override any staff"""
+	if target is None:
+		return lambda target: override(holder, name, target)
 	original = getattr(holder, name)
 	overrided = lambda *a, **kw: target(original, *a, **kw)
 	if not isinstance(holder, types.ModuleType) and isinstance(original, types.FunctionType):
@@ -15,24 +16,17 @@ def overrider(target, holder, name):
 		setattr(holder, name, property(overrided))
 	else:
 		setattr(holder, name, overrided)
-def decorator(function):
-	def wrapper(*args, **kwargs):
-		def decorate(handler):
-			function(handler, *args, **kwargs)
-		return decorate
-	return wrapper
-override = decorator(overrider)
 
 def byteify(data):
 	"""using for convert unicode key/value to utf-8"""
-	if isinstance(data, types.DictType): 
-		return { byteify(key): byteify(value) for key, value in data.iteritems() }
-	elif isinstance(data, types.ListType) or isinstance(data, tuple) or isinstance(data, set):
-		return [ byteify(element) for element in data ]
+	result = data
+	if isinstance(data, types.DictType):
+		result = {byteify(key): byteify(value) for key, value in data.iteritems()}
+	elif isinstance(data, (set, tuple, types.ListType)):
+		result = [byteify(element) for element in data]
 	elif isinstance(data, types.UnicodeType):
-		return data.encode('utf-8')
-	else: 
-		return data
+		result = data.encode('utf-8')
+	return result
 
 def parseLangFields(langFile):
 	"""split items by lines and key value by ':'
@@ -41,7 +35,8 @@ def parseLangFields(langFile):
 	langData = readFromVFS(langFile)
 	if langData:
 		for item in langData.splitlines():
-			if ': ' not in item: continue
+			if ': ' not in item:
+				continue
 			key, value = item.split(": ", 1)
 			result[key] = value
 	return result
@@ -58,12 +53,12 @@ def getFashionValue(current, saved, custom, index, type, isClean=False):
 	camouflages, emblems, inscriptions"""
 	if saved is not None:
 		current = saved[type]
-	if custom == -1 or isClean: 
-		return None
-	elif custom == 0: 
-		return current[index][0]
-	else: 
-		return custom
+	result = custom
+	if custom == -1 or isClean:
+		result = None
+	elif custom == 0:
+		result = current[index][0]
+	return result
 
 def getHangarVehicle():
 	from helpers import dependency
@@ -72,10 +67,10 @@ def getHangarVehicle():
 		hangarSpace = dependency.instance(IHangarSpace)
 		appereance = hangarSpace.space._ClientHangarSpace__vAppearance
 		vDesc = appereance._VehicleAppearance__vDesc
-		vState = appereance._VehicleAppearance__vState	
-	except:
+		vState = appereance._VehicleAppearance__vState
+	except: #NOSONAR
 		vDesc, vState = None, None
-	return (vDesc, vState)
+	return vDesc, vState
 
 def getIconPatch(preset):
 	if preset['preview']['enable']:

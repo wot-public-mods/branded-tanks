@@ -1,48 +1,49 @@
-<root xmlns:xmlref="http://bwt/xmlref" xmlns:ussr="ussr" xmlns:germany="germany" xmlns:usa="usa" xmlns:china="china" xmlns:france="france" xmlns:uk="uk" xmlns:japan="japan" xmlns:czech="czech" xmlns:sweden="sweden" xmlns:poland="poland" xmlns:italy="italy">
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:china="china" xmlns:czech="czech" xmlns:france="france" xmlns:germany="germany" xmlns:italy="italy" xmlns:japan="japan" xmlns:poland="poland" xmlns:sweden="sweden" xmlns:uk="uk" xmlns:usa="usa" xmlns:ussr="ussr" xmlns:xmlref="http://bwt/xmlref">
 	<itemGroup>
-		<name> branding_emblems </name>
-		<userString> branding logotypes </userString>
-		<season> ALL </season>
-		<historical> true </historical>
-		<priceGroup> legacy notInShop </priceGroup>
-		<type> EMBLEM </type>
+		<name>branding_emblems</name>
+		<userString>branding logotypes</userString>
+		<season>ALL</season>
+		<historical>true</historical>
+		<priceGroup>legacy notInShop</priceGroup>
+		<type>EMBLEM</type>
 		<vehicleFilter>
-			<include/>
+			<include />
 		</vehicleFilter>
 		<decal>
-			<id> 5200 </id>
-			<texture> mods/net.wargaming.branding/logotypes/team_blue.dds </texture>
-			<userString/>
-			<mirror> false </mirror>
+			<id>5200</id>
+			<texture>mods/net.wargaming.branding/logotypes/team_blue.dds</texture>
+			<userString />
+			<mirror>false</mirror>
 		</decal>
 		<decal>
-			<id> 5201 </id>
-			<texture> mods/net.wargaming.branding/logotypes/team_red.dds </texture>
-			<userString/>
-			<mirror> false </mirror>
+			<id>5201</id>
+			<texture>mods/net.wargaming.branding/logotypes/team_red.dds</texture>
+			<userString />
+			<mirror>false</mirror>
 		</decal>
 	</itemGroup>
 	<itemGroup>
-		<name> branding_inscriptions </name>
-		<userString> branding advert </userString>
-		<season> ALL </season>
-		<historical> true </historical>
-		<priceGroup> legacy notInShop </priceGroup>
-		<type> INSCRIPTION </type>
+		<name>branding_inscriptions</name>
+		<userString>branding advert</userString>
+		<season>ALL</season>
+		<historical>true</historical>
+		<priceGroup>legacy notInShop</priceGroup>
+		<type>INSCRIPTION</type>
 		<vehicleFilter>
-			<include/>
+			<include />
 		</vehicleFilter>
 		<decal>
-			<id> 5300 </id>
-			<texture> mods/net.wargaming.branding/adverts/team_blue.dds </texture>
-			<userString/>
-			<mirror> false </mirror>
+			<id>5300</id>
+			<texture>mods/net.wargaming.branding/adverts/team_blue.dds</texture>
+			<userString />
+			<mirror>false</mirror>
 		</decal>
 		<decal>
-			<id> 5301 </id>
-			<texture> mods/net.wargaming.branding/adverts/team_red.dds </texture>
-			<userString/>
-			<mirror> false </mirror>
+			<id>5301</id>
+			<texture>mods/net.wargaming.branding/adverts/team_red.dds</texture>
+			<userString />
+			<mirror>false</mirror>
 		</decal>
 	</itemGroup>
 </root>

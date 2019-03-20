@@ -1,4 +1,3 @@
-
 import Event
 
 __all__ = ('g_eventsManager', )
@@ -6,9 +5,7 @@ __all__ = ('g_eventsManager', )
 class EventsManager(object):
 
 	def __init__(self):
-		
 		self.showUI = Event.Event()
-		
 		self.onAppFinish = Event.Event()
-		
+
 g_eventsManager = EventsManager()

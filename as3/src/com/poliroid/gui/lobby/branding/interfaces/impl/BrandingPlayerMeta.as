@@ -43,14 +43,14 @@
 		protected function setLocalization(data:BrandingPlayerLocalizationVO) : void
 		{
 			var message:String = "as_setLocalization" + Errors.ABSTRACT_INVOKE;
-			DebugUtils.LOG_ERROR(message);
+			DebugUtils.LOG_ERROR(message, data);
 			throw new AbstractException(message);
 		}
 		
 		protected function setSettings(data:BrandingPlayerSettingsVO) : void
 		{
 			var message:String = "as_setSettings" + Errors.ABSTRACT_INVOKE;
-			DebugUtils.LOG_ERROR(message);
+			DebugUtils.LOG_ERROR(message, data);
 			throw new AbstractException(message);
 		}
 	}

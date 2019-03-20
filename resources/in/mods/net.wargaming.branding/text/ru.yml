@@ -1,5 +1,5 @@
-modsListApi.name: Брендированные танки
-modsListApi.description: Подмена камуфляжей и надписей для комманд
+modslist.name: Брендированные танки
+modslist.description: Подмена камуфляжей и надписей для комманд
 ui.operator.windowTitle: Брендированные танки
 ui.operator.messageTeams: Стиль первой команды <b>{name1}</b><br>Стиль второй команды <b>{name2}</b>
 ui.player.windowTitle: Брендированные танки
