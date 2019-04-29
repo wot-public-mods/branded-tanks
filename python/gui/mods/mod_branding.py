@@ -1,1 +1,2 @@
-import gui.branding #NOSONAR
+
+from gui.branding import *

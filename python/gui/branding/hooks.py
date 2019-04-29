@@ -1,5 +1,4 @@
 from debug_utils import LOG_ERROR
-from gui.app_loader.loader import _AppLoader
 from gui.branding.events import g_eventsManager
 from gui.branding.lang import l10n
 from gui.branding.utils import override, readBrandingItem
@@ -15,11 +14,6 @@ def applyVehicleOutfit(baseMethod, baseInstance):
 	baseOutfit = baseInstance._CompoundAppearance__outfit
 	baseInstance._CompoundAppearance__outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseOutfit)
 	return baseMethod(baseInstance)
-
-@override(_AppLoader, 'fini')
-def hooked_fini(baseMethod, baseObject):
-	g_eventsManager.onAppFinish()
-	baseMethod(baseObject)
 
 # modsListApi
 g_modsListApi = None
