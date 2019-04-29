@@ -1,7 +1,7 @@
 import types
 import ResMgr
 
-__all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle', \
+__all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle',
 		'getIconPatch', 'readBrandingItem', )
 
 def override(holder, name, target=None):

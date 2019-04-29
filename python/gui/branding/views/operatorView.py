@@ -2,8 +2,7 @@
 from gui.branding.controllers import g_controllers
 from gui.branding.data import g_dataHolder
 from gui.branding.lang import l10n
-from gui.Scaleform.framework.entities.abstract.AbstractWindowView import \
-	AbstractWindowView
+from gui.Scaleform.framework.entities.abstract.AbstractWindowView import AbstractWindowView
 
 __all__ = ('BrandingOperatorView', )
 
@@ -42,10 +41,10 @@ class BrandingOperatorView(BrandingOperatorViewMeta):
 			return False
 
 	def onSettings(self, teamFirst, teamSecond, onlyOnMyTank):
-		g_controllers.processor.appendSettings({ \
-			'teamFirst': teamFirst, \
-			'teamSecond': teamSecond, \
-			'onlyOnMyTank': onlyOnMyTank \
+		g_controllers.processor.appendSettings({
+			'teamFirst': teamFirst,
+			'teamSecond': teamSecond,
+			'onlyOnMyTank': onlyOnMyTank
 		})
 		g_controllers.vehicle.restoreVehicle()
 
@@ -54,8 +53,8 @@ class BrandingOperatorView(BrandingOperatorViewMeta):
 
 	def __generateLocalizationCtx(self):
 		"""result represented by BrandingOperatorLocalizationVO"""
-		return { \
-			'windowTitle': l10n('ui.operator.windowTitle') \
+		return {
+			'windowTitle': l10n('ui.operator.windowTitle')
 		}
 
 	def __generateOperatorCtx(self):
@@ -69,15 +68,15 @@ class BrandingOperatorView(BrandingOperatorViewMeta):
 				teamFirstIdx = idx
 			if preset['id'] == teamSecond:
 				teamSecondIdx = idx
-		return { \
-			'presets': presets, \
-			'teamFirst': teamFirstIdx, \
-			'teamSecond': teamSecondIdx \
+		return {
+			'presets': presets,
+			'teamFirst': teamFirstIdx,
+			'teamSecond': teamSecondIdx
 		}
 
 	def __generatePresetSettingsVO(self, preset):
 		name = preset['name']
-		return { \
-			'id': preset['id'], \
-			'label': name \
+		return {
+			'id': preset['id'],
+			'label': name
 		}

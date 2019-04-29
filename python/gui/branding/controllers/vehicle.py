@@ -71,13 +71,13 @@ class VehicleController(object):
 			return
 
 		cfg = hangarCFG()
-		manager.setCameraLocation( \
-			targetPos=cfg['cam_start_target_pos'], \
-			pivotPos=cfg['cam_pivot_pos'], \
-			yaw=math.radians(cfg['cam_start_angles'][0]), \
-			pitch=math.radians(cfg['cam_start_angles'][1]), \
-			dist=cfg['cam_start_dist'] - 4, \
-			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']] \
+		manager.setCameraLocation(
+			targetPos=cfg['cam_start_target_pos'],
+			pivotPos=cfg['cam_pivot_pos'],
+			yaw=math.radians(cfg['cam_start_angles'][0]),
+			pitch=math.radians(cfg['cam_start_angles'][1]),
+			dist=cfg['cam_start_dist'] - 4,
+			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']]
 		)
 
 	@staticmethod

@@ -9,9 +9,9 @@ from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 
 def getViewSettings():
 	viewSettings = []
-	viewSettings.append(ViewSettings(BRANDING_OPERATOR_WINDOW_UI, BrandingOperatorView, 'brandingOperator.swf', \
+	viewSettings.append(ViewSettings(BRANDING_OPERATOR_WINDOW_UI, BrandingOperatorView, 'brandingOperator.swf',
 			ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
-	viewSettings.append(ViewSettings(BRANDING_PLAYER_WINDOW_UI, BrandingPlayerView, 'brandingPlayer.swf', \
+	viewSettings.append(ViewSettings(BRANDING_PLAYER_WINDOW_UI, BrandingPlayerView, 'brandingPlayer.swf',
 			ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 	return viewSettings
 

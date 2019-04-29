@@ -28,12 +28,12 @@ class DataHolder(object):
 				self.__config['presets'][idx]['name'] = l10n(preset['name'].replace('l10n:', ''))
 
 		# stored in appdata
-		self.__cacheFilePatch = os.path.join(os.path.dirname(unicode(BigWorld.wg_getPreferencesFilePath(), \
+		self.__cacheFilePatch = os.path.join(os.path.dirname(unicode(BigWorld.wg_getPreferencesFilePath(),
 																	'utf-8', errors='ignore')), 'branding.json')
 
-		self.__cache = { \
-			'currentSetup': [0, 1], \
-			'onlyOnMyTank': False \
+		self.__cache = {
+			'currentSetup': [0, 1],
+			'onlyOnMyTank': False
 		}
 
 		self.__loadCache()

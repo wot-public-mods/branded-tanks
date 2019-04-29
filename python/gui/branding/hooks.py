@@ -28,8 +28,8 @@ try:
 except ImportError:
 	LOG_ERROR('modsListApi not installed')
 if g_modsListApi:
-	g_modsListApi.addModification(id='branding', name=l10n('modslist.name'), enabled=True, \
-		description=l10n('modslist.description'), icon='gui/maps/icons/brandingIcon.png', \
+	g_modsListApi.addModification(id='branding', name=l10n('modslist.name'), enabled=True,
+		description=l10n('modslist.description'), icon='gui/maps/icons/brandingIcon.png',
 		login=True, lobby=True, callback=g_eventsManager.showUI)
 
 # new customization inject

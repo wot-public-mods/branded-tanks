@@ -41,21 +41,21 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 			return False
 
 	def onSettings(self, teamFirst, teamSecond, onlyOnMyTank):
-		g_controllers.processor.appendSettings({ \
-			'teamFirst': teamFirst, \
-			'teamSecond': teamSecond, \
-			'onlyOnMyTank': onlyOnMyTank \
+		g_controllers.processor.appendSettings({
+			'teamFirst': teamFirst,
+			'teamSecond': teamSecond,
+			'onlyOnMyTank': onlyOnMyTank
 		})
 		self.onWindowClose()
 
 	def __generateLocalizationCtx(self):
 		"""result represented by BrandingPlayerLocalizationVO"""
-		return { \
-			'windowTitle': l10n('ui.operator.windowTitle'), \
-			'headerTextAlly': l10n('ui.player.headerTextAlly'), \
-			'headerTextEnemy': l10n('ui.player.headerTextEnemy'), \
-			'onlyMyTankLabel': l10n('ui.player.onlyMyTank.label'), \
-			'onlyMyTankToolTip': l10n('ui.player.onlyMyTank.toolTip') \
+		return {
+			'windowTitle': l10n('ui.operator.windowTitle'),
+			'headerTextAlly': l10n('ui.player.headerTextAlly'),
+			'headerTextEnemy': l10n('ui.player.headerTextEnemy'),
+			'onlyMyTankLabel': l10n('ui.player.onlyMyTank.label'),
+			'onlyMyTankToolTip': l10n('ui.player.onlyMyTank.toolTip')
 		}
 
 	def __generatePlayerCtx(self):
@@ -64,17 +64,17 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 		for idx, preset in enumerate(g_dataHolder.config['presets']):
 			presets.append(self.__generatePresetSettingsVO(idx, preset))
 		onlyOnMyTank = g_dataHolder.cache['onlyOnMyTank']
-		return { \
-			'presets': presets, \
-			'onlyOnMyTank': onlyOnMyTank \
+		return {
+			'presets': presets,
+			'onlyOnMyTank': onlyOnMyTank
 		}
 
 	def __generatePresetSettingsVO(self, idx, preset):
 		name = preset['name']
 		icon = getIconPatch(preset)
-		return { \
-			'id': idx, \
-			'presetID': preset['id'], \
-			'name': name, \
-			'icon': icon \
+		return {
+			'id': idx,
+			'presetID': preset['id'],
+			'name': name,
+			'icon': icon
 		}
