@@ -7,8 +7,6 @@ __maintainer__ = "Andruschyshyn Andrey"
 __email__ = "prn.a_andruschyshyn@wargaming.net"
 __status__ = "Production"
 
-__all__ = ()
-
 from gui.branding.data import *
 from gui.branding.hooks import *
 from gui.branding.controllers import g_controllers
