@@ -4,7 +4,7 @@
 		<userString />
 		<season>ALL</season>
 		<historical>true</historical>
-		<priceGroup>legacy notInShop</priceGroup>
+		<priceGroup>camouflages 50g notInShop</priceGroup>
 		<vehicleFilter>
 			<include />
 		</vehicleFilter>
