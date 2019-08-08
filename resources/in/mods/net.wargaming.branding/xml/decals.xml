@@ -5,7 +5,7 @@
 		<userString>branding logotypes</userString>
 		<season>ALL</season>
 		<historical>true</historical>
-		<priceGroup>legacy notInShop</priceGroup>
+		<priceGroup>emblems 50g notInShop</priceGroup>
 		<type>EMBLEM</type>
 		<vehicleFilter>
 			<include />
@@ -28,7 +28,7 @@
 		<userString>branding advert</userString>
 		<season>ALL</season>
 		<historical>true</historical>
-		<priceGroup>legacy notInShop</priceGroup>
+		<priceGroup>emblems 50g notInShop</priceGroup>
 		<type>INSCRIPTION</type>
 		<vehicleFilter>
 			<include />

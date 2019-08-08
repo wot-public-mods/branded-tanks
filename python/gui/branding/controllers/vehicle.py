@@ -82,7 +82,7 @@ class VehicleController(object):
 
 	@staticmethod
 	def getVehicleOutfit(appereance, originalOutfit):
-		vDesc = appereance._CompoundAppearance__typeDesc
+		vDesc = appereance.typeDescriptor
 		vehicleInfo = BigWorld.player().arena.vehicles.get(appereance.id)
 
 		if g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
