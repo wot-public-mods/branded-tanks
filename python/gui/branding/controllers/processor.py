@@ -1,5 +1,5 @@
 from gui import SystemMessages
-from gui.branding.branding_constants import UI_TYPE
+from gui.branding._constants import UI_TYPE
 from gui.branding.data import g_dataHolder
 from gui.branding.lang import l10n
 from gui.shared.gui_items.customization.outfit import Outfit
