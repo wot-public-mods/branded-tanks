@@ -81,11 +81,11 @@ def getHangarVehicle():
 
 def getIconPatch(preset):
 	if preset['preview']['enable']:
-		return '/'.join(['mods', 'net.wargaming.branding', preset['preview']['image']])
+		return 'mods/net.wargaming.branding/%s' % preset['preview']['image']
 	return None
 
 def readBrandingItem(itemCls, itemName, cache, storage):
-	from gui.branding.branding_constants import XML_FILE_PATH
+	from gui.branding._constants import XML_FILE_PATH
 	from items.readers.c11n_readers import _readItems
 	itemsFileName = XML_FILE_PATH % itemName
 	dataSection = ResMgr.openSection(itemsFileName)

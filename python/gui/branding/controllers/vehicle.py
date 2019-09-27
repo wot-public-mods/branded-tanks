@@ -2,7 +2,7 @@ import math
 
 import BigWorld
 from gui.ClientHangarSpace import hangarCFG
-from gui.branding.branding_constants import UI_TYPE
+from gui.branding._constants import UI_TYPE
 from gui.branding.controllers import g_controllers
 from gui.branding.data import g_dataHolder
 from gui.shared import g_eventBus
