@@ -81,7 +81,7 @@ def getHangarVehicle():
 
 def getIconPatch(preset):
 	if preset['preview']['enable']:
-		return '/'.join(['mods', 'net.wargaming.branding', preset['preview']['image']])
+		return 'mods/net.wargaming.branding/%s' % preset['preview']['image']
 	return None
 
 def readBrandingItem(itemCls, itemName, cache, storage):
