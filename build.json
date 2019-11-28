@@ -7,13 +7,13 @@
 	},
 	"game": {
 		"folder": "E:\\wot\\ct",
-		"version": "1.6.1.0"
+		"version": "1.7.0.0"
 	},
 	"info": {
 		"id": "branding",
 		"author": "net.wargaming",
 		"name": "Branded tanks",
 		"description": "Spoofing camouflage and inscriptions for teams",
-		"version": "3.8.1"
+		"version": "3.8.2"
 	}
 }
