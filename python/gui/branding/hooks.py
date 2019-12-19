@@ -8,15 +8,11 @@ from vehicle_systems.CompoundAppearance import CompoundAppearance
 
 __all__ = ()
 
-@override(CompoundAppearance, '_CompoundAppearance__applyVehicleOutfit')
-def applyVehicleOutfit(baseMethod, baseInstance):
+@override(CompoundAppearance, '_prepareOutfit')
+def applyVehicleOutfit(baseMethod, baseInstance, outfitCD):
 	from gui.branding.controllers import g_controllers
-	customOutfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
-	baseInstance.outfit.clear()
-	for areaID in customOutfit._containers.iterkeys():
-		container = customOutfit.getContainer(areaID)
-		baseInstance.outfit.setContainer(areaID, container)
-	return baseMethod(baseInstance)
+	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
+	return outfit
 
 # modsListApi
 g_modsListApi = None
