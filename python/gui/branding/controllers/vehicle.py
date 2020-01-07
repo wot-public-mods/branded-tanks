@@ -83,8 +83,7 @@ class VehicleController(object):
 	@staticmethod
 	def getVehicleOutfit(appereance, originalOutfit):
 		vDesc = appereance.typeDescriptor
-		vehicleInfo = BigWorld.player().arena.vehicles.get(appereance.id)
-
+		vehicleTeam = BigWorld.player().arena.vehicles.get(appereance.id, {}).get('team', 1)
 		if g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
 			if g_dataHolder.cache['onlyOnMyTank']:
 				preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][0])
@@ -93,7 +92,7 @@ class VehicleController(object):
 						return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 					return originalOutfit
 			else:
-				isPlayerTeam = BigWorld.player().team == int(vehicleInfo['team'])
+				isPlayerTeam = BigWorld.player().team == vehicleTeam
 				if isPlayerTeam:
 					preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][0])
 				else:
@@ -101,8 +100,8 @@ class VehicleController(object):
 				if preset is not None:
 					return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 
-		elif g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR and vehicleInfo['team'] in [1, 2]:
-			preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][vehicleInfo['team'] - 1])
+		elif g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR and vehicleTeam in [1, 2]:
+			preset = g_controllers.processor.findPresetByID(g_dataHolder.cache['currentSetup'][vehicleTeam - 1])
 			if preset is not None:
 				return g_controllers.processor.getOutfit(originalOutfit, preset, vDesc)
 
