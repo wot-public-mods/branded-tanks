@@ -12,7 +12,7 @@ __all__ = ()
 def applyVehicleOutfit(baseMethod, baseInstance, outfitCD):
 	from gui.branding.controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
-	return outfit
+	return outfit or baseMethod(baseInstance, outfitCD)
 
 # modsListApi
 g_modsListApi = None

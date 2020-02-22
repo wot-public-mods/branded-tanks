@@ -1,10 +1,10 @@
 __author__ = "Andruschyshyn Andrey"
-__copyright__ = "Copyright 2019, Wargaming"
+__copyright__ = "Copyright 2020, poliroid"
 __credits__ = ["Andruschyshyn Andrey"]
 __license__ = "CC BY-NC-SA 4.0"
-__version__ = "3.8.2"
+__version__ = "3.8.5"
 __maintainer__ = "Andruschyshyn Andrey"
-__email__ = "prn.a_andruschyshyn@wargaming.net"
+__email__ = "p0lir0id@yandex.ru"
 __status__ = "Production"
 
 from gui.branding.data import *

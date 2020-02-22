@@ -5,7 +5,7 @@
 
 Code license: CC BY-NC-SA 4.0
 
-P0LIR0ID 2016-2019
+P0LIR0ID 2016-2020
 
 ### Example of UI for player
 ![Example of UI for player](https://static.poliroid.ru/branding_ui_player.jpg)
