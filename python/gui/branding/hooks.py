@@ -3,7 +3,7 @@ from gui.branding.events import g_eventsManager
 from gui.branding.lang import l10n
 from gui.branding.utils import override, readBrandingItem
 from items.vehicles import g_cache
-from items.components.c11n_components import CamouflageItem, DecalItem
+from items.components.c11n_components import CamouflageItem, DecalItem, PaintItem
 from vehicle_systems.CompoundAppearance import CompoundAppearance
 
 __all__ = ()
@@ -29,3 +29,4 @@ if g_modsListApi:
 cache = g_cache.customization20()
 readBrandingItem(CamouflageItem, 'camouflage', cache, cache.camouflages)
 readBrandingItem(DecalItem, 'decal', cache, cache.decals)
+readBrandingItem(PaintItem, 'paint', cache, cache.paints)
