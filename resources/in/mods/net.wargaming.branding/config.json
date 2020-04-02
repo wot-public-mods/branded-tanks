@@ -6,6 +6,7 @@
 			"camouflage": 5100,
 			"logotype": 5200,
 			"advert": [5300, 5300],
+			"paint": 5400,
 			"preview": {
 				"enable": true,
 				"image": "preview/team_blue.png"
@@ -17,6 +18,7 @@
 			"camouflage": 5101,
 			"logotype": 5201,
 			"advert": [5301, 5301],
+			"paint": 5401,
 			"preview": {
 				"enable": true,
 				"image": "preview/team_red.png"

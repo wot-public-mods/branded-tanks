@@ -20,7 +20,7 @@ class ProcessorController(object):
 	@staticmethod
 	def getOutfit(originalOutfit, preset, vDesc):
 
-		camouflages, decals = [], []
+		camouflages, decals, paints = [], [], []
 		hullSlotsNum, turretSlotsNum = 0, 0
 
 		for emblemSlot in vDesc.hull.emblemSlots:
@@ -30,6 +30,7 @@ class ProcessorController(object):
 			if emblemSlot.type == 'inscription':
 				turretSlotsNum += 1
 
+		paintID = preset.get('paint', None)
 		cammoCompID = preset['camouflage']
 		logoCompID = preset['logotype']
 		advertCompID1, advertCompID2 = preset['advert']
@@ -80,7 +81,12 @@ class ProcessorController(object):
 				decals.append(DecalComponent(id=advertCompID2, appliedTo=ApplyArea.HULL_2))
 				decals.append(DecalComponent(id=advertCompID2, appliedTo=ApplyArea.HULL_3))
 
-		customizationOutfit = CustomizationOutfit(camouflages=camouflages, decals=decals)
+		if paintID:
+			paints.append(DecalComponent(id=paintID, appliedTo=ApplyArea.CHASSIS))
+			paints.append(DecalComponent(id=paintID, appliedTo=ApplyArea.GUN))
+			paints.append(DecalComponent(id=paintID, appliedTo=ApplyArea.GUN_2))
+
+		customizationOutfit = CustomizationOutfit(camouflages=camouflages, decals=decals, paints=paints)
 		return Outfit(customizationOutfit.makeCompDescr())
 
 	def appendSettings(self, ctx):

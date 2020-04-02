@@ -3,16 +3,25 @@ from gui.branding.events import g_eventsManager
 from gui.branding.lang import l10n
 from gui.branding.utils import override, readBrandingItem
 from items.vehicles import g_cache
-from items.components.c11n_components import CamouflageItem, DecalItem
+from items.components.c11n_components import CamouflageItem, DecalItem, PaintItem
 from vehicle_systems.CompoundAppearance import CompoundAppearance
 
 __all__ = ()
 
+# change vehicle outfit (may dont work if arena data not ready)
 @override(CompoundAppearance, '_prepareOutfit')
-def applyVehicleOutfit(baseMethod, baseInstance, outfitCD):
+def _prepareOutfit(baseMethod, baseInstance, outfitCD):
 	from gui.branding.controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
 	return outfit or baseMethod(baseInstance, outfitCD)
+
+# this need for fix vehicles that dont changed during arena not ready
+@override(CompoundAppearance, '_CompoundAppearance__applyVehicleOutfit')
+def _applyVehicleOutfit(baseMethod, baseInstance):
+	from gui.branding.controllers import g_controllers
+	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
+	baseInstance._CommonTankAppearance__outfit = outfit or baseInstance.outfit
+	return baseMethod(baseInstance)
 
 # modsListApi
 g_modsListApi = None
@@ -29,3 +38,4 @@ if g_modsListApi:
 cache = g_cache.customization20()
 readBrandingItem(CamouflageItem, 'camouflage', cache, cache.camouflages)
 readBrandingItem(DecalItem, 'decal', cache, cache.decals)
+readBrandingItem(PaintItem, 'paint', cache, cache.paints)
