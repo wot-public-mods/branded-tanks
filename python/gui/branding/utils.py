@@ -90,6 +90,6 @@ def readBrandingItem(itemCls, itemName, cache, storage):
 	itemsFileName = XML_FILE_PATH % itemName
 	dataSection = ResMgr.openSection(itemsFileName)
 	try:
-		_readItems(cache, itemCls, (None, 'branding_%ss.xml' % itemName), dataSection, itemName, storage)
+		_readItems(cache, itemCls, (None, 'branding_%ss.xml' % itemName), dataSection, itemName, storage, {})
 	finally:
 		ResMgr.purge(itemsFileName)

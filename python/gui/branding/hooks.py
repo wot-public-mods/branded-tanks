@@ -5,6 +5,7 @@ from gui.branding.utils import override, readBrandingItem
 from items.vehicles import g_cache
 from items.components.c11n_components import CamouflageItem, DecalItem, PaintItem
 from vehicle_systems.CompoundAppearance import CompoundAppearance
+from VehicleStickers import VehicleStickers
 
 __all__ = ()
 
@@ -22,6 +23,12 @@ def _applyVehicleOutfit(baseMethod, baseInstance):
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
 	baseInstance._CommonTankAppearance__outfit = outfit or baseInstance.outfit
 	return baseMethod(baseInstance)
+
+# fix decals transperent problem
+@override(VehicleStickers, '__init__')
+def _createAndAttachStickers(baseMethod, baseInstance, vehicleDesc, insigniaRank=0, outfit=None):
+	baseMethod(baseInstance, vehicleDesc, insigniaRank, outfit)
+	baseInstance._VehicleStickers__defaultAlpha = 1.0
 
 # modsListApi
 g_modsListApi = None
