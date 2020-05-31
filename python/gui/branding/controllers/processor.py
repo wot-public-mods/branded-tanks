@@ -2,7 +2,7 @@ from gui import SystemMessages
 from gui.branding._constants import UI_TYPE
 from gui.branding.data import g_dataHolder
 from gui.branding.lang import l10n
-from gui.shared.gui_items.customization.outfit import Outfit
+from vehicle_outfit.outfit import Outfit
 from items.components.c11n_constants import ApplyArea
 from items.customizations import CustomizationOutfit, CamouflageComponent, DecalComponent
 
