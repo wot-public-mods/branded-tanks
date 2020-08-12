@@ -1,6 +1,8 @@
 import types
 import ResMgr
 
+from helpers import dependency
+from skeletons.gui.shared.utils import IHangarSpace
 __all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle',
 		'getIconPatch', 'readBrandingItem', )
 
@@ -67,11 +69,9 @@ def getFashionValue(current, saved, custom, index, type, isClean=False):
 		result = current[index][0]
 	return result
 
-def getHangarVehicle():
-	from helpers import dependency
-	from skeletons.gui.shared.utils import IHangarSpace
+@dependency.replace_none_kwargs(hangarSpace=IHangarSpace)
+def getHangarVehicle(hangarSpace=None):
 	try:
-		hangarSpace = dependency.instance(IHangarSpace)
 		appereance = hangarSpace.space._ClientHangarSpace__vAppearance
 		vDesc = appereance._VehicleAppearance__vDesc
 		vState = appereance._VehicleAppearance__vState
