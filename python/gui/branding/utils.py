@@ -1,10 +1,13 @@
 import types
 import ResMgr
 
+from constants import ARENA_GUI_TYPE
 from helpers import dependency
 from skeletons.gui.shared.utils import IHangarSpace
+from skeletons.gui.battle_session import IBattleSessionProvider
+
 __all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle',
-		'getIconPatch', 'readBrandingItem', )
+		'getIconPatch', 'readBrandingItem', 'battleGuiType', )
 
 def override(holder, name, wrapper=None, setter=None):
 	"""Override methods, properties, functions, attributes
@@ -93,3 +96,10 @@ def readBrandingItem(itemCls, itemName, cache, storage):
 		_readItems(cache, itemCls, (None, 'branding_%ss.xml' % itemName), dataSection, itemName, storage, {})
 	finally:
 		ResMgr.purge(itemsFileName)
+
+@dependency.replace_none_kwargs(sessionProvider=IBattleSessionProvider)
+def battleGuiType(sessionProvider=None):
+	guiType = ARENA_GUI_TYPE.RANDOM
+	if sessionProvider:
+		guiType = sessionProvider.arenaVisitor.getArenaGuiType()
+	return guiType
