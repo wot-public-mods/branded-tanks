@@ -3,16 +3,17 @@ from gui.branding._constants import BRANDING_OPERATOR_WINDOW_UI, BRANDING_PLAYER
 from gui.branding.events import g_eventsManager
 from gui.branding.views.operatorView import BrandingOperatorView
 from gui.branding.views.playerView import BrandingPlayerView
-from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ViewTypes, ScopeTemplates
+from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ScopeTemplates
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.shared.personality import ServicesLocator
+from frameworks.wulf import WindowLayer
 
 def getViewSettings():
 	viewSettings = []
 	viewSettings.append(ViewSettings(BRANDING_OPERATOR_WINDOW_UI, BrandingOperatorView, 'brandingOperator.swf',
-			ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
+			WindowLayer.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 	viewSettings.append(ViewSettings(BRANDING_PLAYER_WINDOW_UI, BrandingPlayerView, 'brandingPlayer.swf',
-			ViewTypes.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
+			WindowLayer.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 	return viewSettings
 
 for settings in getViewSettings():
