@@ -7,13 +7,13 @@
 	},
 	"game": {
 		"folder": "E:\\wot\\ct",
-		"version": "1.10.1.0"
+		"version": "1.11.1.0"
 	},
 	"info": {
 		"id": "branding",
 		"author": "poliroid",
 		"name": "Branded tanks",
 		"description": "Spoofing camouflage and inscriptions for teams",
-		"version": "4.1.1"
+		"version": "4.1.2"
 	}
 }
