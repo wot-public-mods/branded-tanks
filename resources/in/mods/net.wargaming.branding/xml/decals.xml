@@ -12,12 +12,14 @@
 		</vehicleFilter>
 		<decal>
 			<id>5200</id>
+			<tags> hiddenInUI </tags>
 			<texture>mods/net.wargaming.branding/logotypes/team_blue.dds</texture>
 			<userString />
 			<mirror>false</mirror>
 		</decal>
 		<decal>
 			<id>5201</id>
+			<tags> hiddenInUI </tags>
 			<texture>mods/net.wargaming.branding/logotypes/team_red.dds</texture>
 			<userString />
 			<mirror>false</mirror>
@@ -35,12 +37,14 @@
 		</vehicleFilter>
 		<decal>
 			<id>5300</id>
+			<tags> hiddenInUI </tags>
 			<texture>mods/net.wargaming.branding/adverts/team_blue.dds</texture>
 			<userString />
 			<mirror>false</mirror>
 		</decal>
 		<decal>
 			<id>5301</id>
+			<tags> hiddenInUI </tags>
 			<texture>mods/net.wargaming.branding/adverts/team_red.dds</texture>
 			<userString />
 			<mirror>false</mirror>
