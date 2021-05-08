@@ -3,9 +3,8 @@
 
 **Branded Tank Styles** This is a modification for the game "World Of Tanks" that give gui and functional to fast changes of tank Camouflage/Logo/Advert in hangar unto two teams.
 
-Code license: CC BY-NC-SA 4.0
-
-P0LIR0ID 2016-2020
+SPDX-License-Identifier: LGPL-3.0-or-later  
+Copyright(c) 2021 Andrey Andruschyshyn. All rights reserved.  
 
 ### Example of UI for player
 ![Example of UI for player](https://static.poliroid.ru/branding_ui_player.jpg)
