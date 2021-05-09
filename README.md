@@ -1,5 +1,7 @@
 ﻿
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=P0LIR0ID_wot-brandedtanks&metric=alert_status)](https://sonarcloud.io/dashboard?id=P0LIR0ID_wot-brandedtanks)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wot-public-mods_branded-tanks&metric=alert_status)](https://sonarcloud.io/dashboard?id=wot-public-mods_branded-tanks) 
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=wot-public-mods_branded-tanks&metric=ncloc)](https://sonarcloud.io/dashboard?id=wot-public-mods_branded-tanks)
+
 
 **Branded Tank Styles** This is a modification for the game "World Of Tanks" that give gui and functional to fast changes of tank Camouflage/Logo/Advert in hangar unto two teams.
 
