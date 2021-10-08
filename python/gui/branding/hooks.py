@@ -1,8 +1,7 @@
 from debug_utils import LOG_ERROR
-from constants import ARENA_GUI_TYPE
 from gui.branding.events import g_eventsManager
 from gui.branding.lang import l10n
-from gui.branding.utils import override, readBrandingItem, battleGuiType
+from gui.branding.utils import override, readBrandingItem, isBattleRestricted
 from items.vehicles import g_cache
 from items.components.c11n_components import CamouflageItem, DecalItem, PaintItem
 from vehicle_systems.CompoundAppearance import CompoundAppearance
@@ -13,7 +12,7 @@ __all__ = ()
 # change vehicle outfit (may dont work if arena data not ready)
 @override(CompoundAppearance, '_prepareOutfit')
 def _prepareOutfit(baseMethod, baseInstance, outfitCD):
-	if battleGuiType() == ARENA_GUI_TYPE.BATTLE_ROYALE:
+	if isBattleRestricted():
 		return baseMethod(baseInstance, outfitCD)
 	from gui.branding.controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
@@ -22,7 +21,7 @@ def _prepareOutfit(baseMethod, baseInstance, outfitCD):
 # this need for fix vehicles that dont changed during arena not ready
 @override(CompoundAppearance, '_CompoundAppearance__applyVehicleOutfit')
 def _applyVehicleOutfit(baseMethod, baseInstance):
-	if battleGuiType() == ARENA_GUI_TYPE.BATTLE_ROYALE:
+	if isBattleRestricted():
 		return baseMethod(baseInstance)
 	from gui.branding.controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
@@ -31,9 +30,9 @@ def _applyVehicleOutfit(baseMethod, baseInstance):
 
 # fix decals transperent problem
 @override(VehicleStickers, '__init__')
-def _createAndAttachStickers(baseMethod, baseInstance, vehicleDesc, insigniaRank=0, outfit=None):
-	baseMethod(baseInstance, vehicleDesc, insigniaRank, outfit)
-	if battleGuiType() == ARENA_GUI_TYPE.BATTLE_ROYALE:
+def _createAndAttachStickers(baseMethod, baseInstance, *a, **kw):
+	baseMethod(baseInstance, *a, **kw)
+	if isBattleRestricted():
 		return
 	baseInstance._VehicleStickers__defaultAlpha = 1.0
 
