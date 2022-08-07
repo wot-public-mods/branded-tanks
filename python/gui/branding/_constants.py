@@ -14,3 +14,9 @@ BRANDING_PLAYER_WINDOW_UI = 'brandingPlayer'
 class UI_TYPE:
 	OPERATOR = 1
 	PLAYER = 2
+
+import BigWorld
+import os
+from external_strings_utils import unicode_from_utf8
+prefsFilePath = unicode_from_utf8(BigWorld.wg_getPreferencesFilePath())[1]
+SETTINGS_FILE = os.path.normpath(os.path.join(os.path.dirname(prefsFilePath), 'mods', 'branding.json'))
