@@ -10,7 +10,7 @@
 		"version": "wot_version"
 	},
 	"info": {
-		"id": "replaysmanager",
+		"id": "branding",
 		"author": "poliroid",
 		"name": "Branded tanks",
 		"description": "Spoofing camouflage and inscriptions for teams",
