@@ -45,8 +45,7 @@ class DataHolder(object):
 				self.__cache = byteify(json.loads(fh.read()))
 
 	def __saveCache(self):
-		if os.path.isfile(SETTINGS_FILE):
-			with open(SETTINGS_FILE, 'wb') as fh:
-				fh.write(json.dumps(self.__cache))
+		with open(SETTINGS_FILE, 'wb') as fh:
+			fh.write(json.dumps(self.__cache))
 
 g_dataHolder = DataHolder()
