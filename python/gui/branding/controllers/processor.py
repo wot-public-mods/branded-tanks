@@ -30,7 +30,7 @@ class ProcessorController(object):
 			if emblemSlot.type == 'inscription':
 				turretSlotsNum += 1
 
-		paintID = preset.get('paint', None)
+		paintID = preset.get('paint', 0)
 		cammoCompID = preset['camouflage']
 		logoCompID = preset['logotype']
 		advertCompID1, advertCompID2 = preset['advert']
@@ -81,7 +81,7 @@ class ProcessorController(object):
 				decals.append(DecalComponent(id=advertCompID2, appliedTo=ApplyArea.HULL_2))
 				decals.append(DecalComponent(id=advertCompID2, appliedTo=ApplyArea.HULL_3))
 
-		if paintID:
+		if paintID > 0:
 			paints.append(DecalComponent(id=paintID, appliedTo=ApplyArea.CHASSIS))
 			paints.append(DecalComponent(id=paintID, appliedTo=ApplyArea.GUN))
 			paints.append(DecalComponent(id=paintID, appliedTo=ApplyArea.GUN_2))
