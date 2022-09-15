@@ -3,10 +3,13 @@
 /*.vscode
 
 # builded flash binaries
-/as3/*/*.swf
+/as3/**/*.swf
 
 # AS3 libs
-/as3/*/*.swc
+/as3/**/*.swc
+
+# AS3 temporatu
+/as3/**/*.dat
 
 # compiled python bytecode
 /python/*/*.pyc
