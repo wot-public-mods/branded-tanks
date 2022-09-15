@@ -1,0 +1,76 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="500" height="500" frameRate="50" currentTimeline="1" xflVersion="2.981" creatorInfo="Adobe Animate" platform="Windows" versionInfo="Saved by Animate Windows 21.0 build 41649" majorVersion="21" buildNumber="41649" viewAngle3D="28.5231953552842" vanishingPoint3DX="512" vanishingPoint3DY="384" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="DD0DDBBF-5BEF-45B2-9F24-A3048D2A676F" fileGUID="3E6B722401C55A4A9EBF74FFD841B5CC">
+     <folders>
+          <DOMFolderItem name="_local" itemID="587bffc7-00000147" isExpanded="true"/>
+          <DOMFolderItem name="_local/itemRendererRes" itemID="58755487-00000131" isExpanded="true"/>
+     </folders>
+     <fonts>
+          <DOMFontItem name="$TitleFont" itemID="4aeab54f-0000030c" linkageImportForRS="true" linkageExportInFirstFrame="false" linkageClassName="$TitleFont" linkageURL="gfxfontlib.swf" font="ZurichCondBold" size="0" id="1" sourceLastImported="1457171373"/>
+          <DOMFontItem name="$FieldFont" itemID="4aeae220-0000026b" linkageImportForRS="true" linkageExportInFirstFrame="false" linkageClassName="$FieldFont" linkageURL="gfxfontlib.swf" font="ZurichCond" size="0" id="2" sourceLastImported="1457171385"/>
+     </fonts>
+     <media>
+          <DOMBitmapItem name="_local/allyBg.png" itemID="585bd2c6-0000012c" sourceExternalFilepath="./LIBRARY/_local/allyBg.png" sourceLastImported="1462795792" externalFileCRC32="1050401634" externalFileSize="47395" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="_local/allyBg.png" bitmapDataHRef="M 1 1482412742.dat" frameRight="5600" frameBottom="1380"/>
+          <DOMBitmapItem name="_local/itemRendererRes/background_disabled.png" itemID="63234cfc-0000013f" sourceExternalFilepath="./LIBRARY/_local/itemRendererRes/rendererBGDisabled.jpg" sourceLastImported="1663257852" externalFileCRC32="1306965766" externalFileSize="5181" useImportedJPEGData="false" compressionType="lossless" quality="50" href="_local/itemRendererRes/background_disabled.jpg" bitmapDataHRef="M 6 1484524239.dat" frameRight="5600" frameBottom="1400" isJPEG="true"/>
+          <DOMBitmapItem name="_local/itemRendererRes/background_hovered.png" itemID="63234d01-00000140" sourceExternalFilepath="./LIBRARY/_local/itemRendererRes/rendererBGHovered.jpg" sourceLastImported="1663257857" externalFileCRC32="3657610994" externalFileSize="3166" useImportedJPEGData="false" compressionType="lossless" quality="50" href="_local/itemRendererRes/background_hovered.jpg" bitmapDataHRef="M 4 1484524239.dat" frameRight="5600" frameBottom="1400" isJPEG="true"/>
+          <DOMBitmapItem name="_local/itemRendererRes/background_normal.png" itemID="63234d07-00000141" sourceExternalFilepath="./LIBRARY/_local/itemRendererRes/rendererBGNormal.jpg" sourceLastImported="1663257863" externalFileCRC32="383769394" externalFileSize="3070" useImportedJPEGData="false" compressionType="lossless" quality="50" href="_local/itemRendererRes/background_normal.jpg" bitmapDataHRef="M 5 1484524239.dat" frameRight="5600" frameBottom="1400" isJPEG="true"/>
+          <DOMBitmapItem name="_local/enemyBg.png" itemID="585bd2c6-00000131" sourceExternalFilepath="./LIBRARY/_local/enemyBg.png" sourceLastImported="1462795786" externalFileCRC32="428990936" externalFileSize="49106" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="_local/enemyBg.png" bitmapDataHRef="M 2 1482412742.dat" frameRight="5600" frameBottom="1380"/>
+     </media>
+     <symbols>
+          <Include href="_local/backgroud.xml" loadImmediate="false" itemID="585bd293-00000126" lastModified="1482412755"/>
+          <Include href="_local/itemRendererRes/background_disabled.xml" loadImmediate="false" itemID="57e06404-000001a9" lastModified="1663257397"/>
+          <Include href="_local/itemRendererRes/background_hovered.xml" loadImmediate="false" itemID="57e06379-0000019b" lastModified="1663257387"/>
+          <Include href="_local/itemRendererRes/modIconMC.xml" loadImmediate="false" itemID="57e05a56-00000155" lastModified="1474323597"/>
+          <Include href="background_normal.xml" loadImmediate="false" itemID="57e06371-0000019a" lastModified="1663257376"/>
+          <Include href="BrandingItemRendererUI.xml" itemID="587c0ae3-00000158" lastModified="1490807853"/>
+          <Include href="BrandingPlayerUI.xml" itemID="587bfc75-00000142" lastModified="1494494069"/>
+          <Include href="CheckBox.xml" itemID="587c103c-00000139" lastModified="1490777944"/>
+          <Include href="Image.xml" itemID="588a83c1-0000018b" lastModified="1485472764"/>
+          <Include href="ScrollBar.xml" itemID="587c01aa-00000149" lastModified="1484522517"/>
+          <Include href="ScrollingList.xml" itemID="587522f8-00000131" lastModified="1484524559"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMComponentInstance libraryItemName="BrandingPlayerUI" name="main" uniqueID="1">
+                                             <transformationPoint>
+                                                  <Point x="140" y="34.5"/>
+                                             </transformationPoint>
+                                             <parametersAsXML><![CDATA[   <property id="canResize">
+      <Inspectable name="canResize" unlocalizedName="canResize" variable="canResize" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="isCentered">
+      <Inspectable name="isCentered" unlocalizedName="isCentered" variable="isCentered" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="282" type="Number"/>
+   </property>
+   <property id="height">
+      <Inspectable name="height" unlocalizedName="height" variable="height" category="" verbose="0" defaultValue="470" type="Number"/>
+   </property>
+]]></parametersAsXML>
+                                        </DOMComponentInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Layer 2" color="#9933CC">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <scripts/>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="28159" publishTime="1663257656"/>
+          <PublishItem publishSize="28159" publishTime="1663257655"/>
+          <PublishItem publishSize="28161" publishTime="1663257654"/>
+     </publishHistory>
+</DOMDocument>

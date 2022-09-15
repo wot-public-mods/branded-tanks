@@ -1,0 +1,84 @@
+<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="DropdownMenu" itemID="585b2146-00000180" linkageImportForRS="true" linkageExportInFirstFrame="false" linkageClassName="DropdownMenuUI" linkageURL="guiControlsLobbyBattle.swf" lastModified="1484517699" customIconID="0" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
+  <timeline>
+    <DOMTimeline name="DropdownMenu">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#666666"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal">
+                        <fill>
+                          <SolidColor/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle1="1" strokeStyle="1" edges="!0 0|2400 0!2400 0|2400 480!2400 480|0 480!0 480|0 0"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+  <parametersAsXML><![CDATA[   <property id="itemRenderer">
+      <Inspectable name="itemRenderer" unlocalizedName="itemRenderer" variable="itemRenderer" category="" verbose="0" defaultValue="DropDownListItemRendererSound" type="Default"/>
+   </property>
+   <property id="dropdown">
+      <Inspectable name="dropdown" unlocalizedName="dropdown" variable="dropdown" category="" verbose="0" defaultValue="DropdownMenu_ScrollingList" type="Default"/>
+   </property>
+   <property id="menuDirection">
+      <Inspectable name="menuDirection" unlocalizedName="menuDirection" variable="menuDirection" category="" verbose="0" defaultValue="down" type="String"/>
+   </property>
+   <property id="menuMargin">
+      <Inspectable name="menuMargin" unlocalizedName="menuMargin" variable="menuMargin" category="" verbose="0" defaultValue="1" type="Number"/>
+   </property>
+   <property id="menuRowsFixed">
+      <Inspectable name="menuRowsFixed" unlocalizedName="menuRowsFixed" variable="menuRowsFixed" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="menuWrapping">
+      <Inspectable name="menuWrapping" unlocalizedName="menuWrapping" variable="menuWrapping" category="" verbose="0" defaultValue="normal" type="String"/>
+   </property>
+   <property id="scrollBar">
+      <Inspectable name="scrollBar" unlocalizedName="scrollBar" variable="scrollBar" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="showEmptyItems">
+      <Inspectable name="showEmptyItems" unlocalizedName="showEmptyItems" variable="showEmptyItems" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="121" type="Number"/>
+   </property>
+   <property id="menuWidth">
+      <Inspectable name="menuWidth" unlocalizedName="menuWidth" variable="menuWidth" category="" verbose="0" defaultValue="121" type="Number"/>
+   </property>
+   <property id="soundId">
+      <Inspectable name="soundId" unlocalizedName="soundId" variable="soundId" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="soundType">
+      <Inspectable name="soundType" unlocalizedName="soundType" variable="soundType" category="" verbose="0" defaultValue="dropDownMenu" type="String"/>
+   </property>
+   <property id="autoSize">
+      <Inspectable name="autoSize" unlocalizedName="autoSize" variable="autoSize" category="" verbose="0" defaultValue="none" type="String"/>
+   </property>
+   <property id="enabled">
+      <Inspectable name="enabled" unlocalizedName="enabled" variable="enabled" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="enableInitCallback">
+      <Inspectable name="enableInitCallback" unlocalizedName="enableInitCallback" variable="enableInitCallback" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="focusable">
+      <Inspectable name="focusable" unlocalizedName="focusable" variable="focusable" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+]]></parametersAsXML>
+</DOMComponentItem>

@@ -1,0 +1,212 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="BrandingOperatorUI" itemID="58db9209-0000012c" linkageExportForAS="true" linkageBaseClass="com.poliroid.gui.lobby.branding.BrandingOperator" linkageClassName="BrandingOperatorUI" lastModified="1490784837">
+  <timeline>
+    <DOMTimeline name="BrandingOperatorUI">
+      <layers>
+        <DOMLayer name="as" color="#808080" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();
+]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="dropsowns" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMComponentInstance libraryItemName="DropdownMenu" name="team2Dropdown" uniqueID="2">
+                  <matrix>
+                    <Matrix tx="171" ty="8"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <parametersAsXML><![CDATA[   <property id="itemRenderer">
+      <Inspectable name="itemRenderer" unlocalizedName="itemRenderer" variable="itemRenderer" category="" verbose="0" defaultValue="DropDownListItemRendererSound" type="Default"/>
+   </property>
+   <property id="dropdown">
+      <Inspectable name="dropdown" unlocalizedName="dropdown" variable="dropdown" category="" verbose="0" defaultValue="DropdownMenu_ScrollingList" type="Default"/>
+   </property>
+   <property id="menuDirection">
+      <Inspectable name="menuDirection" unlocalizedName="menuDirection" variable="menuDirection" category="" verbose="0" defaultValue="down" type="String"/>
+   </property>
+   <property id="menuMargin">
+      <Inspectable name="menuMargin" unlocalizedName="menuMargin" variable="menuMargin" category="" verbose="0" defaultValue="1" type="Number"/>
+   </property>
+   <property id="menuRowsFixed">
+      <Inspectable name="menuRowsFixed" unlocalizedName="menuRowsFixed" variable="menuRowsFixed" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="menuWrapping">
+      <Inspectable name="menuWrapping" unlocalizedName="menuWrapping" variable="menuWrapping" category="" verbose="0" defaultValue="normal" type="String"/>
+   </property>
+   <property id="scrollBar">
+      <Inspectable name="scrollBar" unlocalizedName="scrollBar" variable="scrollBar" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="showEmptyItems">
+      <Inspectable name="showEmptyItems" unlocalizedName="showEmptyItems" variable="showEmptyItems" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="121" type="Number"/>
+   </property>
+   <property id="menuWidth">
+      <Inspectable name="menuWidth" unlocalizedName="menuWidth" variable="menuWidth" category="" verbose="0" defaultValue="122" type="Number"/>
+   </property>
+   <property id="soundId">
+      <Inspectable name="soundId" unlocalizedName="soundId" variable="soundId" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="soundType">
+      <Inspectable name="soundType" unlocalizedName="soundType" variable="soundType" category="" verbose="0" defaultValue="dropDownMenu" type="String"/>
+   </property>
+   <property id="autoSize">
+      <Inspectable name="autoSize" unlocalizedName="autoSize" variable="autoSize" category="" verbose="0" defaultValue="none" type="String"/>
+   </property>
+   <property id="enabled">
+      <Inspectable name="enabled" unlocalizedName="enabled" variable="enabled" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="enableInitCallback">
+      <Inspectable name="enableInitCallback" unlocalizedName="enableInitCallback" variable="enableInitCallback" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="focusable">
+      <Inspectable name="focusable" unlocalizedName="focusable" variable="focusable" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+                <DOMComponentInstance libraryItemName="DropdownMenu" name="team1Dropdown" uniqueID="5">
+                  <matrix>
+                    <Matrix a="0.999984741210938" tx="8" ty="8"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <parametersAsXML><![CDATA[   <property id="itemRenderer">
+      <Inspectable name="itemRenderer" unlocalizedName="itemRenderer" variable="itemRenderer" category="" verbose="0" defaultValue="DropDownListItemRendererSound" type="Default"/>
+   </property>
+   <property id="dropdown">
+      <Inspectable name="dropdown" unlocalizedName="dropdown" variable="dropdown" category="" verbose="0" defaultValue="DropdownMenu_ScrollingList" type="Default"/>
+   </property>
+   <property id="menuDirection">
+      <Inspectable name="menuDirection" unlocalizedName="menuDirection" variable="menuDirection" category="" verbose="0" defaultValue="down" type="String"/>
+   </property>
+   <property id="menuMargin">
+      <Inspectable name="menuMargin" unlocalizedName="menuMargin" variable="menuMargin" category="" verbose="0" defaultValue="1" type="Number"/>
+   </property>
+   <property id="menuRowsFixed">
+      <Inspectable name="menuRowsFixed" unlocalizedName="menuRowsFixed" variable="menuRowsFixed" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="menuWrapping">
+      <Inspectable name="menuWrapping" unlocalizedName="menuWrapping" variable="menuWrapping" category="" verbose="0" defaultValue="normal" type="String"/>
+   </property>
+   <property id="scrollBar">
+      <Inspectable name="scrollBar" unlocalizedName="scrollBar" variable="scrollBar" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="showEmptyItems">
+      <Inspectable name="showEmptyItems" unlocalizedName="showEmptyItems" variable="showEmptyItems" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="121" type="Number"/>
+   </property>
+   <property id="menuWidth">
+      <Inspectable name="menuWidth" unlocalizedName="menuWidth" variable="menuWidth" category="" verbose="0" defaultValue="122" type="Number"/>
+   </property>
+   <property id="soundId">
+      <Inspectable name="soundId" unlocalizedName="soundId" variable="soundId" category="" verbose="0" defaultValue="" type="String"/>
+   </property>
+   <property id="soundType">
+      <Inspectable name="soundType" unlocalizedName="soundType" variable="soundType" category="" verbose="0" defaultValue="dropDownMenu" type="String"/>
+   </property>
+   <property id="autoSize">
+      <Inspectable name="autoSize" unlocalizedName="autoSize" variable="autoSize" category="" verbose="0" defaultValue="none" type="String"/>
+   </property>
+   <property id="enabled">
+      <Inspectable name="enabled" unlocalizedName="enabled" variable="enabled" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="enableInitCallback">
+      <Inspectable name="enableInitCallback" unlocalizedName="enableInitCallback" variable="enableInitCallback" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="focusable">
+      <Inspectable name="focusable" unlocalizedName="focusable" variable="focusable" category="" verbose="0" defaultValue="true" type="Boolean"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="buttons" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMComponentInstance libraryItemName="ButtonIconNormal" name="showTeam1Button" uniqueID="2">
+                  <matrix>
+                    <Matrix a="0.5625" d="0.916671752929688" tx="15" ty="45"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <parametersAsXML><![CDATA[   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="45" type="Number"/>
+   </property>
+   <property id="iconSource">
+      <Inspectable name="iconSource" unlocalizedName="iconSource" variable="iconSource" category="" verbose="0" defaultValue="../maps/icons/buttons/Tank-ico.png" type="String"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+                <DOMComponentInstance libraryItemName="ButtonIconNormal" name="showTeam2Button" uniqueID="3">
+                  <matrix>
+                    <Matrix a="0.5625" d="0.916671752929688" tx="240" ty="45"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <parametersAsXML><![CDATA[   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="45" type="Number"/>
+   </property>
+   <property id="iconSource">
+      <Inspectable name="iconSource" unlocalizedName="iconSource" variable="iconSource" category="" verbose="0" defaultValue="../maps/icons/buttons/Tank-ico.png" type="String"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+                <DOMComponentInstance libraryItemName="ButtonRed" name="submitButton" uniqueID="1">
+                  <matrix>
+                    <Matrix a="2" tx="70" ty="45"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <parametersAsXML><![CDATA[   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="160" type="Number"/>
+   </property>
+   <property id="height">
+      <Inspectable name="height" unlocalizedName="height" variable="height" category="" verbose="0" defaultValue="22" type="Number"/>
+   </property>
+   <property id="label">
+      <Inspectable name="label" unlocalizedName="label" variable="label" category="" verbose="0" defaultValue="Apply" type="String"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+                <DOMComponentInstance libraryItemName="ButtonIconNormal" name="swapTeamsButton" uniqueID="4">
+                  <matrix>
+                    <Matrix a="0.375" d="0.916656494140625" tx="135" ty="10"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <parametersAsXML><![CDATA[   <property id="width">
+      <Inspectable name="width" unlocalizedName="width" variable="width" category="" verbose="0" defaultValue="30" type="Number"/>
+   </property>
+   <property id="iconSource">
+      <Inspectable name="iconSource" unlocalizedName="iconSource" variable="iconSource" category="" verbose="0" defaultValue="../maps/icons/buttons/swap.png" type="String"/>
+   </property>
+]]></parametersAsXML>
+                </DOMComponentInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

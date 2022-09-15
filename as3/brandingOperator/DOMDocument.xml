@@ -1,0 +1,51 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#999999" width="300" height="80" currentTimeline="1" xflVersion="2.981" creatorInfo="Adobe Animate" platform="Windows" versionInfo="Saved by Animate Windows 21.0 build 41649" majorVersion="21" buildNumber="41649" viewAngle3D="17.3427091992689" vanishingPoint3DX="512" vanishingPoint3DY="384" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="DD0DDBBF-5BEF-45B2-9F24-A3048D2A676F" fileGUID="EB3E99744D7C8240998780F478F6CE38">
+     <symbols>
+          <Include href="BrandingOperatorUI.xml" itemID="58db9209-0000012c" lastModified="1490784837"/>
+          <Include href="ButtonIconNormal.xml" itemID="585afe24-00000265" lastModified="1484517709"/>
+          <Include href="ButtonRed.xml" itemID="585afeef-0000026d" lastModified="1484517704"/>
+          <Include href="DropdownMenu.xml" itemID="585b2146-00000180" lastModified="1484517699"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="BrandingOperatorUI" name="main">
+                                             <transformationPoint>
+                                                  <Point x="149.5" y="37.5"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <scripts/>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="3806" publishTime="1663257650"/>
+          <PublishItem publishSize="3811" publishTime="1663257649"/>
+          <PublishItem publishSize="3806" publishTime="1663257550"/>
+          <PublishItem publishSize="3811" publishTime="1663257550"/>
+          <PublishItem publishSize="3806" publishTime="1663257549"/>
+          <PublishItem publishSize="2805" publishTime="1490798878"/>
+          <PublishItem publishSize="2805" publishTime="1490798788"/>
+          <PublishItem publishSize="2805" publishTime="1490798786"/>
+          <PublishItem publishSize="2805" publishTime="1490784842"/>
+          <PublishItem publishSize="2805" publishTime="1490784841"/>
+          <PublishItem publishSize="2805" publishTime="1490784841"/>
+          <PublishItem publishSize="2805" publishTime="1490784840"/>
+          <PublishItem publishSize="2569" publishTime="1490593596"/>
+          <PublishItem publishSize="2569" publishTime="1484565705"/>
+          <PublishItem publishSize="2569" publishTime="1484528555"/>
+          <PublishItem publishSize="2569" publishTime="1484518372"/>
+          <PublishItem publishSize="2569" publishTime="1484517713"/>
+          <PublishItem publishSize="2569" publishTime="1484517712"/>
+          <PublishItem publishSize="2569" publishTime="1484517712"/>
+          <PublishItem publishSize="2569" publishTime="1484517691"/>
+     </publishHistory>
+</DOMDocument>
