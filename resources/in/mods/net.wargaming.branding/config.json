@@ -1,5 +1,6 @@
 {
 	"UIType": 2,
+	"preview": true,
 	"presets": [{
 			"id": 1,
 			"name": "Team Blue",

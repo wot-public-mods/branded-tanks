@@ -1,0 +1,17 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="_local/list item renderer/background_hovered" itemID="57e06379-0000019b" lastModified="1663257387">
+  <timeline>
+    <DOMTimeline name="background_hovered">
+      <layers>
+        <DOMLayer name="Layer 1" color="#1CAFD9" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="_local/list item renderer/background_hovered.png"/>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

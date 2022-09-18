@@ -1,5 +1,18 @@
 # Changelog
 
+## v4.2.3
+
+* preview in player mode
+
+## v4.2.2
+
+* cammo_examples
+* paint skip logic
+
+## v4.2.1
+
+* fix config save bug
+
 ## v4.2.0
 
 * fixed for 1.18.0 wot

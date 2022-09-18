@@ -48,6 +48,9 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 		})
 		self.onWindowClose()
 
+	def showPreset(self, presetID):
+		g_controllers.vehicle.showPresetInHangar(int(presetID))
+
 	def __generateLocalizationCtx(self):
 		"""result represented by BrandingPlayerLocalizationVO"""
 		return {
@@ -61,20 +64,22 @@ class BrandingPlayerView(BrandingPlayerViewMeta):
 	def __generatePlayerCtx(self):
 		"""result represented by BrandingPlayerSettingsVO"""
 		presets = []
+		preview = g_dataHolder.config.get('preview', False)
 		for idx, preset in enumerate(g_dataHolder.config['presets']):
-			presets.append(self.__generatePresetSettingsVO(idx, preset))
+			presets.append(self.__generatePresetSettingsVO(idx, preset, preview))
 		onlyOnMyTank = g_dataHolder.cache['onlyOnMyTank']
 		return {
 			'presets': presets,
 			'onlyOnMyTank': onlyOnMyTank
 		}
 
-	def __generatePresetSettingsVO(self, idx, preset):
+	def __generatePresetSettingsVO(self, idx, preset, preview):
 		name = preset['name']
 		icon = getIconPatch(preset)
 		return {
 			'id': idx,
 			'presetID': preset['id'],
 			'name': name,
-			'icon': icon
+			'icon': icon,
+			'preview': preview
 		}

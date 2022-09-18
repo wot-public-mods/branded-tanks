@@ -1,4 +1,4 @@
-<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="BrandingPlayerUI" itemID="587bfc75-00000142" linkageExportForAS="true" linkageBaseClass="com.poliroid.gui.lobby.branding.BrandingPlayer" linkageClassName="BrandingPlayerUI" lastModified="1494494069" lastUniqueIdentifier="4" displayAsComponent="false" customIconID="0" actionscriptClass="BrandingPlayerUI" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
+<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="BrandingPlayerUI" itemID="587bfc75-00000142" linkageExportForAS="true" linkageBaseClass="me.poliroid.lobby.branding.BrandingPlayer" linkageClassName="BrandingPlayerUI" lastModified="1494494069" lastUniqueIdentifier="4" displayAsComponent="false" customIconID="0" actionscriptClass="BrandingPlayerUI" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
   <timeline>
     <DOMTimeline name="BrandingPlayerUI">
       <layers>
@@ -19,7 +19,7 @@
                     <DOMTextRun>
                       <characters></characters>
                       <textAttrs>
-                        <DOMTextAttrs aliasText="false" alpha="0.905882352941176" lineHeight="25.05" size="20" bitmapSize="400" face="$TitleFont*" fillColor="#DDDDD0"/>
+                        <DOMTextAttrs aliasText="false" alpha="0.901960784313726" lineHeight="25.05" size="20" bitmapSize="400" face="$TitleFont*" fillColor="#DDDDD0"/>
                       </textAttrs>
                     </DOMTextRun>
                   </textRuns>
@@ -32,7 +32,7 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMComponentInstance libraryItemName="ScrollBar" name="scrollBar" uniqueID="3">
+                <DOMComponentInstance libraryItemName="_imports/ScrollBar" name="scrollBar" uniqueID="3">
                   <matrix>
                     <Matrix d="0.993484497070313" tx="265" ty="73"/>
                   </matrix>
@@ -58,7 +58,7 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMComponentInstance libraryItemName="ScrollingList" name="commandList" selected="true" uniqueID="2">
+                <DOMComponentInstance libraryItemName="_imports/ScrollingList" name="commandList" selected="true" uniqueID="2">
                   <matrix>
                     <Matrix tx="1" ty="70"/>
                   </matrix>
@@ -82,7 +82,7 @@
    </property>
 ]]></parametersAsXML>
                 </DOMComponentInstance>
-                <DOMComponentInstance libraryItemName="CheckBox" name="onlyOnMyTank" uniqueID="4">
+                <DOMComponentInstance libraryItemName="_imports/CheckBox" name="onlyOnMyTank" uniqueID="4">
                   <matrix>
                     <Matrix tx="15" ty="435"/>
                   </matrix>
