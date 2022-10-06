@@ -1,4 +1,4 @@
-﻿from gui.branding.events import g_eventsManager
+﻿from ..events import g_eventsManager
 
 __all__ = ('g_controllers', )
 
@@ -8,8 +8,8 @@ class ControllersHolder():
 	vehicle = None
 
 	def init(self):
-		from gui.branding.controllers.processor import ProcessorController
-		from gui.branding.controllers.vehicle import VehicleController
+		from .processor import ProcessorController
+		from .vehicle import VehicleController
 
 		self.processor = ProcessorController()
 		self.vehicle = VehicleController()

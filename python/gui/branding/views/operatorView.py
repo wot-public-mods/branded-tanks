@@ -1,8 +1,9 @@
 ﻿
-from gui.branding.controllers import g_controllers
-from gui.branding.data import g_dataHolder
-from gui.branding.lang import l10n
 from gui.Scaleform.framework.entities.abstract.AbstractWindowView import AbstractWindowView
+
+from ..controllers import g_controllers
+from ..data import g_dataHolder
+from ..lang import l10n
 
 __all__ = ('BrandingOperatorView', )
 

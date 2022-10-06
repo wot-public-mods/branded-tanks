@@ -1,11 +1,13 @@
+
 from debug_utils import LOG_ERROR
-from gui.branding.events import g_eventsManager
-from gui.branding.lang import l10n
-from gui.branding.utils import override, readBrandingItem, isBattleRestricted
 from items.vehicles import g_cache
 from items.components.c11n_components import CamouflageItem, DecalItem, PaintItem
 from vehicle_systems.CompoundAppearance import CompoundAppearance
 from VehicleStickers import VehicleStickers
+
+from .events import g_eventsManager
+from .lang import l10n
+from .utils import override, readBrandingItem, isBattleRestricted
 
 __all__ = ()
 
@@ -14,7 +16,7 @@ __all__ = ()
 def _prepareOutfit(baseMethod, baseInstance, outfitCD):
 	if isBattleRestricted():
 		return baseMethod(baseInstance, outfitCD)
-	from gui.branding.controllers import g_controllers
+	from .controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
 	return outfit or baseMethod(baseInstance, outfitCD)
 
@@ -23,7 +25,7 @@ def _prepareOutfit(baseMethod, baseInstance, outfitCD):
 def _applyVehicleOutfit(baseMethod, baseInstance):
 	if isBattleRestricted():
 		return baseMethod(baseInstance)
-	from gui.branding.controllers import g_controllers
+	from .controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
 	baseInstance._CommonTankAppearance__outfit = outfit or baseInstance.outfit
 	return baseMethod(baseInstance)

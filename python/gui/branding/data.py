@@ -1,10 +1,10 @@
 import json
 import os
 
-from gui.branding.events import g_eventsManager
-from gui.branding.lang import l10n
-from gui.branding.utils import byteify, readFromVFS
-from gui.branding._constants import SETTINGS_FILE
+from .events import g_eventsManager
+from .lang import l10n
+from .utils import byteify, readFromVFS
+from ._constants import SETTINGS_FILE
 
 __all__ = ('g_dataHolder', )
 

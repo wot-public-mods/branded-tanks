@@ -1,14 +1,16 @@
-import math
 
+import math
 import BigWorld
+
 from gui.ClientHangarSpace import hangarCFG
-from gui.branding._constants import UI_TYPE
-from gui.branding.controllers import g_controllers
-from gui.branding.data import g_dataHolder
 from gui.shared import g_eventBus
 from gui.shared.events import LobbySimpleEvent
 from helpers import dependency
 from skeletons.gui.shared.utils import IHangarSpace
+
+from ..controllers import g_controllers
+from ..data import g_dataHolder
+from .._constants import UI_TYPE
 
 __all__ = ('VehicleController', )
 

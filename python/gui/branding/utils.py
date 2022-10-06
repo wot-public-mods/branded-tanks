@@ -88,7 +88,7 @@ def getIconPatch(preset):
 	return None
 
 def readBrandingItem(itemCls, itemName, cache, storage):
-	from gui.branding._constants import XML_FILE_PATH
+	from ._constants import XML_FILE_PATH
 	from items.readers.c11n_readers import _readItems
 	itemsFileName = XML_FILE_PATH % itemName
 	dataSection = ResMgr.openSection(itemsFileName)

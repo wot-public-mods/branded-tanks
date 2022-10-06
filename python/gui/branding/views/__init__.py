@@ -1,12 +1,14 @@
-from gui.branding.data import g_dataHolder
-from gui.branding._constants import BRANDING_OPERATOR_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI, UI_TYPE
-from gui.branding.events import g_eventsManager
-from gui.branding.views.operatorView import BrandingOperatorView
-from gui.branding.views.playerView import BrandingPlayerView
+
 from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ScopeTemplates
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.shared.personality import ServicesLocator
 from frameworks.wulf import WindowLayer
+
+from ..data import g_dataHolder
+from ..events import g_eventsManager
+from .._constants import BRANDING_OPERATOR_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI, UI_TYPE
+from .operatorView import BrandingOperatorView
+from .playerView import BrandingPlayerView
 
 def getViewSettings():
 	viewSettings = []
