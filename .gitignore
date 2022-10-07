@@ -2,13 +2,9 @@
 # Visual Studio Code temp
 /*.vscode
 
-# builded flash binaries
+# AS3 libs, binaries and cache
 /as3/**/*.swf
-
-# AS3 libs
 /as3/**/*.swc
-
-# AS3 temporatu
 /as3/**/*.dat
 
 # compiled python bytecode
