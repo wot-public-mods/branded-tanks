@@ -1,4 +1,4 @@
-﻿package me.poliroid.lobby.branding.controls
+﻿package me.poliroid.brandedTanks.controls
 {
 	import flash.text.TextField;
 	import flash.events.MouseEvent;
@@ -9,8 +9,8 @@
 	import net.wg.gui.components.controls.Image;
 	import net.wg.gui.components.controls.SoundListItemRenderer;
 
-	import me.poliroid.lobby.branding.events.BrandingEvent;
-	import me.poliroid.lobby.branding.data.BrandingPlayerSettingItemVO;
+	import me.poliroid.brandedTanks.events.BrandingEvent;
+	import me.poliroid.brandedTanks.data.BrandingPlayerSettingItemVO;
 
 	public class BrandingItemRenderer extends SoundListItemRenderer
 	{

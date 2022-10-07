@@ -1,4 +1,4 @@
-<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="BrandingPlayerUI" itemID="587bfc75-00000142" linkageExportForAS="true" linkageBaseClass="me.poliroid.lobby.branding.BrandingPlayer" linkageClassName="BrandingPlayerUI" lastModified="1494494069" lastUniqueIdentifier="4" displayAsComponent="false" customIconID="0" actionscriptClass="BrandingPlayerUI" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
+<DOMComponentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="BrandingPlayerUI" itemID="587bfc75-00000142" linkageExportForAS="true" linkageBaseClass="me.poliroid.brandedTanks.BrandingPlayer" linkageClassName="BrandingPlayerUI" lastModified="1494494069" lastUniqueIdentifier="4" displayAsComponent="false" customIconID="0" actionscriptClass="BrandingPlayerUI" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true">
   <timeline>
     <DOMTimeline name="BrandingPlayerUI">
       <layers>

@@ -1,4 +1,4 @@
-﻿package me.poliroid.lobby.branding.data
+﻿package me.poliroid.brandedTanks.data
 {
 	import net.wg.data.daapi.base.DAAPIDataClass;
 	

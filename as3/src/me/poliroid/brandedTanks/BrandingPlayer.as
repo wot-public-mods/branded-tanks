@@ -1,4 +1,4 @@
-﻿package me.poliroid.lobby.branding
+﻿package me.poliroid.brandedTanks
 {
 	
 	import flash.display.MovieClip;
@@ -12,12 +12,12 @@
 	import net.wg.gui.components.controls.CheckBox;
 	import net.wg.gui.components.controls.ScrollBar;
 
-	import me.poliroid.lobby.branding.controls.BrandingItemRenderer;
-	import me.poliroid.lobby.branding.data.BrandingPlayerSettingsVO;
-	import me.poliroid.lobby.branding.data.BrandingPlayerSettingItemVO;
-	import me.poliroid.lobby.branding.data.BrandingPlayerLocalizationVO;
-	import me.poliroid.lobby.branding.events.BrandingEvent;
-	import me.poliroid.lobby.branding.interfaces.impl.BrandingPlayerMeta;
+	import me.poliroid.brandedTanks.controls.BrandingItemRenderer;
+	import me.poliroid.brandedTanks.data.BrandingPlayerSettingsVO;
+	import me.poliroid.brandedTanks.data.BrandingPlayerSettingItemVO;
+	import me.poliroid.brandedTanks.data.BrandingPlayerLocalizationVO;
+	import me.poliroid.brandedTanks.events.BrandingEvent;
+	import me.poliroid.brandedTanks.interfaces.impl.BrandingPlayerMeta;
 
 	public class BrandingPlayer extends BrandingPlayerMeta 
 	{

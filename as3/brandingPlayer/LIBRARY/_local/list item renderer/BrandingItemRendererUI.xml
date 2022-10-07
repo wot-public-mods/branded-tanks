@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="_local/list item renderer/BrandingItemRendererUI" itemID="587c0ae3-00000158" linkageExportForAS="true" linkageBaseClass="me.poliroid.lobby.branding.controls.BrandingItemRenderer" linkageClassName="BrandingItemRendererUI" lastModified="1663523004" lastUniqueIdentifier="3">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="_local/list item renderer/BrandingItemRendererUI" itemID="587c0ae3-00000158" linkageExportForAS="true" linkageBaseClass="me.poliroid.brandedTanks.controls.BrandingItemRenderer" linkageClassName="BrandingItemRendererUI" lastModified="1663523004" lastUniqueIdentifier="3">
   <timeline>
     <DOMTimeline name="BrandingItemRendererUI">
       <layers>

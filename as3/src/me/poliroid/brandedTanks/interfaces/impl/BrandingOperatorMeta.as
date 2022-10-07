@@ -1,21 +1,21 @@
-﻿package me.poliroid.lobby.branding.interfaces.impl
+﻿package me.poliroid.brandedTanks.interfaces.impl
 {
 	
 	import net.wg.data.constants.Errors;
 	import net.wg.infrastructure.base.AbstractWindowView;
 	import net.wg.infrastructure.exceptions.AbstractException;
 	
-	import me.poliroid.lobby.branding.data.BrandingPlayerLocalizationVO;
-	import me.poliroid.lobby.branding.data.BrandingPlayerSettingsVO;
+	import me.poliroid.brandedTanks.data.BrandingOperatorLocalizationVO;
+	import me.poliroid.brandedTanks.data.BrandingOperatorSettingsVO;
 	
-	public class BrandingPlayerMeta extends AbstractWindowView 
+	public class BrandingOperatorMeta extends AbstractWindowView 
 	{
 		
 		public var onSettings:Function;
 		
 		public var showPreset:Function;
 		
-		public function BrandingPlayerMeta() 
+		public function BrandingOperatorMeta() 
 		{
 			super();
 		}
@@ -34,7 +34,7 @@
 		
 		public final function as_setLocalization(ctx:Object) : void
 		{
-			var data:BrandingPlayerLocalizationVO = new BrandingPlayerLocalizationVO(ctx);
+			var data:BrandingOperatorLocalizationVO = new BrandingOperatorLocalizationVO(ctx);
 			setLocalization(data);
 			if(data)
 				data.dispose();
@@ -42,20 +42,20 @@
 		
 		public final function as_setSettings(ctx:Object) : void
 		{
-			var data:BrandingPlayerSettingsVO = new BrandingPlayerSettingsVO(ctx);
+			var data:BrandingOperatorSettingsVO = new BrandingOperatorSettingsVO(ctx);
 			setSettings(data);
 			if(data)
 				data.dispose();
 		}
 		
-		protected function setLocalization(data:BrandingPlayerLocalizationVO) : void
+		protected function setLocalization(data:BrandingOperatorLocalizationVO) : void
 		{
 			var message:String = "as_setLocalization" + Errors.ABSTRACT_INVOKE;
 			DebugUtils.LOG_ERROR(message, data);
 			throw new AbstractException(message);
 		}
 		
-		protected function setSettings(data:BrandingPlayerSettingsVO) : void
+		protected function setSettings(data:BrandingOperatorSettingsVO) : void
 		{
 			var message:String = "as_setSettings" + Errors.ABSTRACT_INVOKE;
 			DebugUtils.LOG_ERROR(message, data);

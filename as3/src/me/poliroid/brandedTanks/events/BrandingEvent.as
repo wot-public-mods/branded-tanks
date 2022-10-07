@@ -1,4 +1,4 @@
-package me.poliroid.lobby.branding.events
+package me.poliroid.brandedTanks.events
 {
 	
 	import flash.events.Event;

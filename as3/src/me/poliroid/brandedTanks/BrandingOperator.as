@@ -1,4 +1,4 @@
-﻿package me.poliroid.lobby.branding
+﻿package me.poliroid.brandedTanks
 {
 	import flash.events.MouseEvent;
 	import flash.utils.setTimeout;
@@ -10,9 +10,9 @@
 	import net.wg.gui.components.controls.DropdownMenu;
 	import net.wg.gui.components.windows.Window;
 
-	import me.poliroid.lobby.branding.data.BrandingOperatorLocalizationVO;
-	import me.poliroid.lobby.branding.data.BrandingOperatorSettingsVO;
-	import me.poliroid.lobby.branding.interfaces.impl.BrandingOperatorMeta;
+	import me.poliroid.brandedTanks.data.BrandingOperatorLocalizationVO;
+	import me.poliroid.brandedTanks.data.BrandingOperatorSettingsVO;
+	import me.poliroid.brandedTanks.interfaces.impl.BrandingOperatorMeta;
 
 	public class BrandingOperator extends BrandingOperatorMeta
 	{

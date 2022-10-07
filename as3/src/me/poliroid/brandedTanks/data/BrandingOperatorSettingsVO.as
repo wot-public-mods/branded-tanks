@@ -1,21 +1,23 @@
-package me.poliroid.lobby.branding.data
+package me.poliroid.brandedTanks.data
 {
 	
 	import net.wg.infrastructure.interfaces.entity.IDisposable;
 	import net.wg.data.daapi.base.DAAPIDataClass;
 	
-	import me.poliroid.lobby.branding.data.BrandingPlayerSettingItemVO;
+	import me.poliroid.brandedTanks.data.BrandingOperatorSettingItemVO;
 	
-	public class BrandingPlayerSettingsVO extends DAAPIDataClass
+	public class BrandingOperatorSettingsVO extends DAAPIDataClass
 	{
 		
 		private static const PRESETS_FIELD_NAME:String = "presets";
 		
 		public var presets:Array = null;
 		
-		public var onlyOnMyTank:Boolean = false;
+		public var teamFirst:Number = 0;
 		
-		public function BrandingPlayerSettingsVO(data:Object)
+		public var teamSecond:Number = 0;
+		
+		public function BrandingOperatorSettingsVO(data:Object)
 		{
 			super(data);
 		}
@@ -31,7 +33,7 @@ package me.poliroid.lobby.branding.data
 				
 				for each(settingsItem in settingsItemItems)
 				{
-					presets.push(new BrandingPlayerSettingItemVO(settingsItem));
+					presets.push(new BrandingOperatorSettingItemVO(settingsItem));
 				}
 				return false;
 			}
