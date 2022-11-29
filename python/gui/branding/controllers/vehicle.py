@@ -18,9 +18,6 @@ class VehicleController(object):
 
 	hangarSpace = dependency.descriptor(IHangarSpace)
 
-	def __init__(self):
-		self.__savedCameraLocation = None
-
 	def restoreVehicle(self):
 
 		if not self.hangarSpace.space:
@@ -37,14 +34,6 @@ class VehicleController(object):
 
 		# showing current lobby subview
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, False))
-
-		# camera locating on previos position
-		if self.__savedCameraLocation:
-			manager = self.hangarSpace.space.getCameraManager()
-			if manager:
-				del self.__savedCameraLocation['pivotDist']
-				manager.setCameraLocation(**self.__savedCameraLocation)
-				self.__savedCameraLocation = None
 
 	def showPresetInHangar(self, presetID):
 
@@ -65,9 +54,6 @@ class VehicleController(object):
 		self.hangarSpace.space.updateVehicleCustomization(outfit)
 
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, True))
-
-		if self.__savedCameraLocation is None:
-			self.__savedCameraLocation = self.hangarSpace.space.getCameraLocation()
 
 		manager = self.hangarSpace.space.getCameraManager()
 		if not manager:

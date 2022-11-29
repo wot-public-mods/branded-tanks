@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.2.4
+
+* fixes for wot 1.19.0
+
 ## v4.2.3
 
 * preview in player mode
