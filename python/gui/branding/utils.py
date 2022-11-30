@@ -1,4 +1,5 @@
 import types
+import functools
 import ResMgr
 
 from constants import ARENA_GUI_TYPE
@@ -107,3 +108,15 @@ def isBattleRestricted(sessionProvider=None):
 	if sessionProvider:
 		guiType = sessionProvider.arenaVisitor.getArenaGuiType()
 	return guiType in _RESTRICTED_GUI_TYPE
+
+def cacheResult(function):
+	memo = {}
+	@functools.wraps(function)
+	def wrapper(cache_key):
+		try:
+			return memo[cache_key]
+		except KeyError:
+			rv = function(cache_key)
+			memo[cache_key] = rv
+			return rv
+	return wrapper
