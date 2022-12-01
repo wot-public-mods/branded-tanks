@@ -1,7 +1,9 @@
 
-import math
+import Math
 import BigWorld
+import CGF
 
+from cgf_components.hangar_camera_manager import HangarCameraManager
 from gui.ClientHangarSpace import hangarCFG
 from gui.shared import g_eventBus
 from gui.shared.events import LobbySimpleEvent
@@ -55,18 +57,15 @@ class VehicleController(object):
 
 		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, True))
 
-		manager = self.hangarSpace.space.getCameraManager()
-		if not manager:
+		cameraManager = CGF.getManager(self.hangarSpace.spaceID, HangarCameraManager)
+		if not cameraManager:
 			return
 
 		cfg = hangarCFG()
-		manager.setCameraLocation(
-			targetPos=cfg['cam_start_target_pos'],
-			pivotPos=cfg['cam_pivot_pos'],
-			yaw=math.radians(cfg['cam_start_angles'][0]),
-			pitch=math.radians(cfg['cam_start_angles'][1]),
-			dist=cfg['cam_start_dist'] - 4,
-			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']]
+
+		cameraManager.moveCamera(
+			targetPos=cfg.get('cam_start_target_pos', Math.Vector3(0, 0, 0)),
+			yaw=-1.0, pitch=-0.5, distance=1.5
 		)
 
 	@staticmethod
