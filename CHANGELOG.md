@@ -1,8 +1,16 @@
 # Changelog
 
-## v4.2.4
+## v4.2.6
+
+* fixes for wot 1.19.1
+
+## v4.2.5
 
 * fixes for wot 1.19.0
+
+## v4.2.4
+
+* improved localization
 
 ## v4.2.3
 

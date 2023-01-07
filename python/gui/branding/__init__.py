@@ -1,5 +1,5 @@
 __author__ = "Andrii Andrushchyshyn"
-__copyright__ = "Copyright 2022, poliroid"
+__copyright__ = "Copyright 2023, poliroid"
 __credits__ = ["Andrii Andrushchyshyn"]
 __license__ = "CC BY-NC-SA 4.0"
 __version__ = "4.2.5"
