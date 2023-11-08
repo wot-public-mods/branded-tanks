@@ -6,9 +6,10 @@ from constants import ARENA_GUI_TYPE
 from helpers import dependency
 from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.battle_session import IBattleSessionProvider
+from skeletons.gui.impl import IGuiLoader
 
 __all__ = ('byteify', 'override', 'readFromVFS', 'getFashionValue', 'parseLangFields', 'getHangarVehicle',
-		'getIconPatch', 'readBrandingItem', 'isBattleRestricted', )
+		'getIconPatch', 'readBrandingItem', 'isBattleRestricted', 'getParentWindow')
 
 def override(holder, name, wrapper=None, setter=None):
 	"""Override methods, properties, functions, attributes
@@ -120,3 +121,8 @@ def cacheResult(function):
 			memo[cache_key] = rv
 			return rv
 	return wrapper
+
+def getParentWindow():
+	uiLoader = dependency.instance(IGuiLoader)
+	if uiLoader and uiLoader.windowsManager:
+		return uiLoader.windowsManager.getMainWindow()

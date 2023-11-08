@@ -2,6 +2,10 @@
 
 ## v4.2.6
 
+* improved views loading
+
+## v4.2.6
+
 * fixes for wot 1.19.1
 
 ## v4.2.5

@@ -6,6 +6,7 @@ from frameworks.wulf import WindowLayer
 
 from ..data import g_dataHolder
 from ..events import g_eventsManager
+from ..utils import getParentWindow
 from .._constants import BRANDING_OPERATOR_WINDOW_UI, BRANDING_PLAYER_WINDOW_UI, UI_TYPE
 from .operatorView import BrandingOperatorView
 from .playerView import BrandingPlayerView
@@ -25,8 +26,8 @@ def showUI():
 	app = ServicesLocator.appLoader.getDefLobbyApp()
 	if g_dataHolder.config['UIType'] == UI_TYPE.OPERATOR:
 		g_dataHolder.cache['onlyOnMyTank'] = False
-		app.loadView(SFViewLoadParams(BRANDING_OPERATOR_WINDOW_UI))
+		app.loadView(SFViewLoadParams(BRANDING_OPERATOR_WINDOW_UI, parent=getParentWindow()))
 	elif g_dataHolder.config['UIType'] == UI_TYPE.PLAYER:
-		app.loadView(SFViewLoadParams(BRANDING_PLAYER_WINDOW_UI))
+		app.loadView(SFViewLoadParams(BRANDING_PLAYER_WINDOW_UI, parent=getParentWindow()))
 
 g_eventsManager.showUI += showUI
