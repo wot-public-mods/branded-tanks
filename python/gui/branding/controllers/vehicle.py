@@ -1,10 +1,6 @@
 
-import math
 import BigWorld
 
-from gui.ClientHangarSpace import hangarCFG
-from gui.shared import g_eventBus
-from gui.shared.events import LobbySimpleEvent
 from helpers import dependency
 from skeletons.gui.shared.utils import IHangarSpace
 
@@ -32,9 +28,6 @@ class VehicleController(object):
 		vDesc = appearance._HangarVehicleAppearance__vDesc
 		self.hangarSpace.space.updateVehicleCustomization(appearance._getActiveOutfit(vDesc))
 
-		# showing current lobby subview
-		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, False))
-
 	def showPresetInHangar(self, presetID):
 
 		preset = g_controllers.processor.findPresetByID(presetID)
@@ -52,22 +45,6 @@ class VehicleController(object):
 
 		# updating vehicle customization
 		self.hangarSpace.space.updateVehicleCustomization(outfit)
-
-		g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.HIDE_HANGAR, True))
-
-		manager = self.hangarSpace.space.getCameraManager()
-		if not manager:
-			return
-
-		cfg = hangarCFG()
-		manager.setCameraLocation(
-			targetPos=cfg['cam_start_target_pos'],
-			pivotPos=cfg['cam_pivot_pos'],
-			yaw=math.radians(cfg['cam_start_angles'][0]),
-			pitch=math.radians(cfg['cam_start_angles'][1]),
-			dist=cfg['cam_start_dist'] - 4,
-			camConstraints=[cfg['cam_pitch_constr'], cfg['cam_yaw_constr'],	cfg['cam_dist_constr']]
-		)
 
 	@staticmethod
 	def getVehicleOutfit(appereance, originalOutfit):
