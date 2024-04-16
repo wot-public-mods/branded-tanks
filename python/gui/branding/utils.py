@@ -100,7 +100,6 @@ def readBrandingItem(itemCls, itemName, cache, storage):
 		ResMgr.purge(itemsFileName)
 
 _RESTRICTED_GUI_TYPE = (
-	ARENA_GUI_TYPE.BOOTCAMP,
 	ARENA_GUI_TYPE.BATTLE_ROYALE,
 )
 @dependency.replace_none_kwargs(sessionProvider=IBattleSessionProvider)

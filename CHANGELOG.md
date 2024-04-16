@@ -1,6 +1,12 @@
 # Changelog
 
-## v4.2.6
+## v4.3.0
+
+* fix for wot 1.24.1
+* update builder
+* update license and credentials
+
+## v4.2.7
 
 * improved views loading
 
