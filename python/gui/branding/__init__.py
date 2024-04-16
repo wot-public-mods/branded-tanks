@@ -1,11 +1,7 @@
-__author__ = "Andrii Andrushchyshyn"
-__copyright__ = "Copyright 2023, poliroid"
-__credits__ = ["Andrii Andrushchyshyn"]
-__license__ = "CC BY-NC-SA 4.0"
-__version__ = "4.2.7"
-__maintainer__ = "Andrii Andrushchyshyn"
-__email__ = "contact@poliroid.me"
-__status__ = "Production"
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2015-2024 Andrii Andrushchyshyn
+
+__version__ = "4.3.0"
 
 from .data import *
 from .hooks import *
