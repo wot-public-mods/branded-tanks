@@ -1,2 +1,2 @@
 
-from gui.branding import *
+from gui.branding import init, fini, __version__

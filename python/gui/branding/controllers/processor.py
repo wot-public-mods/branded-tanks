@@ -18,6 +18,12 @@ class ProcessorController(object):
 		return None
 
 	@staticmethod
+	def getEmptyOutfit():
+		camouflages, decals, paints = [], [], []
+		customizationOutfit = CustomizationOutfit(camouflages=camouflages, decals=decals, paints=paints)
+		return Outfit(customizationOutfit.makeCompDescr())
+
+	@staticmethod
 	def getOutfit(originalOutfit, preset, vDesc):
 
 		camouflages, decals, paints = [], [], []

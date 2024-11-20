@@ -2,6 +2,7 @@
 from debug_utils import LOG_ERROR
 from items.vehicles import g_cache
 from items.components.c11n_components import CamouflageItem, DecalItem, PaintItem
+from vehicle_systems import camouflages
 from vehicle_systems.CompoundAppearance import CompoundAppearance
 from VehicleStickers import VehicleStickers
 
@@ -28,6 +29,10 @@ def _applyVehicleOutfit(baseMethod, baseInstance):
 	from .controllers import g_controllers
 	outfit = g_controllers.vehicle.getVehicleOutfit(baseInstance, baseInstance.outfit)
 	baseInstance._CommonTankAppearance__outfit = outfit or baseInstance.outfit
+	# update cammo
+	camouflages.updateFashions(baseInstance)
+	# recreate stickers
+	baseInstance._createStickers()
 	return baseMethod(baseInstance)
 
 # fix decals transperent problem
