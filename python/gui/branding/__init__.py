@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2015-2024 Andrii Andrushchyshyn
 
-__version__ = "4.3.0"
+__version__ = "4.3.1"
 
 from .data import *
 from .hooks import *

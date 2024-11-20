@@ -28,7 +28,7 @@ class DataHolder(object):
 				self.__config['presets'][idx]['name'] = l10n(preset['name'].replace('l10n:', ''))
 
 		self.__cache = {
-			'currentSetup': [0, 1],
+			'currentSetup': [1, 2],
 			'onlyOnMyTank': False
 		}
 

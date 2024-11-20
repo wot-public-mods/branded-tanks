@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.3.1
+* fix bug with tank load before team info awailable
+* fix default config, use pereset ID instead preset Index
+
 ## v4.3.0
 
 * fix for wot 1.24.1
