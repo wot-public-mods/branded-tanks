@@ -3,11 +3,10 @@ import BigWorld
 import os
 from external_strings_utils import unicode_from_utf8
 
-LANGUAGE_CODES = ('ru', 'uk', 'be', 'en', 'de', 'et', 'bg', 'da', 'fi', 'fil', 'fr', 'el', 'hu', 'id',
-	'it', 'ja', 'ms', 'nl', 'no', 'pl', 'pt', 'pt_br', 'ro', 'sr', 'vi', 'zh_sg', 'zh_tw', 'hr', 'th',
-	'lv', 'lt', 'cs', 'es_ar', 'tr', 'zh_cn', 'es', 'kk', 'sv', )
-
-LANGUAGE_FILE_MASK = 'mods/net.wargaming.branding/text/%s.yml'
+# Language
+LANGUAGE_FILES = 'mods/net.wargaming.branding/text'
+LANGUAGE_DEFAULT = 'en'
+LANGUAGE_FALLBACK = ('ru', 'be', 'kk', )
 
 XML_FILE_PATH = 'mods/net.wargaming.branding/xml/%ss.xml'
 
