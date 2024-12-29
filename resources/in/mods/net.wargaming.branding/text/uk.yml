@@ -1,0 +1,13 @@
+modslist.name: Брендовані танки
+modslist.description: Заміна камуфляжів та написів для команд
+ui.operator.windowTitle: Брендовані танки
+ui.operator.messageTeams: Стиль першої команди <b>{name1}</b><br>Стиль другої команди <b>{name2}</b>
+ui.player.windowTitle: Брендовані танки
+ui.player.headerTextAlly: Виберіть свою команду
+ui.player.headerTextEnemy: Виберіть ворожу команду
+ui.player.onlyMyTank.label: Застосувати тільки до мого танка
+ui.player.onlyMyTank.toolTip: {HEADER}Видно тільки на моєму танку{/HEADER}{BODY}Якщо вибрано, брендування буде застосовано тільки до вашого танка<br>Усі інші танки будуть очищені від кастомізацій{/BODY}
+ui.player.messageTeams: Брендування для обох команд<br><b><font color="#00FF00">{name1}</font> проти <font color="#FF0000">{name2}</font></b>
+ui.player.messageOwnTank: Брендування для вашого танка<br><b><font color="#00FF00">{name}</font></b>
+ui.teams.cleanTanks: Очистити танки
+ui.teams.userChoise: Вибір користувача
