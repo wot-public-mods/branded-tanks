@@ -6,7 +6,7 @@ import os
 
 from .events import g_eventsManager
 from .lang import l10n
-from .utils import byteify, readFromVFS
+from .utils import byteify, vfs_file_read
 from ._constants import SETTINGS_FILE
 
 __all__ = ('g_dataHolder', )
@@ -24,7 +24,7 @@ class DataHolder(object):
 	def __init__(self):
 
 		# embedded in a package
-		self.__config = byteify(json.loads(readFromVFS('mods/net.wargaming.branding/config.json')))
+		self.__config = byteify(json.loads(vfs_file_read('mods/net.wargaming.branding/config.json')))
 
 		for idx, preset in enumerate(self.__config['presets']):
 			if 'l10n:' in preset['name']:
