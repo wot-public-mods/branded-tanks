@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2015-2024 Andrii Andrushchyshyn
 
 from debug_utils import LOG_ERROR
 from items.vehicles import g_cache

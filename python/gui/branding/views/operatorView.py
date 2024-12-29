@@ -1,4 +1,6 @@
-﻿
+﻿# SPDX-License-Identifier: MIT
+# Copyright (c) 2015-2024 Andrii Andrushchyshyn
+
 from gui.Scaleform.framework.entities.abstract.AbstractWindowView import AbstractWindowView
 
 from ..controllers import g_controllers
