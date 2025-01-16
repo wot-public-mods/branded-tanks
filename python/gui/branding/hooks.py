@@ -10,7 +10,7 @@ from VehicleStickers import VehicleStickers
 
 from .events import g_eventsManager
 from .lang import l10n
-from .utils import override, readBrandingItem, isBattleRestricted, withPDCCache
+from .utils import override, readBrandingItem, isBattleRestricted, awaitGameLoadingComplete
 
 __all__ = ()
 
@@ -56,7 +56,7 @@ if g_modsListApi:
 		description=l10n('modslist.description'), icon='gui/maps/icons/brandingIcon.png',
 		login=True, lobby=True, callback=g_eventsManager.showUI)
 
-@withPDCCache
+@awaitGameLoadingComplete
 def customization_inject():
 	cache = g_cache.customization20()
 	readBrandingItem(CamouflageItem, 'camouflage', cache, cache.camouflages)

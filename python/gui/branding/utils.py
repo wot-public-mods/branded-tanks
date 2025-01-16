@@ -9,14 +9,15 @@ import ResMgr
 import types
 
 from constants import ARENA_GUI_TYPE
+from gui.game_loading import loading
 from helpers import dependency
-from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.impl import IGuiLoader
+from skeletons.gui.shared.utils import IHangarSpace
 
 __all__ = ('byteify', 'override', 'vfs_file_read', 'vfs_dir_list_files', 'getFashionValue', 'getHangarVehicle',
 		'parse_localization_file', 'cache_result', 'getIconPatch', 'readBrandingItem', 'isBattleRestricted',
-		'getParentWindow', 'runWithPDC')
+		'getParentWindow', 'awaitGameLoadingComplete')
 
 def get_logger(name):
 	logger = logging.getLogger(name)
@@ -151,41 +152,13 @@ def getParentWindow():
 	if uiLoader and uiLoader.windowsManager:
 		return uiLoader.windowsManager.getMainWindow()
 
-def withPDCCache(callback, num_of_runs=0):
-
-	if num_of_runs > 100:
-		logger.warning('withPDCCache failed with maximum runs number')
-		return
-
-	try:
-		from persistent_data_cache_common import _g_manager as pdc_manager
-		from persistent_data_cache_common.caches import _SavingPDCStates
-	except ImportError:
-		logger.info('withPDCCache cant find pdc cache imlementation')
+def awaitGameLoadingComplete(callback, run_num=0):
+	logger.debug('awaitGameLoadingComplete run=%s', run_num)
+	if run_num > 100:
+		logger.warning('awaitGameLoadingComplete failed call callback with maximum run attempts')
+	loader = loading.getLoader()
+	if loader and loader.isGameLoadingComplete:
+		logger.debug('awaitGameLoadingComplete call callback (%s)', callback)
 		return callback()
-
-	# skip if manager is None
-	if pdc_manager is None:
-		logger.info('withPDCCache pdc manager is None')
-		return callback()
-
-	# skip if cache is None
-	pdc_cache = getattr(pdc_manager, '_cache', None)
-	if pdc_cache is None:
-		logger.info('withPDCCache pdc cache is None')
-		return callback()
-
-	# skip if pdc manager not ready
-	# skip if pdc providers for save exist exist
-	if pdc_manager._started:
-		providersToSave = [x for x in pdc_manager._dataProviders.itervalues() if x.isDataCreated]
-		# skip if there nothing to save
-		if not providersToSave:
-			return callback()
-		else:
-			# skip if all providers saved
-			if pdc_cache._savingState == _SavingPDCStates.CANCELED:
-				return callback()
-
-	return BigWorld.callback(.1, functools.partial(withPDCCache, callback, num_of_runs + 1))
-
+	delayed = functools.partial(awaitGameLoadingComplete, callback, run_num + 1)
+	return BigWorld.callback(.1, delayed)

@@ -1,11 +1,18 @@
 # Changelog
 
+## v4.4.1
+
+* simplify persistent data cache feature fix
+* update copyright
+
 ## v4.4.0
+
 * fix for wot 1.27.1 (persistent data cache feature bugfix)
 * added Ukrainian translation
 * improved localization
 
 ## v4.3.1
+
 * fix bug with tank load before team info awailable
 * fix default config, use pereset ID instead preset Index
 
