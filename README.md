@@ -13,13 +13,13 @@
 ## 📷 Screenshots
 
 ### Example of UI for player
-![Example of UI for player](https://gitlab.com/wot-public-mods/branded-tanks/-/raw/master/resources/branding_ui_player.jpg)
+![Example of UI for player](./resources/branding_ui_player.jpg)
 
 ### Example of UI for operator
-![Example of UI for operator](https://gitlab.com/wot-public-mods/branded-tanks/-/raw/master/resources/branding_ui_operator.jpg)
+![Example of UI for operator](./resources/branding_ui_operator.jpg)
 
 ### Example of tanks in battle
-![Example of tanks in battle](https://gitlab.com/wot-public-mods/branded-tanks/-/raw/master/resources/branding_ingame.jpg)
+![Example of tanks in battle](./resources/branding_ingame.jpg)
 
 ## ⚙️ Dependency
 This project relies on the [Mods List](https://gitlab.com/wot-public-mods/mods-list) mod. Make sure to include this mod to ensure the proper functionality of **Branded Tank Styles**.
@@ -39,7 +39,7 @@ Thank you for your support!
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](https://gitlab.com/wot-public-mods/branded-tanks/-/blob/master/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
 
 ## 🤝 Contributing
 
