@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.4.2
+
+* fix UI view registration through the GUI loader service
+* modernize build and packaging workflow
+* update copyright
+
 ## v4.4.1
 
 * simplify persistent data cache feature fix
