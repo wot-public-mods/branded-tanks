@@ -3,7 +3,7 @@
 	<itemGroup>
 		<userString />
 		<season>ALL</season>
-		<historical>true</historical>
+		<historical>1</historical>
 		<priceGroup>camouflages 50g notInShop</priceGroup>
 		<vehicleFilter>
 			<include />

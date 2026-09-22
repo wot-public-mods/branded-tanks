@@ -4,7 +4,7 @@
 		<name> branding_paints </name>
 		<userString> branding paints </userString>
 		<season> ALL </season>
-		<historical> false </historical>
+		<historical>0</historical>
 		<priceGroup> paints 20g notInShop </priceGroup>
 		<paint>
 			<id> 5400 </id>

@@ -4,7 +4,7 @@
 		<name>branding_emblems</name>
 		<userString>branding logotypes</userString>
 		<season>ALL</season>
-		<historical>true</historical>
+		<historical>1</historical>
 		<priceGroup>emblems 50g notInShop</priceGroup>
 		<type>EMBLEM</type>
 		<vehicleFilter>
@@ -29,7 +29,7 @@
 		<name>branding_inscriptions</name>
 		<userString>branding advert</userString>
 		<season>ALL</season>
-		<historical>true</historical>
+		<historical>1</historical>
 		<priceGroup>emblems 50g notInShop</priceGroup>
 		<type>INSCRIPTION</type>
 		<vehicleFilter>
