@@ -1,4 +1,6 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2015-2025 Andrii Andrushchyshyn
+# Copyright (c) 2015-2026 Andrii Andrushchyshyn
 
-from gui.branding import init, fini, __version__
+__version__ = "4.4.1"
+
+from gui.branding import init, fini
