@@ -1,17 +1,16 @@
 {
-	"version": 3,
+	"version": 5,
 	"software": {
 		"animate": "/path/to/adobe_animate",
-		"python": "/path/to/python_27",
-		"sonar": ""
+		"python": "/path/to/python_27"
 	},
 	"game": {
+		"force": false,
 		"folder": "/path/to/wot_dir",
 		"version": "wot_version"
 	},
 	"info": {
-		"id": "branding",
-		"author": "me.poliroid",
+		"id": "me.poliroid.branding",
 		"name": "Branded tanks",
 		"description": "Spoofing camouflage and inscriptions for teams",
 		"version": "mod_version"
