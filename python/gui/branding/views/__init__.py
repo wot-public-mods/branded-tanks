@@ -1,10 +1,12 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2015-2026 Andrii Andrushchyshyn
 
-from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ScopeTemplates
+from frameworks.wulf import WindowLayer
+from gui.Scaleform.framework import ViewSettings, ScopeTemplates
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.shared.personality import ServicesLocator
-from frameworks.wulf import WindowLayer
+from helpers import dependency
+from skeletons.gui.impl import IGuiLoader
 
 from ..data import g_dataHolder
 from ..events import g_eventsManager
@@ -21,8 +23,9 @@ def getViewSettings():
 			WindowLayer.WINDOW, None, ScopeTemplates.GLOBAL_SCOPE))
 	return viewSettings
 
+guiLoader = dependency.instance(IGuiLoader)
 for settings in getViewSettings():
-	g_entitiesFactories.addSettings(settings)
+	guiLoader.entitiesFactory.addSettings(settings)
 
 def showUI():
 	app = ServicesLocator.appLoader.getDefLobbyApp()
